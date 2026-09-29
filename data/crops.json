@@ -1,0 +1,888 @@
+[
+  {
+    "id": "rice",
+    "name": "Rice",
+    "scientific_name": "Oryza sativa",
+    "category": "Cereals",
+    "growing_season": "Kharif / Rabi / Summer",
+    "growth_duration": "110 - 140 days",
+    "preferred_soil": "Clayey loam to silty clay loam with good water retention",
+    "drainage_preference": "Tolerates standing water; requires controlled drainage before harvest",
+    "preferred_ph": {
+      "min": 5.5,
+      "max": 7.0
+    },
+    "water_requirement": "High (Flooded / Continuous Submergence, 1100 - 1300 mm)",
+    "growth_stages": [
+      "Nursery & Seedling Stage (20 - 30 days)",
+      "Tillering Stage (30 - 60 days)",
+      "Panicle Initiation & Flowering (60 - 90 days)",
+      "Grain Filling & Maturation (90 - 130 days)"
+    ],
+    "icon": "🌾",
+    "short_description": "Primary cereal staple grown under flooded or lowland puddle conditions across diverse agro-climatic zones.",
+    "source": "ICAR Handbook of Agriculture / TNAU Agritech Portal",
+    "aliases": [
+      "Paddy",
+      "paddy",
+      "Dhan",
+      "Nellu"
+    ]
+  },
+  {
+    "id": "maize",
+    "name": "Maize",
+    "scientific_name": "Zea mays",
+    "category": "Cereals",
+    "growing_season": "Kharif / Rabi / Spring",
+    "growth_duration": "90 - 115 days",
+    "preferred_soil": "Deep, fertile, well-drained loamy to silt loam soil",
+    "drainage_preference": "Well-drained (highly sensitive to waterlogging)",
+    "preferred_ph": {
+      "min": 5.8,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (500 - 650 mm; critical at tasseling and silking)",
+    "growth_stages": [
+      "Germination & Seedling (1 - 20 days)",
+      "Knee-high Vegetative Stage (20 - 45 days)",
+      "Tasseling & Silking Stage (45 - 65 days)",
+      "Cob Filling & Grain Maturity (65 - 105 days)"
+    ],
+    "icon": "🌽",
+    "short_description": "High-yielding coarse cereal crop with high starch and nutrient biomass potential, widely used for food and poultry feed.",
+    "source": "ICAR-IIMR / TNAU Agritech Portal",
+    "aliases": [
+      "Corn",
+      "Makka",
+      "Makka Cholam"
+    ]
+  },
+  {
+    "id": "sorghum",
+    "name": "Sorghum",
+    "scientific_name": "Sorghum bicolor",
+    "category": "Cereals",
+    "growing_season": "Kharif / Rabi",
+    "growth_duration": "100 - 120 days",
+    "preferred_soil": "Deep black clay soils (Vertisols) or medium fertile loams",
+    "drainage_preference": "Well-drained with good moisture retentive capacity",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 8.2
+    },
+    "water_requirement": "Low to Moderate (400 - 550 mm; exceptional drought tolerance)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 15 days)",
+      "Vegetative & Whorl Expansion (15 - 45 days)",
+      "Panicle Initiation & Booting (45 - 70 days)",
+      "Grain Filling & Physiological Maturity (70 - 110 days)"
+    ],
+    "icon": "🌾",
+    "short_description": "Climate-resilient dryland cereal grain yielding nutrient-rich grain and dry fodder in semi-arid tracts.",
+    "source": "ICAR-IIMR / TNAU Agritech Portal",
+    "aliases": [
+      "Jowar",
+      "Cholam",
+      "Great Millet"
+    ]
+  },
+  {
+    "id": "pearl_millet",
+    "name": "Pearl Millet",
+    "scientific_name": "Pennisetum glaucum",
+    "category": "Cereals",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "75 - 90 days",
+    "preferred_soil": "Light sandy loam, well-drained alluvial or red sandy soil",
+    "drainage_preference": "Rapidly drained (intolerant of standing water)",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 8.5
+    },
+    "water_requirement": "Low (250 - 350 mm; thrives in low rainfall zones)",
+    "growth_stages": [
+      "Seedling Establishment (1 - 18 days)",
+      "Tillering & Stem Elongation (18 - 40 days)",
+      "Booting & Head Emergence (40 - 60 days)",
+      "Grain Hardening & Harvest (60 - 85 days)"
+    ],
+    "icon": "🌾",
+    "short_description": "Nutritious drought-hardy millet rich in iron and zinc, suited to harsh high-temperature arid terrains.",
+    "source": "ICAR-AICRP on Pearl Millet / TNAU",
+    "aliases": [
+      "Bajra",
+      "Cumbu",
+      "Sajje"
+    ]
+  },
+  {
+    "id": "finger_millet",
+    "name": "Finger Millet",
+    "scientific_name": "Eleusine coracana",
+    "category": "Cereals",
+    "growing_season": "Kharif / Late Kharif / Rabi",
+    "growth_duration": "95 - 115 days",
+    "preferred_soil": "Red sandy loam, clay loam, or well-drained laterite soil",
+    "drainage_preference": "Well-drained (tolerates mild moisture stress)",
+    "preferred_ph": {
+      "min": 5.5,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (350 - 500 mm)",
+    "growth_stages": [
+      "Nursery & Establishment (1 - 25 days)",
+      "Tillering & Vegetative Phase (25 - 50 days)",
+      "Flowering & Earhead Emergence (50 - 75 days)",
+      "Grain Ripening & Harvest (75 - 110 days)"
+    ],
+    "icon": "🌾",
+    "short_description": "Super-cereal renowned for high calcium and dietary fiber, flourishing in red loams of rainfed regions.",
+    "source": "ICAR / TNAU Agritech Portal",
+    "aliases": [
+      "Ragi",
+      "Mandua",
+      "Kelvaragu"
+    ]
+  },
+  {
+    "id": "chickpea",
+    "name": "Chickpea",
+    "scientific_name": "Cicer arietinum",
+    "category": "Pulses",
+    "growing_season": "Rabi (Post-monsoon winter)",
+    "growth_duration": "90 - 110 days",
+    "preferred_soil": "Medium to deep black soils, silt loams with residual moisture",
+    "drainage_preference": "Well-drained (collar rot under waterlogged conditions)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.8
+    },
+    "water_requirement": "Low (250 - 350 mm; grown largely on residual moisture)",
+    "growth_stages": [
+      "Germination & Seedling Phase (1 - 20 days)",
+      "Vegetative Branching & Canopy (20 - 45 days)",
+      "Flowering & Pod Setting (45 - 75 days)",
+      "Pod Filling & Senescence (75 - 105 days)"
+    ],
+    "icon": "🧆",
+    "short_description": "Major winter pulse crop providing high vegetable protein, biological nitrogen fixation, and soil enrichment.",
+    "source": "ICAR-IIPR / TNAU Agritech Portal",
+    "aliases": [
+      "Bengal Gram",
+      "Chana",
+      "Kondakadalai"
+    ]
+  },
+  {
+    "id": "black_gram",
+    "name": "Black Gram",
+    "scientific_name": "Vigna mungo",
+    "category": "Pulses",
+    "growing_season": "Kharif / Rabi / Rice fallow summer",
+    "growth_duration": "65 - 75 days",
+    "preferred_soil": "Loamy to clayey soils with high organic matter and moisture holding",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 7.8
+    },
+    "water_requirement": "Low to Moderate (300 - 400 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 15 days)",
+      "Vegetative Trifoliate Branching (15 - 35 days)",
+      "Flowering & Pod Formation (35 - 55 days)",
+      "Pod Maturation & Harvest (55 - 75 days)"
+    ],
+    "icon": "🫘",
+    "short_description": "Short-duration leguminous pulse vital for crop rotations and soil nitrogen priming.",
+    "source": "ICAR-IIPR / TNAU Agritech Portal",
+    "aliases": [
+      "Urad",
+      "Urad Dal",
+      "Ulundu"
+    ]
+  },
+  {
+    "id": "green_gram",
+    "name": "Green Gram",
+    "scientific_name": "Vigna radiata",
+    "category": "Pulses",
+    "growing_season": "Kharif / Summer / Rabi",
+    "growth_duration": "60 - 70 days",
+    "preferred_soil": "Well-drained sandy loam to alluvial loam",
+    "drainage_preference": "Well-drained (cannot endure standing water)",
+    "preferred_ph": {
+      "min": 6.2,
+      "max": 7.6
+    },
+    "water_requirement": "Low (250 - 350 mm)",
+    "growth_stages": [
+      "Germination & Seedling Phase (1 - 14 days)",
+      "Vegetative Canopy Development (14 - 30 days)",
+      "Flowering & Pod Initiation (30 - 50 days)",
+      "Pod Drying & Picking (50 - 70 days)"
+    ],
+    "icon": "🫘",
+    "short_description": "Rapid-growing pulse crop with high digestibility and excellent catch-crop versatility.",
+    "source": "ICAR-IIPR / TNAU Agritech Portal",
+    "aliases": [
+      "Moong",
+      "Moong Dal",
+      "Pasi Payiru"
+    ]
+  },
+  {
+    "id": "pigeon_pea",
+    "name": "Pigeon Pea",
+    "scientific_name": "Cajanus cajan",
+    "category": "Pulses",
+    "growing_season": "Kharif (June - July sowing)",
+    "growth_duration": "140 - 180 days",
+    "preferred_soil": "Deep loam to black cotton soil with good subsoil permeability",
+    "drainage_preference": "Well-drained (deep taproot; intolerant of stagnant water)",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 8.0
+    },
+    "water_requirement": "Moderate (450 - 600 mm; high drought tolerance)",
+    "growth_stages": [
+      "Seedling & Primary Branches (1 - 40 days)",
+      "Active Vegetative Bushing (40 - 90 days)",
+      "Flowering & Pod Formation (90 - 135 days)",
+      "Pod Maturation & Harvest (135 - 170 days)"
+    ],
+    "icon": "🫘",
+    "short_description": "Deep-rooted perennial/annual legume fixing massive biological nitrogen and breaking hard subsoil pans.",
+    "source": "ICAR-IIPR / TNAU Agritech Portal",
+    "aliases": [
+      "Red Gram",
+      "Arhar",
+      "Tur",
+      "Thuvarai"
+    ]
+  },
+  {
+    "id": "cowpea",
+    "name": "Cowpea",
+    "scientific_name": "Vigna unguiculata",
+    "category": "Pulses",
+    "growing_season": "Kharif / Spring / Summer",
+    "growth_duration": "70 - 85 days",
+    "preferred_soil": "Sandy loam to well-drained clay loam with moderate organic matter",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 5.8,
+      "max": 7.5
+    },
+    "water_requirement": "Low to Moderate (300 - 450 mm)",
+    "growth_stages": [
+      "Emergence & Early Growth (1 - 15 days)",
+      "Vegetative Branching & Foliage (15 - 35 days)",
+      "Flowering & Pod Setting (35 - 60 days)",
+      "Pod Maturation (60 - 80 days)"
+    ],
+    "icon": "🫘",
+    "short_description": "Versatile dual-purpose food and green manure pulse, excelling in nutrient-poor warm soils.",
+    "source": "ICAR / TNAU Agritech Portal",
+    "aliases": [
+      "Lobia",
+      "Karamani",
+      "Black-eyed Pea"
+    ]
+  },
+  {
+    "id": "groundnut",
+    "name": "Groundnut",
+    "scientific_name": "Arachis hypogaea",
+    "category": "Oilseeds",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "105 - 125 days",
+    "preferred_soil": "Well-drained light sandy loam or red sandy soil",
+    "drainage_preference": "Well-drained (loose topsoil essential for peg penetration)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (400 - 550 mm; critical at pegging and pod fill)",
+    "growth_stages": [
+      "Emergence & Early Vegetative (1 - 25 days)",
+      "Flowering & Pegging (25 - 55 days)",
+      "Pod Formation & Kernel Filling (55 - 90 days)",
+      "Pod Maturity & Harvest (90 - 120 days)"
+    ],
+    "icon": "🥜",
+    "short_description": "High-value subterranean oilseed yielding premium edible oil and protein-rich cake.",
+    "source": "ICAR-DGR / TNAU Agritech Portal",
+    "aliases": [
+      "Peanut",
+      "Mungfali",
+      "Kadalai"
+    ]
+  },
+  {
+    "id": "sesame",
+    "name": "Sesame",
+    "scientific_name": "Sesamum indicum",
+    "category": "Oilseeds",
+    "growing_season": "Kharif / Summer / Rabi",
+    "growth_duration": "75 - 85 days",
+    "preferred_soil": "Well-drained light loams, alluvial or red soils",
+    "drainage_preference": "Rapidly drained (extremely sensitive to waterlogging)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.8
+    },
+    "water_requirement": "Low (250 - 350 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 15 days)",
+      "Vegetative Branching (15 - 35 days)",
+      "Flowering & Capsule Setting (35 - 60 days)",
+      "Capsule Ripening & Harvest (60 - 80 days)"
+    ],
+    "icon": "🌿",
+    "short_description": "Ancient antioxidant-rich oilseed crop with high oil concentration, suited to rainfed rotations.",
+    "source": "ICAR / TNAU Agritech Portal",
+    "aliases": [
+      "Til",
+      "Gingelly",
+      "Ellu"
+    ]
+  },
+  {
+    "id": "sunflower",
+    "name": "Sunflower",
+    "scientific_name": "Helianthus annuus",
+    "category": "Oilseeds",
+    "growing_season": "Kharif / Rabi / Spring",
+    "growth_duration": "85 - 95 days",
+    "preferred_soil": "Deep fertile loam or black clay loam with good water retention",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 8.0
+    },
+    "water_requirement": "Moderate (450 - 600 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 15 days)",
+      "Vegetative & Bud Initiation (15 - 40 days)",
+      "Flowering & Anthesis (40 - 65 days)",
+      "Seed Filling & Physiological Maturity (65 - 90 days)"
+    ],
+    "icon": "🌻",
+    "short_description": "Photo-insensitive oilseed producing high-quality polyunsaturated edible oil across diverse soil types.",
+    "source": "ICAR-IIOR / TNAU Agritech Portal",
+    "aliases": [
+      "Surajmukhi",
+      "Suriyakanti"
+    ]
+  },
+  {
+    "id": "soybean",
+    "name": "Soybean",
+    "scientific_name": "Glycine max",
+    "category": "Oilseeds",
+    "growing_season": "Kharif (June - July sowing)",
+    "growth_duration": "90 - 105 days",
+    "preferred_soil": "Well-drained fertile loam to clay loam rich in organic matter",
+    "drainage_preference": "Well-drained (susceptible to crusting and poor aeration)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (450 - 600 mm)",
+    "growth_stages": [
+      "Emergence & Unifoliate Leaf (1 - 15 days)",
+      "Vegetative Trifoliate Branching (15 - 40 days)",
+      "Flowering & Pod Initiation (40 - 70 days)",
+      "Pod Fill & Seed Maturity (70 - 100 days)"
+    ],
+    "icon": "🫘",
+    "short_description": "Dual-purpose protein-oil wonder legume widely cultivated in black soil rainfed systems.",
+    "source": "ICAR-IISR / TNAU Agritech Portal",
+    "aliases": [
+      "Soya",
+      "Bhat"
+    ]
+  },
+  {
+    "id": "tomato",
+    "name": "Tomato",
+    "scientific_name": "Solanum lycopersicum",
+    "category": "Vegetables",
+    "growing_season": "Rabi / Kharif / Summer",
+    "growth_duration": "100 - 135 days",
+    "preferred_soil": "Deep, fertile, well-drained sandy loam or clay loam",
+    "drainage_preference": "Well-drained (highly prone to wilt in standing water)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.0
+    },
+    "water_requirement": "Moderate to High (500 - 700 mm; sensitive to water stress)",
+    "growth_stages": [
+      "Nursery & Transplanting (25 - 35 days)",
+      "Vegetative Growth & Branching (35 - 60 days)",
+      "Flowering & Fruit Setting (60 - 90 days)",
+      "Fruit Enlargement & Harvesting (90 - 135 days)"
+    ],
+    "icon": "🍅",
+    "short_description": "Major solanaceous commercial vegetable delivering high cash yields under proper trellis and nutrient care.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Tamatar",
+      "Thakkali"
+    ]
+  },
+  {
+    "id": "chilli",
+    "name": "Chilli",
+    "scientific_name": "Capsicum annuum",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Rabi",
+    "growth_duration": "120 - 150 days",
+    "preferred_soil": "Well-drained light loamy or black soil with good fertility",
+    "drainage_preference": "Well-drained (cannot endure damp feet)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.2
+    },
+    "water_requirement": "Moderate (450 - 600 mm; avoid moisture stress at flowering)",
+    "growth_stages": [
+      "Nursery & Transplanting (30 - 40 days)",
+      "Vegetative Branching (40 - 70 days)",
+      "Flowering & Fruit Setting (70 - 105 days)",
+      "Fruit Maturation & Multiple Pickings (105 - 150 days)"
+    ],
+    "icon": "🌶️",
+    "short_description": "High-value condiment and vegetable spice grown for fresh green pungent pods and dry red chillies.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Mirch",
+      "Milagai",
+      "Hot Pepper"
+    ]
+  },
+  {
+    "id": "brinjal",
+    "name": "Brinjal",
+    "scientific_name": "Solanum melongena",
+    "category": "Vegetables",
+    "growing_season": "Year-round (Autumn / Spring / Summer)",
+    "growth_duration": "130 - 150 days",
+    "preferred_soil": "Deep, fertile silt loam to clay loam rich in organic matter",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 5.8,
+      "max": 6.8
+    },
+    "water_requirement": "Moderate to High (500 - 700 mm)",
+    "growth_stages": [
+      "Nursery & Establishment (1 - 35 days)",
+      "Vegetative Branching (35 - 65 days)",
+      "Flowering & Early Fruit Set (65 - 90 days)",
+      "Continuous Fruit Harvest (90 - 145 days)"
+    ],
+    "icon": "🍆",
+    "short_description": "Popular indigenous vegetable delivering extended fruiting cycles with balanced N-P-K and FYM fertilization.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Eggplant",
+      "Aubergine",
+      "Baingan",
+      "Katharikai"
+    ]
+  },
+  {
+    "id": "okra",
+    "name": "Okra",
+    "scientific_name": "Abelmoschus esculentus",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "90 - 105 days",
+    "preferred_soil": "Fertile sandy loam to clay loam with high organic carbon",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (400 - 550 mm)",
+    "growth_stages": [
+      "Germination & Seedling Phase (1 - 15 days)",
+      "Active Vegetative Growth (15 - 40 days)",
+      "Flowering & Pod Setting (40 - 60 days)",
+      "Multiple Tender Harvest Pickings (60 - 100 days)"
+    ],
+    "icon": "🥗",
+    "short_description": "Fast-growing warm-season pod vegetable requiring regular pickings to sustain flowering flushes.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Bhendi",
+      "Lady Finger",
+      "Vendakkai"
+    ]
+  },
+  {
+    "id": "onion",
+    "name": "Onion",
+    "scientific_name": "Allium cepa",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Late Kharif / Rabi",
+    "growth_duration": "120 - 140 days",
+    "preferred_soil": "Friable sandy loam or alluvial soil rich in organic matter",
+    "drainage_preference": "Well-drained (shallow fibrous root system; sensitive to waterlogging)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (400 - 550 mm; frequent light irrigations)",
+    "growth_stages": [
+      "Nursery & Transplanting (1 - 45 days)",
+      "Vegetative Foliage Growth (45 - 80 days)",
+      "Bulb Initiation & Development (80 - 115 days)",
+      "Bulb Maturity & Neck Fall (115 - 135 days)"
+    ],
+    "icon": "🧅",
+    "short_description": "Vital commercial bulb crop sensitive to photoperiod, temperature, and soil physical friability.",
+    "source": "ICAR-DOGR / TNAU Agritech Portal",
+    "aliases": [
+      "Pyaz",
+      "Vengayam"
+    ]
+  },
+  {
+    "id": "cabbage",
+    "name": "Cabbage",
+    "scientific_name": "Brassica oleracea var. capitata",
+    "category": "Vegetables",
+    "growing_season": "Rabi (Cool season / Hills year-round)",
+    "growth_duration": "85 - 110 days",
+    "preferred_soil": "Well-drained sandy loam to silt loam with high organic matter",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.2
+    },
+    "water_requirement": "Moderate (400 - 500 mm)",
+    "growth_stages": [
+      "Nursery & Transplanting (1 - 30 days)",
+      "Vegetative Frame Development (30 - 55 days)",
+      "Head Formation & Cupping (55 - 80 days)",
+      "Head Firming & Harvest (80 - 105 days)"
+    ],
+    "icon": "🥬",
+    "short_description": "Nutrient-demanding cole crop forming tight compact heads under cool climatic regimes.",
+    "source": "ICAR-IIVR / TNAU Agritech Portal",
+    "aliases": [
+      "Patta Gobhi",
+      "Muttakose"
+    ]
+  },
+  {
+    "id": "cauliflower",
+    "name": "Cauliflower",
+    "scientific_name": "Brassica oleracea var. botrytis",
+    "category": "Vegetables",
+    "growing_season": "Autumn / Winter",
+    "growth_duration": "90 - 115 days",
+    "preferred_soil": "Deep loamy soil with high moisture retentiveness and fertility",
+    "drainage_preference": "Well-drained (sensitive to curd browning in standing moisture)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.0
+    },
+    "water_requirement": "Moderate (400 - 500 mm)",
+    "growth_stages": [
+      "Nursery & Establishment (1 - 30 days)",
+      "Vegetative Leaf Canopy (30 - 60 days)",
+      "Curd Initiation & Blanching (60 - 85 days)",
+      "Curd Maturity & Harvest (85 - 110 days)"
+    ],
+    "icon": "🥦",
+    "short_description": "Delicate cole vegetable producing pristine white curds requiring precise micronutrient nutrition.",
+    "source": "ICAR-IIVR / TNAU Agritech Portal",
+    "aliases": [
+      "Phool Gobhi",
+      "Kaalipilavar"
+    ]
+  },
+  {
+    "id": "carrot",
+    "name": "Carrot",
+    "scientific_name": "Daucus carota",
+    "category": "Vegetables",
+    "growing_season": "Rabi (Cool winter season)",
+    "growth_duration": "80 - 100 days",
+    "preferred_soil": "Deep, loose, stone-free friable sandy loam",
+    "drainage_preference": "Well-drained (heavy clays cause root forking and splitting)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.0
+    },
+    "water_requirement": "Moderate (350 - 450 mm)",
+    "growth_stages": [
+      "Germination & Emergence (1 - 15 days)",
+      "Foliage & Taproot Elongation (15 - 45 days)",
+      "Root Thickening & Pigment Accumulation (45 - 75 days)",
+      "Root Maturity & Harvest (75 - 95 days)"
+    ],
+    "icon": "🥕",
+    "short_description": "Root vegetable rich in beta-carotene requiring deep tilled seedbeds for straight uniform taproots.",
+    "source": "ICAR-IIVR / TNAU Agritech Portal",
+    "aliases": [
+      "Gajar"
+    ]
+  },
+  {
+    "id": "radish",
+    "name": "Radish",
+    "scientific_name": "Raphanus sativus",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Rabi / Spring",
+    "growth_duration": "40 - 55 days",
+    "preferred_soil": "Light, friable sandy loam rich in humus",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 5.8,
+      "max": 6.8
+    },
+    "water_requirement": "Low to Moderate (250 - 350 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 8 days)",
+      "Early Leaf & Root Initiation (8 - 22 days)",
+      "Root Enlargement (22 - 40 days)",
+      "Root Harvest (40 - 50 days)"
+    ],
+    "icon": "🥗",
+    "short_description": "Ultra-short duration root crop serving as an ideal companion and quick intercrop between main plantings.",
+    "source": "ICAR-IIVR / TNAU Agritech Portal",
+    "aliases": [
+      "Mooli",
+      "Mullangi"
+    ]
+  },
+  {
+    "id": "bitter_gourd",
+    "name": "Bitter Gourd",
+    "scientific_name": "Momordica charantia",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "110 - 130 days",
+    "preferred_soil": "Well-drained sandy loam rich in organic matter",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (400 - 550 mm)",
+    "growth_stages": [
+      "Germination & Vine Emergence (1 - 15 days)",
+      "Vine Growth & Trellising (15 - 45 days)",
+      "Flowering & Fruit Set (45 - 75 days)",
+      "Continuous Fruit Picking (75 - 120 days)"
+    ],
+    "icon": "🥒",
+    "short_description": "Medicinal cucurbit vine thriving in warm conditions on bower and trellis systems.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Karela",
+      "Pavakkai"
+    ]
+  },
+  {
+    "id": "bottle_gourd",
+    "name": "Bottle Gourd",
+    "scientific_name": "Lagenaria siceraria",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "110 - 135 days",
+    "preferred_soil": "Fertile silt loam to sandy loam with good organic content",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (450 - 600 mm)",
+    "growth_stages": [
+      "Emergence & Early Vining (1 - 15 days)",
+      "Vegetative Vine Branching (15 - 45 days)",
+      "Staminate & Pistillate Flowering (45 - 70 days)",
+      "Fruit Growth & Harvest (70 - 125 days)"
+    ],
+    "icon": "🥒",
+    "short_description": "Vigorous trailing vine producing tender cylindrical gourds under high solar radiation.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Lauki",
+      "Suraikkai"
+    ]
+  },
+  {
+    "id": "cucumber",
+    "name": "Cucumber",
+    "scientific_name": "Cucumis sativus",
+    "category": "Vegetables",
+    "growing_season": "Spring / Summer / Kharif",
+    "growth_duration": "70 - 90 days",
+    "preferred_soil": "Light, warm, well-drained sandy loam",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.0
+    },
+    "water_requirement": "Moderate (350 - 500 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 10 days)",
+      "Vine Running (10 - 30 days)",
+      "Flowering & Fruit Development (30 - 55 days)",
+      "Repeated Harvest (55 - 85 days)"
+    ],
+    "icon": "🥒",
+    "short_description": "Popular salad vegetable with high water content, flourishing in warm weather with mulch and drip irrigation.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Kheera",
+      "Vellarikkai"
+    ]
+  },
+  {
+    "id": "pumpkin",
+    "name": "Pumpkin",
+    "scientific_name": "Cucurbita moschata",
+    "category": "Vegetables",
+    "growing_season": "Kharif / Summer",
+    "growth_duration": "120 - 140 days",
+    "preferred_soil": "Deep fertile sandy loam or alluvial soil with good drainage",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "Moderate (450 - 600 mm)",
+    "growth_stages": [
+      "Seedling Emergence (1 - 14 days)",
+      "Vine Spreading & Branching (14 - 45 days)",
+      "Flowering & Fruit Setting (45 - 75 days)",
+      "Fruit Hardening & Harvest (75 - 130 days)"
+    ],
+    "icon": "🎃",
+    "short_description": "Robust trailing cucurbit with long shelf-life fruits rich in vitamin A and carotenoids.",
+    "source": "ICAR-IIHR / TNAU Agritech Portal",
+    "aliases": [
+      "Kaddu",
+      "Poosanaikkai"
+    ]
+  },
+  {
+    "id": "moringa",
+    "name": "Moringa",
+    "scientific_name": "Moringa oleifera",
+    "category": "Commercial / Perennial",
+    "growing_season": "Year-round (Warm & Semi-arid)",
+    "growth_duration": "180 - 240 days (First harvest 6-8 months)",
+    "preferred_soil": "Sandy loam to loamy, well-drained, deep soil",
+    "drainage_preference": "Well-drained (cannot endure standing water around root collar)",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 8.0
+    },
+    "water_requirement": "Low to Moderate (Drought-tolerant, 300 - 450 mm)",
+    "growth_stages": [
+      "Germination & Emergence (7 - 14 days)",
+      "Vegetative Branching & Leaf Development (30 - 90 days)",
+      "Flowering & Pod Formation (90 - 150 days)",
+      "Pod Maturation & Harvesting (150 - 240 days)"
+    ],
+    "icon": "🌿",
+    "short_description": "Nutrient-dense perennial tree valued for drumstick pods and leaves, highly drought-resilient in semi-arid zones.",
+    "source": "TNAU Agritech Portal / ICAR",
+    "aliases": [
+      "Drumstick",
+      "Sahjan",
+      "Murungai"
+    ]
+  },
+  {
+    "id": "banana",
+    "name": "Banana",
+    "scientific_name": "Musa acuminata",
+    "category": "Commercial / Perennial",
+    "growing_season": "Year-round (Warm & Humid tropics)",
+    "growth_duration": "300 - 365 days (10 - 12 months)",
+    "preferred_soil": "Rich, well-drained loamy soil with high organic matter",
+    "drainage_preference": "Well-drained (demands heavy moisture but zero waterlogging)",
+    "preferred_ph": {
+      "min": 6.0,
+      "max": 7.5
+    },
+    "water_requirement": "High (Regular, heavy moisture with proper drainage, 1500 - 2000 mm)",
+    "growth_stages": [
+      "Vegetative / Shooting Stage (1 - 6 months)",
+      "Floral Emergence / Bunch Shooting (6 - 8 months)",
+      "Bunch Development & Finger Filling (8 - 10 months)",
+      "Bunch Maturation & Harvesting (10 - 12 months)"
+    ],
+    "icon": "🍌",
+    "short_description": "High-grossing perennial commercial fruit crop demanding heavy potassium, organic matter, and regular irrigation.",
+    "source": "ICAR-NRCB / TNAU Agritech Portal",
+    "aliases": [
+      "Kela",
+      "Vazhai"
+    ]
+  },
+  {
+    "id": "sugarcane",
+    "name": "Sugarcane",
+    "scientific_name": "Saccharum officinarum",
+    "category": "Commercial / Perennial",
+    "growing_season": "Spring / Autumn / Adsali (Year-round)",
+    "growth_duration": "330 - 365 days (11 - 12 months)",
+    "preferred_soil": "Deep, fertile well-drained loamy to clay loam with high fertility",
+    "drainage_preference": "Well-drained (cannot tolerate waterlogged subsoil)",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 7.8
+    },
+    "water_requirement": "High (1500 - 2500 mm across growth cycle)",
+    "growth_stages": [
+      "Germination Stage (1 - 35 days)",
+      "Tillering Stage (35 - 100 days)",
+      "Grand Growth & Cane Elongation (100 - 270 days)",
+      "Ripening & Maturity (270 - 360 days)"
+    ],
+    "icon": "🎋",
+    "short_description": "Major commercial industrial cash crop requiring high solar radiation, nutrient reserves, and systematic trash mulching.",
+    "source": "ICAR-SBI / TNAU Agritech Portal",
+    "aliases": [
+      "Ganna",
+      "Karumbu"
+    ]
+  },
+  {
+    "id": "cotton",
+    "name": "Cotton",
+    "scientific_name": "Gossypium hirsutum",
+    "category": "Commercial / Perennial",
+    "growing_season": "Kharif (May - June sowing)",
+    "growth_duration": "150 - 180 days",
+    "preferred_soil": "Deep black cotton soils (Vertisols) or alluvial loam",
+    "drainage_preference": "Well-drained",
+    "preferred_ph": {
+      "min": 6.5,
+      "max": 8.0
+    },
+    "water_requirement": "Moderate (550 - 750 mm; critical at square formation and flowering)",
+    "growth_stages": [
+      "Seedling & Vegetative Stage (1 - 45 days)",
+      "Square Formation (Budding) (45 - 70 days)",
+      "Flowering & Boll Development (70 - 120 days)",
+      "Boll Bursting & Picking (120 - 170 days)"
+    ],
+    "icon": "🌱",
+    "short_description": "Premier commercial fiber cash crop driving rural farm economies in deep black Vertisol soils.",
+    "source": "ICAR-CICR / TNAU Agritech Portal",
+    "aliases": [
+      "Kapas",
+      "Paruthi"
+    ]
+  }
+]

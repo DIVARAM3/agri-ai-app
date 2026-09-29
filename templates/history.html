@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+{% block title %}Farm History & Activity Log - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">History</span>
+    </div>
+    <h1>Farm History & Activity Log</h1>
+    <p>Chronological record of your soil analyses, crop suitability checks, biological guidance, pest scouting, and generated farm reports.</p>
+    
+    <div class="card-meta mt-lg">
+        <div class="card-meta-item">
+            <span class="card-meta-label">📍 Farm Location:</span>
+            <span>{{ user.location }}</span>
+        </div>
+        <div class="card-meta-item">
+            <span class="card-meta-label">🌾 Selected Crop:</span>
+            <span>{{ user.current_crop }}</span>
+        </div>
+        <div class="card-meta-item">
+            <span class="card-meta-label">📜 Total Actions:</span>
+            <span>{{ stats.total_activities }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-body">
+    <!-- STATS OVERVIEW -->
+    <div class="grid grid-4" style="margin-bottom: 2.5rem;">
+        <div class="card" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Total Activities</p>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--color-primary); margin: 0.35rem 0;">{{ stats.total_activities }}</div>
+            <p class="text-muted" style="margin: 0; font-size: 0.8125rem;">Actions logged</p>
+        </div>
+        
+        <div class="card" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Crops Tracked</p>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--color-secondary); margin: 0.35rem 0;">{{ stats.crops_tracked }}</div>
+            <p class="text-muted" style="margin: 0; font-size: 0.8125rem;">Distinct crops evaluated</p>
+        </div>
+
+        <div class="card" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Reports Generated</p>
+            <div style="font-size: 2.25rem; font-weight: 800; color: #0284c7; margin: 0.35rem 0;">{{ stats.type_counts.get('REPORT_GENERATED', 0) }}</div>
+            <p class="text-muted" style="margin: 0; font-size: 0.8125rem;">PDF advisory exports</p>
+        </div>
+
+        <div class="card" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Soil Analyses</p>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--color-warning); margin: 0.35rem 0;">{{ stats.type_counts.get('SOIL_ANALYSIS', 0) }}</div>
+            <p class="text-muted" style="margin: 0; font-size: 0.8125rem;">Fertility tests run</p>
+        </div>
+    </div>
+
+    <!-- FILTER & SEARCH CONTROLS -->
+    <div class="card" style="margin-bottom: 2rem;">
+        <form method="GET" action="/history" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+            <div style="flex: 1; min-width: 200px;">
+                <label class="form-label" style="font-size: 0.8125rem; font-weight: 600;">Filter by Activity Type</label>
+                <select name="type" class="form-select" onchange="this.form.submit()" style="font-size: 0.875rem;">
+                    <option value="" {% if not filter_type %}selected{% endif %}>All Activities ({{ stats.total_activities }})</option>
+                    <option value="SOIL_ANALYSIS" {% if filter_type == 'SOIL_ANALYSIS' %}selected{% endif %}>🧪 Soil Analysis ({{ stats.type_counts.get('SOIL_ANALYSIS', 0) }})</option>
+                    <option value="CROP_ANALYSIS" {% if filter_type == 'CROP_ANALYSIS' %}selected{% endif %}>🌾 Crop Analysis ({{ stats.type_counts.get('CROP_ANALYSIS', 0) }})</option>
+                    <option value="BIOBOOST_ANALYSIS" {% if filter_type == 'BIOBOOST_ANALYSIS' %}selected{% endif %}>🌿 BioBoost ({{ stats.type_counts.get('BIOBOOST_ANALYSIS', 0) }})</option>
+                    <option value="IPM_ASSESSMENT" {% if filter_type == 'IPM_ASSESSMENT' %}selected{% endif %}>🐛 Pest & Disease ({{ stats.type_counts.get('IPM_ASSESSMENT', 0) }})</option>
+                    <option value="WEATHER_LOOKUP" {% if filter_type == 'WEATHER_LOOKUP' %}selected{% endif %}>⛅ Weather ({{ stats.type_counts.get('WEATHER_LOOKUP', 0) }})</option>
+                    <option value="MONSOON_LOOKUP" {% if filter_type == 'MONSOON_LOOKUP' %}selected{% endif %}>🌧️ Monsoon Outlook ({{ stats.type_counts.get('MONSOON_LOOKUP', 0) }})</option>
+                    <option value="REPORT_GENERATED" {% if filter_type == 'REPORT_GENERATED' %}selected{% endif %}>📄 Reports Generated ({{ stats.type_counts.get('REPORT_GENERATED', 0) }})</option>
+                </select>
+            </div>
+
+            <div style="flex: 1; min-width: 180px;">
+                <label class="form-label" style="font-size: 0.8125rem; font-weight: 600;">Filter by Crop</label>
+                <select name="crop" class="form-select" onchange="this.form.submit()" style="font-size: 0.875rem;">
+                    <option value="" {% if not filter_crop %}selected{% endif %}>All Crops</option>
+                    {% for c in all_crops %}
+                    <option value="{{ c }}" {% if filter_crop == c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            {% if filter_type or filter_crop %}
+            <div>
+                <a href="/history" class="btn btn-outline" style="padding: 0.6rem 1rem; font-size: 0.8125rem;">
+                    ✕ Clear Filters
+                </a>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- ACTIVITIES CHRONOLOGICAL TIMELINE -->
+    {% if activities %}
+    <div style="display: grid; gap: 1.25rem;">
+        {% for activity in activities %}
+        <div class="card" style="border-left: 4px solid var(--color-primary); transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+                <div style="display: flex; align-items: center; gap: 0.85rem;">
+                    <span style="font-size: 1.75rem;">{{ activity.icon }}</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.1rem; color: var(--color-text-primary);">
+                            {{ activity.title }}
+                        </h3>
+                        <p class="text-muted" style="margin: 0.2rem 0 0 0; font-size: 0.8125rem;">
+                            📅 {{ activity.date }} {% if activity.time %}at {{ activity.time }}{% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                    <span class="badge {{ activity.badge_class }}" style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">
+                        {{ activity.activity_type.replace('_', ' ') }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Context Metadata Pills -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+                {% if activity.crop %}
+                <div style="background-color: var(--color-bg-secondary); padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.8125rem; display: flex; align-items: center; gap: 0.35rem;">
+                    <span style="color: var(--color-text-secondary);">🌾 Crop:</span>
+                    <strong>{{ activity.crop }}</strong>
+                </div>
+                {% endif %}
+
+                {% if activity.location %}
+                <div style="background-color: var(--color-bg-secondary); padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.8125rem; display: flex; align-items: center; gap: 0.35rem;">
+                    <span style="color: var(--color-text-secondary);">📍 Location:</span>
+                    <span>{{ activity.location }}</span>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Description -->
+            <p style="margin: 0 0 1.25rem 0; font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.5; background-color: var(--color-bg-secondary); padding: 0.85rem 1rem; border-radius: var(--radius-md);">
+                {{ activity.description }}
+            </p>
+
+            <!-- Action Button -->
+            <div style="display: flex; justify-content: flex-end;">
+                {% if activity.activity_type == 'SOIL_ANALYSIS' %}
+                <a href="/soil" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View Soil Lab →
+                </a>
+                {% elif activity.activity_type == 'CROP_ANALYSIS' %}
+                <a href="/crop-advisor" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View Crop Advisor →
+                </a>
+                {% elif activity.activity_type == 'BIOBOOST_ANALYSIS' %}
+                <a href="/bioboost" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View BioBoost →
+                </a>
+                {% elif activity.activity_type == 'IPM_ASSESSMENT' %}
+                <a href="/pest-advisor" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View Pest Advisor →
+                </a>
+                {% elif activity.activity_type == 'WEATHER_LOOKUP' %}
+                <a href="/weather" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View Weather Forecast →
+                </a>
+                {% elif activity.activity_type == 'MONSOON_LOOKUP' %}
+                <a href="/monsoon" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    View Monsoon Outlook →
+                </a>
+                {% elif activity.activity_type == 'REPORT_GENERATED' %}
+                <a href="/generate-report" class="btn btn-primary" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    Download Latest PDF 📄
+                </a>
+                {% else %}
+                <a href="/" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.45rem 1rem;">
+                    Dashboard →
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- EMPTY STATE -->
+    <div class="card" style="text-align: center; padding: 4rem 2rem; border: 2px dashed var(--color-border); background-color: var(--color-bg-secondary);">
+        <div style="font-size: 3.5rem; margin-bottom: 1rem;">📜</div>
+        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.35rem; color: var(--color-text-primary);">
+            No Farm Activity Recorded Yet
+        </h3>
+        <p style="margin: 0 auto 1.75rem auto; max-width: 520px; font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.5;">
+            {% if filter_type or filter_crop %}
+            No activities match your selected filter criteria. Try clearing filters to see all recorded events.
+            {% else %}
+            As you upload soil test reports, evaluate crop suitability, consult BioBoost, scout pests, or export PDF reports, your farm's complete chronological record will be automatically organized here.
+            {% endif %}
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            {% if filter_type or filter_crop %}
+            <a href="/history" class="btn btn-primary">
+                View All Activities
+            </a>
+            {% else %}
+            <a href="/soil" class="btn btn-primary">
+                🧪 Start Soil Analysis
+            </a>
+            <a href="/crop-advisor" class="btn btn-outline">
+                🌾 Open Crop Advisor
+            </a>
+            <a href="/" class="btn btn-secondary">
+                📊 Go to Dashboard
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

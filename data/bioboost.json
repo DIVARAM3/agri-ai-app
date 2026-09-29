@@ -1,0 +1,1196 @@
+{
+  "Moringa": {
+    "crop_name": "Moringa",
+    "biological_soil_considerations": [
+      "Moringa develops a deep taproot system that interacts favorably with beneficial mycorrhizal fungi (VAM) for subsoil phosphorus uptake.",
+      "Requires well-drained, aerated root zones; waterlogging suppresses aerobic beneficial rhizobacteria and causes root rot.",
+      "Responds positively to organic mulching which moderates soil surface temperature in semi-arid zones."
+    ],
+    "organic_matter_considerations": [
+      "Basal application of well-decomposed farmyard manure or vermicompost improves sandy loam moisture retention.",
+      "Green leaf residue and trimmed branch biomass can be mulched around tree basins to recycle potassium and micronutrients."
+    ],
+    "nutrient_management_considerations": [
+      "Moderate nitrogen consumer during vegetative flushes; excessive synthetic nitrogen causes excessive vegetative growth with weak branch wood.",
+      "Phosphorus solubilization through biofertilizers supports robust taproot establishment in the early months."
+    ],
+    "biological_practices": [
+      {
+        "title": "Vesicular-Arbuscular Mycorrhiza (VAM) Inoculation",
+        "description": "Inoculate seedling pits with mycorrhizal fungal bio-amendments to expand root absorptive surface area and aid phosphorus assimilation.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Basin Mulching",
+        "description": "Apply a 5–10 cm layer of dry organic mulch (crop residue or dry leaves) around the tree dripline to conserve root moisture and support beneficial soil fauna.",
+        "category": "Soil Cover"
+      },
+      {
+        "title": "Phosphobacteria Bio-solubilization",
+        "description": "Apply beneficial phosphate-solubilizing bacterial cultures (PSB) blended with compost around root zones to mobilize fixed soil phosphorus.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Compost & Vermicompost Integration",
+        "description": "Incorporate seasoned vermicompost around tree basins before the monsoon season to enhance biological carbon and cation exchange capacity.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Soil moisture consistency in the 15–30 cm root zone",
+      "Branch tip vigor and leaf canopy color (dark green vs pale yellowing)",
+      "Absence of root rot or water ponding around the trunk collar",
+      "Decomposition rate of basin organic mulch",
+      "Flowering cluster abundance and pod setting uniformity"
+    ]
+  },
+  "Paddy": {
+    "crop_name": "Paddy",
+    "biological_soil_considerations": [
+      "Flooded anaerobic conditions create distinct oxidized-reduced soil layers affecting microbial nitrogen and iron transformations.",
+      "Blue-green algae (Cyanobacteria) and Azolla live symbiotically in standing water, fixing atmospheric nitrogen naturally.",
+      "Soil organic matter aids soil aggregation and nutrient buffering between irrigation flooding cycles."
+    ],
+    "organic_matter_considerations": [
+      "In situ incorporation of green manure crops (such as Sesbania / Dhaincha or Sunnhemp) 45–60 days before puddling enriches active carbon.",
+      "Avoid incorporating fresh, unfermented straw immediately prior to transplanting to prevent toxic anaerobic sulfide buildup."
+    ],
+    "nutrient_management_considerations": [
+      "Nitrogen efficiency in flooded soils is traditionally low; biological fixers and slow-release organic complexes reduce leaching and volatilization.",
+      "Phosphorus availability generally improves under submerged conditions due to reduction of ferric phosphates."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & Phosphobacteria Root Dipping",
+        "description": "Dip seedling roots in a slurry of beneficial Azospirillum and PSB bio-inoculants prior to transplanting to foster early root colonization.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Azolla Dual Cropping",
+        "description": "Inoculate standing water with Azolla bio-mulch; it forms a green blanket that suppresses weeds, reduces water evaporation, and contributes fixed nitrogen upon incorporation.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Green Manure Incorporation (Sesbania / Dhaincha)",
+        "description": "Grow and incorporate a green manure legume during pre-monsoon showers to boost soil organic nitrogen and biological respiration.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Straw Decomposition Management",
+        "description": "Apply bio-decomposer cultures to paddy stubble post-harvest to accelerate decomposition without burning residues.",
+        "category": "Crop Residue"
+      }
+    ],
+    "monitoring_indicators": [
+      "Standing water depth and drainage intervals",
+      "Tiller development rate per hill during active vegetative tillering",
+      "Panicle initiation timing and flag leaf chlorophyll vigor",
+      "Root health (creamy white active roots vs blackened anaerobic roots)",
+      "Algal cover uniformity in standing floodwater"
+    ]
+  },
+  "Groundnut": {
+    "crop_name": "Groundnut",
+    "biological_soil_considerations": [
+      "As a legume, groundnut forms symbiotic root nodules with Bradyrhizobium bacteria to fix atmospheric nitrogen.",
+      "Requires light, well-aerated soil for peg penetration; hard, compacted soils restrict pod development.",
+      "Soil calcium and sulfur are critical for pod filling and prevention of empty pods ('pops')."
+    ],
+    "organic_matter_considerations": [
+      "Addition of well-rotted farmyard manure improves light sandy soil moisture retention and pod development friability.",
+      "Gypsum application at pegging stage provides essential calcium without altering soil pH drastically."
+    ],
+    "nutrient_management_considerations": [
+      "Excessive nitrogen application can inhibit native rhizobial nodulation and cause excessive vegetative growth at the expense of pods.",
+      "Phosphorus and sulfur are key drivers for root nodule energy and oil synthesis."
+    ],
+    "biological_practices": [
+      {
+        "title": "Rhizobium Seed Inoculation",
+        "description": "Treat groundnut seed kernels with Bradyrhizobium bio-inoculant before sowing to stimulate effective root nodule formation.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Phosphobacteria Bio-amendment",
+        "description": "Apply phosphate-solubilizing bacteria (PSB) with enriched compost to support energy transfer needed for biological nitrogen fixation.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Gypsum & Organic Matter Coordination",
+        "description": "Apply agricultural gypsum at flowering/pegging along with light compost to ensure adequate calcium availability for pod development.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Inter-row Moisture Mulching",
+        "description": "Maintain light crop residue mulch in inter-row spaces to prevent soil crusting and preserve moisture for pegging.",
+        "category": "Soil Cover"
+      }
+    ],
+    "monitoring_indicators": [
+      "Active nodulation count (pink/red internal nodule color indicates active nitrogen fixation)",
+      "Peg penetration depth and soil softness in the podding zone",
+      "Uniformity of flowering flushes (25–40 days after sowing)",
+      "Absence of foliar iron chlorosis (yellowing between leaf veins)",
+      "Pod filling density and kernel maturity testing"
+    ]
+  },
+  "Tomato": {
+    "crop_name": "Tomato",
+    "biological_soil_considerations": [
+      "High nutrient-demanding solanaceous vegetable with a fibrous, active root zone sensitive to fungal pathogens.",
+      "Beneficial soil antagonists like Trichoderma and Pseudomonas provide competitive root protection against damping-off and wilts.",
+      "Requires consistent root-zone moisture; fluctuations lead to calcium translocation failure causing blossom end rot."
+    ],
+    "organic_matter_considerations": [
+      "Heavy feeder benefiting from well-cured compost and vermicompost incorporated into planting ridges.",
+      "Organic mulching with clean straw or biodegradable mulch moderates soil temperature and prevents soil-borne fruit splashes."
+    ],
+    "nutrient_management_considerations": [
+      "Requires balanced N-P-K supply; excessive vegetative nitrogen delays flowering and fruit set.",
+      "High potassium demand during fruit swelling and ripening for color, firmness, and shelf-life."
+    ],
+    "biological_practices": [
+      {
+        "title": "Trichoderma Root Shielding",
+        "description": "Incorporate Trichoderma harzianum bio-agent in nursery beds and planting furrows to shield roots against soil-borne damping-off fungi.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Straw Mulching",
+        "description": "Apply clean paddy straw or dry grass mulch between raised beds to conserve irrigation water and suppress weed competition.",
+        "category": "Soil Cover"
+      },
+      {
+        "title": "Potash & Phosphate Bio-Mobilizers",
+        "description": "Apply bio-potash mobilizers (Frateuria aurantia) and PSB with organic compost to boost nutrient availability during flowering and fruiting.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Fermented Organic Liquid Manures",
+        "description": "Apply enriched fermented organic preparations (e.g. Jeevamrutha or Panchagavya) via irrigation water to stimulate soil microbial activity.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Stem thickness and leaf turgidity during mid-day heat",
+      "Uniform blossom set without excessive flower drop",
+      "Fruit development free from blossom end rot (calcium check)",
+      "Root system vigor and absence of root-knot nematode galls",
+      "Soil moisture balance under mulch beds"
+    ]
+  },
+  "Cotton": {
+    "crop_name": "Cotton",
+    "biological_soil_considerations": [
+      "Deep-rooted crop grown frequently on deep black soils (Vertisols) with high clay content and swell-shrink properties.",
+      "Clay soils require organic matter to maintain aeration, prevent deep cracking, and sustain microbial populations during dry spells.",
+      "Sensitive to water stagnation in early vegetative stages and drought during square/boll development."
+    ],
+    "organic_matter_considerations": [
+      "Incorporation of farmyard manure or cotton stalk compost improves soil tilth and reduces soil compaction.",
+      "Cover cropping or intercropping with short-duration pulses (e.g. green gram) protects inter-row soil."
+    ],
+    "nutrient_management_considerations": [
+      "Moderate initial nitrogen requirement, peaking during flowering and boll formation.",
+      "Potassium deficiency causes premature leaf senescence ('leaf reddening'); biological mobilizers help maintain root uptake."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azotobacter / Azospirillum Inoculation",
+        "description": "Inoculate seeds or soil with free-living nitrogen-fixing biofertilizers to support early vegetative vigor.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Inter-row Pulse Intercropping",
+        "description": "Sow short-duration green gram or black gram in alternate rows to provide ground cover, suppress weeds, and contribute fixed nitrogen.",
+        "category": "Soil Cover"
+      },
+      {
+        "title": "Cotton Stalk Shredding & Composting",
+        "description": "Shred post-harvest cotton stalks and treat with fungal decomposers rather than burning, recycling organic carbon and minerals back to the soil.",
+        "category": "Crop Residue"
+      },
+      {
+        "title": "Potassium Mobilizing Bio-amendments",
+        "description": "Apply potash-mobilizing rhizobacteria combined with organic manures to safeguard against boll-stage potassium deficiency.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Square (bud) retention rate and absence of premature shedding",
+      "Leaf reddening or chlorosis symptoms during boll filling",
+      "Soil moisture conservation in the root zone between irrigation rounds",
+      "Deep cracking intensity in black clay soils",
+      "Boll opening uniformity and lint quality"
+    ]
+  },
+  "Banana": {
+    "crop_name": "Banana",
+    "biological_soil_considerations": [
+      "Heavy nutrient and water-consuming perennial crop with a shallow, spreading, delicate adventitious root system.",
+      "Root health is highly sensitive to nematodes, Fusarium oxysporum wilt, and anaerobic soil conditions.",
+      "Thrives in soils with high organic matter, continuous biological recycling, and steady microbial buffering."
+    ],
+    "organic_matter_considerations": [
+      "Heavy organic mulching of pseudo-stem residues and dry leaves preserves surface root humidity and feeds beneficial detritivores.",
+      "Generous basal additions of farmyard manure, poultry manure, or filter-press cake provide sustained organic release."
+    ],
+    "nutrient_management_considerations": [
+      "Exceptional demand for potassium and nitrogen throughout the 10–12 month cycle.",
+      "Biological mobilization of potassium and phosphorus is essential to support massive biomass and bunch filling."
+    ],
+    "biological_practices": [
+      {
+        "title": "Pseudomonas fluorescens & Trichoderma Root Shield",
+        "description": "Apply bio-protective Pseudomonas and Trichoderma strains around sucker planting pits to suppress Panama wilt and root rot pathogens.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Banana Trash & Pseudo-stem Mulching",
+        "description": "Chop harvested banana pseudo-stems and fallen leaves and spread them across plantation basins to conserve moisture and return potassium.",
+        "category": "Crop Residue"
+      },
+      {
+        "title": "Enriched Bio-compost Ring Application",
+        "description": "Apply aged compost blended with PSB and potassium-mobilizing bacteria in circular trenches 30–50 cm from the pseudostem.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Vesicular-Arbuscular Mycorrhiza (VAM) Colonization",
+        "description": "Establish mycorrhizal symbiosis at planting to enhance root absorption efficiency in the topsoil layer.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Leaf emergence rate and active green leaf count before flowering",
+      "Absence of yellowing lower leaf margins (Fusarium check)",
+      "Surface root moisture under pseudo-stem mulch",
+      "Pseudostem girth and bunch emergence angle",
+      "Finger development uniformity and bunch weight progression"
+    ]
+  },
+  "Chilli": {
+    "crop_name": "Chilli",
+    "biological_soil_considerations": [
+      "Moderately deep root system prone to damping-off, collar rot, and root-knot nematodes under excess soil moisture.",
+      "Beneficial antagonists in the rhizosphere create biological competition suppressing fungal pathotoxins.",
+      "Soil physical structure must provide quick drainage while retaining biological capillary moisture."
+    ],
+    "organic_matter_considerations": [
+      "Requires well-composted organic matter; unfermented manure attracts termite activity and introduces root grubs.",
+      "Organic mulching prevents soil temperature spikes that can trigger blossom drop during hot spells."
+    ],
+    "nutrient_management_considerations": [
+      "Nutrient uptake occurs continuously across multiple fruit flushes and pickings.",
+      "Potassium and sulfur support pungent capsaicin synthesis, fruit wall thickness, and bright color retention."
+    ],
+    "biological_practices": [
+      {
+        "title": "Trichoderma Seedling & Soil Treatment",
+        "description": "Drench nursery seedlings and field ridges with Trichoderma viride to prevent fungal damping-off and collar rot infections.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Ridge Mulching",
+        "description": "Apply straw or dried grass mulch on planting ridges to moderate soil temperatures and prevent splash dispersal of anthracnose fungal spores.",
+        "category": "Soil Cover"
+      },
+      {
+        "title": "Azospirillum & Phosphobacteria Inoculation",
+        "description": "Apply dual biofertilizers with well-seasoned compost during land preparation to stimulate root growth and nutrient uptake.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Neem Cake Soil Conditioning",
+        "description": "Incorporate crushed neem seed cake into furrows to suppress plant-parasitic nematodes and slow nitrogen nitrification.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Transplant establishment without seedling collar constriction",
+      "Flower retention percentage during hot daytime temperatures",
+      "Absence of leaf curling, mottling, or dieback symptoms",
+      "Fruit development, firmness, and uniform color transition",
+      "Active feeder root health in the top 20 cm of soil"
+    ]
+  },
+  "Maize": {
+    "crop_name": "Maize",
+    "biological_soil_considerations": [
+      "Rapidly growing C4 cereal crop with massive root volume and high biomass accumulation over a short 90–110 day cycle.",
+      "Extensive adventitious and prop roots benefit from active soil mycorrhizal networks for moisture and nutrient absorption.",
+      "Soil organic matter provides the rapid nutrient release required during the knee-high to tasseling stages."
+    ],
+    "organic_matter_considerations": [
+      "Incorporation of farmyard manure or previous legume crop residues ensures responsive nitrogen release during peak growth.",
+      "Retention of surface mulch reduces evaporation during the critical tasseling and silking windows."
+    ],
+    "nutrient_management_considerations": [
+      "High nitrogen and phosphorus feeder; phosphorus is vital during the early seedling stage for root and cob primordia development.",
+      "Zinc availability is essential; soil organic matter prevents severe zinc deficiency (white bud of maize)."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum Seed & Furrow Inoculation",
+        "description": "Inoculate maize seeds with Azospirillum biofertilizers to stimulate early root vigor and supplement crop nitrogen demands.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "VAM (Mycorrhiza) Inoculation",
+        "description": "Apply mycorrhizal fungal cultures in sowing furrows to improve phosphorus and zinc scavenging in the rhizosphere.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Stover Residue Retention",
+        "description": "Shred and return post-harvest maize stover to the soil to replenish biological carbon and guard against wind erosion.",
+        "category": "Crop Residue"
+      },
+      {
+        "title": "Compost & Zinc Bio-mobilization",
+        "description": "Apply zinc-solubilizing bio-agents blended with enriched compost to ensure adequate micronutrient availability during rapid vegetative expansion.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Seedling emergence uniformity within 5–7 days of sowing",
+      "Absence of interveinal white bands on young leaves (zinc check)",
+      "Stem girth and prop root development at the knee-high stage",
+      "Tasseling and silking synchrony for complete cob fertilization",
+      "Cob grain filling to the tip without moisture stress"
+    ]
+  },
+  "Rice": {
+    "crop_name": "Rice",
+    "biological_soil_considerations": [
+      "Flooded anaerobic conditions create distinct oxidized-reduced soil layers affecting microbial nitrogen and iron transformations.",
+      "Blue-green algae (Cyanobacteria) and Azolla live symbiotically in standing water, fixing atmospheric nitrogen naturally.",
+      "Soil organic matter aids soil aggregation and nutrient buffering between irrigation flooding cycles."
+    ],
+    "organic_matter_considerations": [
+      "In situ incorporation of green manure crops (such as Sesbania / Dhaincha or Sunnhemp) 45–60 days before puddling enriches active carbon.",
+      "Avoid incorporating fresh, unfermented straw immediately prior to transplanting to prevent toxic anaerobic sulfide buildup."
+    ],
+    "nutrient_management_considerations": [
+      "Nitrogen efficiency in flooded soils is traditionally low; biological fixers and slow-release organic complexes reduce leaching and volatilization.",
+      "Phosphorus availability generally improves under submerged conditions due to reduction of ferric phosphates."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & Phosphobacteria Root Dipping",
+        "description": "Dip seedling roots in a slurry of beneficial Azospirillum and PSB bio-inoculants prior to transplanting to foster early root colonization.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Azolla Dual Cropping",
+        "description": "Inoculate standing water with Azolla bio-mulch; it forms a green blanket that suppresses weeds, reduces water evaporation, and contributes fixed nitrogen upon incorporation.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Green Manure Incorporation (Sesbania / Dhaincha)",
+        "description": "Grow and incorporate a green manure legume during pre-monsoon showers to boost soil organic nitrogen and biological respiration.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Straw Decomposition Management",
+        "description": "Apply bio-decomposer cultures to paddy stubble post-harvest to accelerate decomposition without burning residues.",
+        "category": "Crop Residue"
+      }
+    ],
+    "monitoring_indicators": [
+      "Standing water depth and drainage intervals",
+      "Tiller development rate per hill during active vegetative tillering",
+      "Panicle initiation timing and flag leaf chlorophyll vigor",
+      "Root health (creamy white active roots vs blackened anaerobic roots)",
+      "Algal cover uniformity in standing floodwater"
+    ]
+  },
+  "Sorghum": {
+    "crop_name": "Sorghum",
+    "biological_soil_considerations": [
+      "Extensive fibrous root network produces significant root exudates stimulating rhizosphere Azospirillum colonies.",
+      "Deep rooting profile mines subsoil moisture in Vertisols and heavy loams.",
+      "Tolerates temporary moisture stress; beneficial mycorrhiza aid nutrient foraging in drought cycles."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate stubble or 5 t/ha FYM to rebuild active organic carbon in rainfed drylands.",
+      "Stover mulching minimizes soil surface baking and crusting under high evaporation."
+    ],
+    "nutrient_management_considerations": [
+      "Moderate nitrogen and potassium feeder; biological fixers and K-mobilizing bacteria reduce inorganic requirements.",
+      "Phosphorus uptake in heavy black soils is enhanced through phosphobacteria inoculation."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum Seed Treatment",
+        "description": "Seed priming with Azospirillum culture (600 g/ha) to support biological nitrogen fixation in semi-arid soils.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Phosphate Solubilizing Bacteria (PSB)",
+        "description": "Apply PSB culture mixed with 50 kg farmyard manure to release fixed calcium phosphates in alkaline soils.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Crop Stover Trash Retention",
+        "description": "Retain chopped sorghum stover on field surface to buffer soil moisture and enrich soil humus.",
+        "category": "Soil Cover"
+      }
+    ],
+    "monitoring_indicators": [
+      "Root depth and seedling vigor in the first 25 days",
+      "Foliage color uniformity without lower leaf chlorosis",
+      "Soil surface moisture conservation under mulch"
+    ]
+  },
+  "Pearl Millet": {
+    "crop_name": "Pearl Millet",
+    "biological_soil_considerations": [
+      "Rapid root penetration enables nutrient extraction in shallow sandy and light red soils.",
+      "Associative symbiosis with Azospirillum brasilense enhances seedling survival under extreme heat.",
+      "Low organic carbon reserves in arid soils limit natural microbial biomass."
+    ],
+    "organic_matter_considerations": [
+      "Apply well-rotted sheep/goat manure or compost prior to sowing to improve soil water holding capacity.",
+      "Surface mulching with crop stubble conserves topsoil moisture in sandy soils."
+    ],
+    "nutrient_management_considerations": [
+      "High iron and zinc accumulation capacity; soil organic matter aids micronutrient chelation.",
+      "Bio-inoculants supply steady early nitrogen before rapid vegetative elongation."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & PSB Co-inoculation",
+        "description": "Treat seeds with Azospirillum and Phosphobacteria to foster early seedling vigor in dry tracts.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Manure Enriched Basal",
+        "description": "Band placement of 2.5–5 t/ha compost along sowing furrows to establish localized fertile zones.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Tillering density and early root anchoring",
+      "Leaf moisture retention during mid-day dry spells",
+      "Even earhead emergence and grain development"
+    ]
+  },
+  "Finger Millet": {
+    "crop_name": "Finger Millet",
+    "biological_soil_considerations": [
+      "Fibrous root system binds topsoil effectively, preventing erosion on undulating red soils.",
+      "Mycorrhizal colonization enhances calcium and phosphorus assimilation in mildly acidic soils.",
+      "Responds favorably to diverse compost formulations and bio-fertilizer consortia."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 10–12.5 t/ha FYM or compost during final land preparation.",
+      "Green manuring with Sunnhemp prior to transplanting substantially enriches active humus."
+    ],
+    "nutrient_management_considerations": [
+      "Heavy feeder of calcium and potassium; organic inputs balance nutrient release across the cycle.",
+      "Azospirillum and VAM synergistically improve grain filling and lodging resistance."
+    ],
+    "biological_practices": [
+      {
+        "title": "Seedling Root Dip in Bio-inoculants",
+        "description": "Dip nursery seedling roots in Azospirillum and Phosphobacteria slurry before transplanting.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "VAM Soil Application",
+        "description": "Mix VAM inoculum with well-cured compost to promote root proliferation in red lateritic soils.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Transplant establishment rate and early tillering count",
+      "Absence of neck blast under humid microclimates",
+      "Earhead compaction and grain brightness"
+    ]
+  },
+  "Chickpea": {
+    "crop_name": "Chickpea",
+    "biological_soil_considerations": [
+      "Forms specialized root nodules with Mesorhizobium ciceri for atmospheric nitrogen fixation.",
+      "Deep taproot system opens subsoil capillaries in shrinking black cotton soils.",
+      "Sensitive to soil compaction and poor aeration; requires loose, crumbly seedbeds."
+    ],
+    "organic_matter_considerations": [
+      "Apply well-decomposed FYM or vermicompost to improve soil aeration and moisture retention during dry winters.",
+      "Retain previous crop stubble to moderate winter soil surface temperature."
+    ],
+    "nutrient_management_considerations": [
+      "Demands adequate available phosphorus for active nodulation and energy transfer in nitrogenase enzymes.",
+      "Biological phosphorus solubilizers (PSB) significantly enhance nodule count and grain yield."
+    ],
+    "biological_practices": [
+      {
+        "title": "Mesorhizobium Seed Inoculation",
+        "description": "Prime seeds with crop-specific Mesorhizobium ciceri culture (20 g/kg seed) using jaggery adhesive.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Phosphobacteria Soil Inoculation",
+        "description": "Apply PSB culture mixed with compost at sowing to liberate bound phosphorus in alkaline soils.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Seed Shielding",
+        "description": "Co-treat seed with Trichoderma viride (4 g/kg seed) to prevent seed-borne wilt and root rot pathogens.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Active pink nodule count on taproots at 30–45 days after sowing",
+      "Canopy density and absence of vascular wilt symptoms",
+      "Pod setting uniformity and seed size"
+    ]
+  },
+  "Black Gram": {
+    "crop_name": "Black Gram",
+    "biological_soil_considerations": [
+      "Symbiotic Rhizobium leguminosarum bv. phaseoli nodules fix 30–40 kg N/ha, enriching residual soil fertility.",
+      "Short duration allows intense catch-crop cycling in rice fallow and rainfed systems.",
+      "Requires well-drained topsoil; root oxygen deprivation severely impairs nitrogenase activity."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 5 t/ha FYM or enriched compost during land preparation.",
+      "Retain crop residues in soil after pod picking to return biological biomass."
+    ],
+    "nutrient_management_considerations": [
+      "Phosphorus is the primary limiting nutrient for nodulation and early vigor.",
+      "Foliar organic sprays (Panchagavya / vermiwash) sustain flowering in short cycles."
+    ],
+    "biological_practices": [
+      {
+        "title": "Rhizobium & PSB Dual Inoculation",
+        "description": "Co-inoculate seeds with Rhizobium and Phosphobacteria biofertilizers prior to sowing.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Seed Dressing",
+        "description": "Dressing seeds with Trichoderma harzianum protects against dry root rot in warm soils.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Pink coloration of active root nodules at 25–35 days",
+      "Even flowering flush without premature flower drop",
+      "Pod fullness and maturity synchronization"
+    ]
+  },
+  "Green Gram": {
+    "crop_name": "Green Gram",
+    "biological_soil_considerations": [
+      "Rapid nodule formation by Rhizobium fixes atmospheric nitrogen within 20 days of germination.",
+      "Leaves rich biological residue that enhances subsequent cereal crop performance.",
+      "Vulnerable to soil salinity and crusting in alluvial soils."
+    ],
+    "organic_matter_considerations": [
+      "Apply compost or vermicompost to improve soil porosity and biological buffering.",
+      "Incorporation of whole green gram plants after harvesting pods serves as green manuring."
+    ],
+    "nutrient_management_considerations": [
+      "Phosphorus availability governs early root development and nodule mass.",
+      "Micronutrients (molybdenum and boron) enhance nitrogen fixation and pod setting."
+    ],
+    "biological_practices": [
+      {
+        "title": "Rhizobium Seed Treatment",
+        "description": "Treat seeds with Rhizobium culture (500 g/ha) to accelerate early root nodule establishment.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Phosphate Solubilizing Bio-consortium",
+        "description": "Soil application of PSB with compost to ensure steady orthophosphate supply.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Germination percentage and early root nodulation",
+      "Foliage health and freedom from yellow mosaic virus vectors",
+      "Pod development and synchronous harvest maturity"
+    ]
+  },
+  "Pigeon Pea": {
+    "crop_name": "Pigeon Pea",
+    "biological_soil_considerations": [
+      "Extensive taproot system penetrates up to 2 meters, breaking subsoil hardpans and mining deep nutrients.",
+      "Exudes piscidic acid from roots, which mobilizes insoluble iron-bound phosphorus in red and black soils.",
+      "Abundant leaf fall (2–3 t/ha) during senescence provides massive organic matter recycling."
+    ],
+    "organic_matter_considerations": [
+      "Basal application of 6 t/ha farmyard manure or compost prior to deep ridge sowing.",
+      "In situ decomposition of shedding leaves acts as natural organic mulch."
+    ],
+    "nutrient_management_considerations": [
+      "Inoculation with Rhizobium satisfies most nitrogen needs once nodules establish.",
+      "Phosphorus fertilization combined with PSB maximizes deep taproot development."
+    ],
+    "biological_practices": [
+      {
+        "title": "Rhizobium Seed Inoculation",
+        "description": "Inoculate seeds with cowpea-type Rhizobium culture using rice gruel as sticker.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "VAM Inoculation at Sowing",
+        "description": "Incorporate mycorrhizal biofertilizer in planting rows to optimize phosphorus uptake.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Early taproot elongation and nodule formation at 40 days",
+      "Canopy spread and branching vigor",
+      "Flowering flushes and pod borer scout counts"
+    ]
+  },
+  "Cowpea": {
+    "crop_name": "Cowpea",
+    "biological_soil_considerations": [
+      "High biomass producer that fixes up to 60–80 kg N/ha, highly adapted to sandy and degraded soils.",
+      "Dense canopy smothers weeds, moderates soil temperature, and curtails erosion.",
+      "Associates effectively with native Bradyrhizobium strains."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 5–8 t/ha FYM or compost to support active rhizosphere ecology.",
+      "Excellent for intercropping and green manuring between long-duration plantation crops."
+    ],
+    "nutrient_management_considerations": [
+      "Thrives on residual soil nutrients with modest phosphorus assistance.",
+      "Phosphobacteria application ensures robust early root development."
+    ],
+    "biological_practices": [
+      {
+        "title": "Bradyrhizobium Seed Priming",
+        "description": "Seed inoculation with Bradyrhizobium to ensure rapid nodulation in low-fertility soils.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Smother Mulching",
+        "description": "Dense planting to suppress weeds and return organic biomass upon harvest.",
+        "category": "Soil Cover"
+      }
+    ],
+    "monitoring_indicators": [
+      "Nodule pinkness and root branching vigor",
+      "Canopy ground cover percentage by day 30",
+      "Pod elongation and tenderness"
+    ]
+  },
+  "Sesame": {
+    "crop_name": "Sesame",
+    "biological_soil_considerations": [
+      "Shallow-to-medium root system requires well-aerated, friable soil.",
+      "Extremely sensitive to soil waterlogging and anaerobic root conditions.",
+      "Responds to biological mycorrhiza for improved phosphorus assimilation."
+    ],
+    "organic_matter_considerations": [
+      "Apply 5 t/ha well-rotted farmyard manure during early ploughing to improve soil tilth.",
+      "Avoid heavy unrotted residues that hinder tiny seed germination."
+    ],
+    "nutrient_management_considerations": [
+      "Moderate nitrogen and potassium feeder; excessive synthetic N leads to lodging and capsule shattering.",
+      "Azospirillum and PSB ensure balanced vegetative and reproductive development."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & PSB Seed Treatment",
+        "description": "Treat seeds with Azospirillum and Phosphobacteria (300 g/ha) to support early establishment.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Seed Dressing",
+        "description": "Seed treatment with Trichoderma viride (4 g/kg seed) to guard against stem rot and Macrophomina wilt.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Even seedling emergence and absence of damping-off",
+      "Capsule setting at lower leaf axils",
+      "Healthy green foliage without phyllody symptoms"
+    ]
+  },
+  "Sunflower": {
+    "crop_name": "Sunflower",
+    "biological_soil_considerations": [
+      "Deep taproot system efficiently mines subsoil nutrients and residual water.",
+      "Heavy feeder that responds to rich microbial activity and organic matter replenishment.",
+      "Soil compaction restricts taproot penetration and flower head size."
+    ],
+    "organic_matter_considerations": [
+      "Apply 8–10 t/ha FYM or compost to improve structure and moisture buffering in loams.",
+      "Trash mulching between rows conserves critical soil water during anthesis."
+    ],
+    "nutrient_management_considerations": [
+      "Demands balanced N, P, and high K, along with sulfur and boron for seed filling.",
+      "Biofertilizers (Azospirillum + PSB) enhance nutrient absorption efficiency."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & PSB Soil Inoculation",
+        "description": "Apply dual biofertilizer inoculants mixed with compost at sowing time.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "VAM Inoculation",
+        "description": "Soil inoculation with VAM fungi to improve phosphorus and sulfur uptake for seed oil biosynthesis.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Uniform seedling emergence and early stem thickness",
+      "Head diameter and seed filling percentage across center of head",
+      "Absence of root rot or stem browning"
+    ]
+  },
+  "Soybean": {
+    "crop_name": "Soybean",
+    "biological_soil_considerations": [
+      "Forms extensive symbiosis with Bradyrhizobium japonicum, fixing 80–120 kg N/ha.",
+      "Improves soil structure and organic carbon through substantial seasonal root biomass.",
+      "Requires well-drained, aerated root zones; intolerant of prolonged soil saturation."
+    ],
+    "organic_matter_considerations": [
+      "Apply 5–7.5 t/ha FYM or compost to maintain biological activity and loose seedbed tilth.",
+      "Crop residue retention enhances soil physical properties in black Vertisols."
+    ],
+    "nutrient_management_considerations": [
+      "High phosphorus and sulfur requirement for protein and oil synthesis.",
+      "PSB biofertilizer releases bound phosphates, directly supporting nodule function."
+    ],
+    "biological_practices": [
+      {
+        "title": "Bradyrhizobium japonicum Seed Inoculation",
+        "description": "Mandatory inoculation with specific Bradyrhizobium japonicum culture (500 g/ha).",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Phosphate Solubilizing Bacteria (PSB)",
+        "description": "Co-inoculate with PSB to promote vigorous root architecture and pod setting.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Count and internal pink color of root nodules at 30–45 days",
+      "Canopy density and trifoliate leaf color",
+      "Pod load per plant and seed fullness"
+    ]
+  },
+  "Brinjal": {
+    "crop_name": "Brinjal",
+    "biological_soil_considerations": [
+      "Extensive branching root system requires deep, organic-rich soil for prolonged fruiting cycles.",
+      "Vulnerable to soil-borne bacterial wilt and root-knot nematodes in continuous cropping.",
+      "Beneficial Pseudomonas and Trichoderma provide biological rhizosphere protection."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 20–25 t/ha well-decomposed FYM or compost during final land preparation.",
+      "Apply vermicompost around root zones at first flowering and during peak harvest flushes."
+    ],
+    "nutrient_management_considerations": [
+      "Heavy feeder of potassium and nitrogen for continuous flowering and fruit sizing.",
+      "Azospirillum and PSB enhance root nutrient uptake and reduce synthetic input stress."
+    ],
+    "biological_practices": [
+      {
+        "title": "Pseudomonas fluorescens Nursery Treatment",
+        "description": "Dip seedling roots in Pseudomonas fluorescens suspension to induce resistance against bacterial wilt.",
+        "category": "Biocontrol"
+      },
+      {
+        "title": "Neem Cake Soil Application",
+        "description": "Incorporate neem cake (250 kg/ha) in planting furrows to suppress root-knot nematodes naturally.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Azospirillum & PSB Root Dip",
+        "description": "Seedling root dip with Azospirillum and Phosphobacteria prior to field transplanting.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Transplant survival rate and early vegetative branching",
+      "Root health (absence of nematode galls or vascular browning)",
+      "Uniform fruit set and glossy fruit surface"
+    ]
+  },
+  "Okra": {
+    "crop_name": "Okra",
+    "biological_soil_considerations": [
+      "Fast-growing root system thrives in warm, highly aerated soils with active microbial populations.",
+      "Susceptible to yellow vein mosaic virus vectors and root-knot nematodes.",
+      "Organic mulch moderates root-zone temperature and reduces weed competition."
+    ],
+    "organic_matter_considerations": [
+      "Apply 15–20 t/ha farmyard manure or compost prior to ridge formation.",
+      "Top-dress seasoned vermicompost at early flowering to sustain tender pod formation."
+    ],
+    "nutrient_management_considerations": [
+      "Requires steady nitrogen and potassium availability across repeated pod pickings.",
+      "Biofertilizer seed priming fosters rapid seedling emergence and vigorous early root growth."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum & PSB Seed Treatment",
+        "description": "Treat seeds with Azospirillum and PSB (600 g/ha) to support rapid initial establishment.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Soil Enrichment",
+        "description": "Mix Trichoderma viride with FYM and apply to planting ridges to prevent damping-off.",
+        "category": "Biocontrol"
+      },
+      {
+        "title": "Neem Cake Incorporation",
+        "description": "Apply neem cake in seed furrows to deter soil grubs and parasitic nematodes.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Seedling emergence uniformity within 5–7 days",
+      "Healthy dark green leaves free from chlorotic veins",
+      "Daily tender pod growth and harvest intervals"
+    ]
+  },
+  "Onion": {
+    "crop_name": "Onion",
+    "biological_soil_considerations": [
+      "Shallow, sparsely branched root system has low nutrient uptake efficiency.",
+      "Critically dependent on mycorrhizal fungi (VAM) for phosphorus and micronutrient acquisition.",
+      "Demands a loose, friable seedbed free from hard clods to permit symmetrical bulb expansion."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 20–25 t/ha well-rotted FYM or poultry manure during field preparation.",
+      "Vermicompost application enhances water retention and nutrient buffering in top 15 cm."
+    ],
+    "nutrient_management_considerations": [
+      "High requirement for potassium and sulfur for bulb pungency, firmness, and storage quality.",
+      "Azospirillum and PSB biofertilizers maximize uptake in shallow root zones."
+    ],
+    "biological_practices": [
+      {
+        "title": "VAM Inoculation at Transplanting",
+        "description": "Apply VAM biofertilizer along planting beds to expand the effective root absorption volume.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Azospirillum & PSB Seedling Dip",
+        "description": "Dip seedling roots in Azospirillum and Phosphobacteria slurry for 20 minutes before planting.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Seedbed Solarization",
+        "description": "Incorporate Trichoderma in raised nursery beds to prevent damping-off and basal rot.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Seedling stand establishment and leaf erectness",
+      "Bulb initiation timing and bulb neck thickness",
+      "Absence of purple blotch lesions on leaf foliage"
+    ]
+  },
+  "Cabbage": {
+    "crop_name": "Cabbage",
+    "biological_soil_considerations": [
+      "High biomass consumer requiring rich, cool, biologically active soils with optimal moisture.",
+      "Prone to clubroot in acidic soils; maintaining balanced pH (6.5–7.2) is vital for root health.",
+      "Beneficial soil microorganisms buffer roots against black rot and damping-off."
+    ],
+    "organic_matter_considerations": [
+      "Apply 20–25 t/ha compost or seasoned farmyard manure to supply steady biological nutrients.",
+      "Organic surface mulching conserves moisture and moderates soil temperatures in sunny spells."
+    ],
+    "nutrient_management_considerations": [
+      "Heavy feeder of nitrogen and potassium; biological inoculants support steady vegetative frame expansion.",
+      "Phosphorus availability in early stages ensures tight, dense head formation."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azotobacter / Azospirillum Root Dip",
+        "description": "Inoculate transplant roots with free-living nitrogen fixers prior to bed planting.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Compost Amending",
+        "description": "Mix Trichoderma with well-rotted manure applied in planting furrows.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Transplant establishment and frame leaf count by day 30",
+      "Head cupping initiation and firmness",
+      "Clean root system free from clubroot swelling"
+    ]
+  },
+  "Cauliflower": {
+    "crop_name": "Cauliflower",
+    "biological_soil_considerations": [
+      "Requires deep, fertile loamy soil with continuous moisture and high organic reserves.",
+      "Highly sensitive to soil boron and molybdenum deficiencies (causes browning and whiptail).",
+      "Active organic matter improves micronutrient bioavailability in the root zone."
+    ],
+    "organic_matter_considerations": [
+      "Apply 20–25 t/ha FYM or vermicompost during primary tillage.",
+      "Top-dressing seasoned vermicompost before buttoning supports pristine curd growth."
+    ],
+    "nutrient_management_considerations": [
+      "High requirement for balanced N-P-K; bio-solubilizers ensure uninterrupted nutrient supply.",
+      "Organic foliar sprays (panchagavya / seaweed extract) support uniform curd development."
+    ],
+    "biological_practices": [
+      {
+        "title": "Bio-fertilizer Nursery Inoculation",
+        "description": "Inoculate seedling roots with Azospirillum and PSB consortia before planting.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Boron & Micronutrient Biological Chelation",
+        "description": "Apply compost enriched with micronutrients to prevent curd browning and hollow stem.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Uniform curd initiation (buttoning) without premature curd exposure",
+      "Pristine white curd compactness and leaf jacket cover",
+      "Absence of whiptail distortion on younger leaves"
+    ]
+  },
+  "Carrot": {
+    "crop_name": "Carrot",
+    "biological_soil_considerations": [
+      "Requires deep, stone-free friable sandy loam; soil compaction causes root branching and forking.",
+      "Avoid fresh unrotted manure which causes root splitting and excessive hairy root growth.",
+      "Well-cured organic compost provides uniform physical tilth down to 30 cm depth."
+    ],
+    "organic_matter_considerations": [
+      "Apply well-decomposed, finely sieved compost (10–12 t/ha) during initial deep ploughing.",
+      "Surface organic mulch protects fine feeder roots and keeps topsoil crust-free."
+    ],
+    "nutrient_management_considerations": [
+      "High potassium demand for carbohydrate synthesis and beta-carotene accumulation.",
+      "Phosphobacteria and K-mobilizing bacteria enhance straight, well-filled taproot development."
+    ],
+    "biological_practices": [
+      {
+        "title": "PSB & KMB Bio-amendment",
+        "description": "Incorporate phosphorus and potassium solubilizing biofertilizers in raised planting beds.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Seed Pelleting",
+        "description": "Pellet carrot seeds with Trichoderma viride to protect delicate seedlings from damping-off.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Germination uniformity and seedling emergence within 10 days",
+      "Straight, smooth taproot development without forking",
+      "Rich deep orange internal core coloration at harvest"
+    ]
+  },
+  "Radish": {
+    "crop_name": "Radish",
+    "biological_soil_considerations": [
+      "Rapid growth rate requires easily accessible moisture and readily available nutrients in the topsoil.",
+      "Light friable loams prevent root pungency and pithiness caused by physical soil resistance.",
+      "Short duration makes it an excellent consumer of residual biological fertility."
+    ],
+    "organic_matter_considerations": [
+      "Apply 10 t/ha well-rotted FYM or vermicompost thoroughly mixed into the top 15 cm.",
+      "Avoid excessive nitrogenous manures that induce leafy foliage at the expense of root enlargement."
+    ],
+    "nutrient_management_considerations": [
+      "Modest nutrient consumer; biofertilizers supply balanced early nutrients for rapid growth.",
+      "Consistent soil moisture prevents root cracking and premature bolting."
+    ],
+    "biological_practices": [
+      {
+        "title": "Azospirillum Seed Inoculation",
+        "description": "Treat seeds with Azospirillum slurry to speed up early root thickening.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Vermicompost Enriched Ridges",
+        "description": "Form soft, loose raised ridges incorporated with vermicompost.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Rapid root swelling by day 20–25 without premature bolting",
+      "Smooth, crisp root texture free from cracks and pithiness",
+      "Clean foliage free from flea beetle perforations"
+    ]
+  },
+  "Bitter Gourd": {
+    "crop_name": "Bitter Gourd",
+    "biological_soil_considerations": [
+      "Vigorous climbing vine requiring deep, organic-rich soil with good drainage.",
+      "Root zone benefit from beneficial mycorrhizae for sustained nutrient foraging across vine length.",
+      "Prone to collar rot in waterlogged soils; trellis cultivation improves soil aeration."
+    ],
+    "organic_matter_considerations": [
+      "Apply 15–20 t/ha FYM in sowing pits along with vermicompost and neem cake.",
+      "Mulch planting basins with dry straw to prevent soil splashing and fruit ground rot."
+    ],
+    "nutrient_management_considerations": [
+      "High requirement for nitrogen and potassium across extended fruit-picking cycles.",
+      "Azospirillum and PSB ensure steady vegetative flushes and continuous pistillate flowering."
+    ],
+    "biological_practices": [
+      {
+        "title": "Pit Inoculation with Bio-fertilizers",
+        "description": "Apply Azospirillum, PSB, and VAM mixed with compost directly into seedling pits.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Neem Cake Pit Application",
+        "description": "Apply 100 g neem cake per pit to suppress soil grubs and root nematodes.",
+        "category": "Organic Matter"
+      }
+    ],
+    "monitoring_indicators": [
+      "Vine elongation rate and female-to-male flower ratio",
+      "Fruit setting and absence of fruit fly oviposition punctures",
+      "Root health and absence of Fusarium wilt symptoms"
+    ]
+  },
+  "Bottle Gourd": {
+    "crop_name": "Bottle Gourd",
+    "biological_soil_considerations": [
+      "Extensive lateral root system thrives in fertile, deep silt loams with high moisture retention.",
+      "Responds dramatically to rich compost additions and organic liquid manures.",
+      "Demands well-aerated soil basins to prevent root asphyxiation during heavy watering."
+    ],
+    "organic_matter_considerations": [
+      "Apply 20 t/ha farmyard manure in planting basins or continuous furrows.",
+      "Basin mulching with crop stubble keeps surface roots cool under summer sunshine."
+    ],
+    "nutrient_management_considerations": [
+      "Sustained nitrogen and potassium feeding prevents fruit tapering and tip abortion.",
+      "Bio-solubilizers ensure phosphorus availability for prolific vine branching."
+    ],
+    "biological_practices": [
+      {
+        "title": "Bio-fertilizer Enriched Basin Application",
+        "description": "Mix Azospirillum and Phosphobacteria with vermicompost applied in vine basins.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Trichoderma Soil Dressing",
+        "description": "Treat planting pits with Trichoderma to protect emerging roots from Pythium damping-off.",
+        "category": "Biocontrol"
+      }
+    ],
+    "monitoring_indicators": [
+      "Vine branching vigor and healthy green tendrils",
+      "Prolific female flower blooming and fruit elongation",
+      "Fruit firmness and absence of blossom-end rot"
+    ]
+  },
+  "Cucumber": {
+    "crop_name": "Cucumber",
+    "biological_soil_considerations": [
+      "Shallow, fast-growing fibrous root system demanding high moisture retention and aeration.",
+      "Highly sensitive to soil salinity and crusting in heavy soils.",
+      "Organic mulch keeps soil uniformly damp, preventing fruit bitterness from water stress."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 15–20 t/ha FYM or compost into raised planting beds.",
+      "Plastic or straw mulching conserves moisture and keeps fruits clean off bare soil."
+    ],
+    "nutrient_management_considerations": [
+      "Regular potassium and nitrogen uptake needed for crisp, non-bitter fruit development.",
+      "Biofertilizer seed priming fosters rapid root development before vine running."
+    ],
+    "biological_practices": [
+      {
+        "title": "Seed Inoculation with Azospirillum & PSB",
+        "description": "Treat cucumber seeds with bio-consortium slurry prior to sowing in raised beds.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Organic Mulch Maintenance",
+        "description": "Maintain clean organic mulch along vine rows to buffer soil temperature.",
+        "category": "Soil Cover"
+      }
+    ],
+    "monitoring_indicators": [
+      "Seedling emergence within 4–6 days",
+      "Even fruit elongation without curved or deformed cucumbers",
+      "Crisp fruit flesh with minimal seed cavity bitterness"
+    ]
+  },
+  "Pumpkin": {
+    "crop_name": "Pumpkin",
+    "biological_soil_considerations": [
+      "Deep, vigorous rooting system capable of extracting moisture and nutrients from wide radius.",
+      "Thrives in fertile, sandy loams enriched with organic carbon.",
+      "Tolerant of moderate soil variation; thrives with heavy organic matter placement."
+    ],
+    "organic_matter_considerations": [
+      "Apply 15–20 t/ha well-cured compost in spacious planting pits (2m x 2m spacing).",
+      "Retain vine residues on soil surface after harvest to rebuild soil carbon."
+    ],
+    "nutrient_management_considerations": [
+      "Requires adequate potassium and phosphorus for heavy, thick-fleshed fruit development.",
+      "Bio-fertilizers support continuous flowering and long vine longevity."
+    ],
+    "biological_practices": [
+      {
+        "title": "Pit Biofertilizer Application",
+        "description": "Apply Azospirillum and PSB with FYM into planting pits before seed sowing.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "Basin Trash Mulching",
+        "description": "Mulch root basins with dry crop residue to conserve irrigation water.",
+        "category": "Soil Cover"
+      }
+    ],
+    "monitoring_indicators": [
+      "Rapid vine spread and healthy broad foliage",
+      "Fruit rind hardening and color transformation to mature golden-orange",
+      "Thick peduncle and long post-harvest storage life"
+    ]
+  },
+  "Sugarcane": {
+    "crop_name": "Sugarcane",
+    "biological_soil_considerations": [
+      "Massive root biomass and multi-ratooning cycle demanding deep, fertile, highly aerated soils.",
+      "Associates naturally with endophytic nitrogen fixers (Gluconacetobacter diazotrophicus) inside cane stems.",
+      "Soil compaction from heavy harvesting equipment reduces ratoon tillering and soil aeration."
+    ],
+    "organic_matter_considerations": [
+      "Incorporate 25–30 t/ha FYM or pressmud cake (sugar mill byproduct) during deep tillage.",
+      "Trash mulching (3–5 t/ha cane trash) between rows conserves up to 30% irrigation water and smothers weeds."
+    ],
+    "nutrient_management_considerations": [
+      "Extremely heavy consumer of potassium, nitrogen, and phosphorus over 12 months.",
+      "Biofertilizer consortia (Gluconacetobacter + PSB) substantially improve sugar recovery and cane weight."
+    ],
+    "biological_practices": [
+      {
+        "title": "Gluconacetobacter diazotrophicus Sett Inoculation",
+        "description": "Dip seed setts in endophytic Gluconacetobacter culture (1 kg/ha) to fix nitrogen inside cane vascular tissues.",
+        "category": "Beneficial Microbes"
+      },
+      {
+        "title": "In Situ Trash Mulching & Shredding",
+        "description": "Retain cane trash between rows and spray Trichoderma viride to accelerate organic decomposition.",
+        "category": "Organic Matter"
+      },
+      {
+        "title": "Phosphate Solubilizing Bacteria (PSB) Furrow Banding",
+        "description": "Apply PSB mixed with FYM along planting furrows to enhance cane stalk elongation.",
+        "category": "Beneficial Microbes"
+      }
+    ],
+    "monitoring_indicators": [
+      "Sett germination count and tiller mortality balance",
+      "Internode elongation and cane stalk thickness",
+      "Brix / sucrose percentage in cane juice before harvest"
+    ]
+  }
+}

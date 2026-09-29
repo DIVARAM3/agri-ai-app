@@ -1,0 +1,77 @@
+{
+  "source": "India Meteorological Department (IMD)",
+  "agency": "Ministry of Earth Sciences, Government of India",
+  "official_portal": "https://mausam.imd.gov.in/",
+  "disclaimer": "Official meteorological information is sourced directly from the India Meteorological Department. AgriAI does not independently predict, modify, or simulate monsoon rainfall, onset dates, or withdrawal timelines.",
+  "bulletins": {
+    "southwest_monsoon": {
+      "id": "IMD-SWM-2024",
+      "season": "Southwest Monsoon (June - September)",
+      "title": "Official Long Range Forecast for Southwest Monsoon Seasonal Rainfall",
+      "published_date": "2024-05-27",
+      "issuing_office": "National Weather Forecasting Centre, IMD New Delhi",
+      "summary": "The India Meteorological Department (IMD) forecasts the seasonal rainfall over the country as a whole to be in the Above Normal category (>104% of Long Period Average). Favorable spatial distribution is expected across Central India and South Peninsular India, with near-normal precipitation over Northwest and East-Northeast India.",
+      "regional_outlooks": {
+        "South Peninsular India": {
+          "subdivision": "South Peninsular India (including Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana)",
+          "category": "Above Normal to Normal",
+          "notes": "Favorable monsoon circulation supported by anticipated La Niña development in the equatorial Pacific and neutral Indian Ocean Dipole (IOD) conditions."
+        },
+        "Central India": {
+          "subdivision": "Central India (Madhya Pradesh, Maharashtra, Gujarat, Chhattisgarh, Odisha)",
+          "category": "Above Normal",
+          "notes": "Enhanced convective activity expected across the core agricultural belt."
+        },
+        "Northwest India": {
+          "subdivision": "Northwest India (Punjab, Haryana, Rajasthan, Uttar Pradesh)",
+          "category": "Normal",
+          "notes": "Precipitation within normal climatological bounds (92-108% of LPA)."
+        },
+        "East & Northeast India": {
+          "subdivision": "East and Northeast India (Bihar, Jharkhand, West Bengal, Assam, Arunachal Pradesh)",
+          "category": "Below Normal to Normal",
+          "notes": "Subdued precipitation probabilities across several northeastern valleys."
+        }
+      },
+      "source_url": "https://mausam.imd.gov.in/responsive/monsoonbulletin.php"
+    },
+    "northeast_monsoon": {
+      "id": "IMD-NEM-2024",
+      "season": "Northeast Monsoon (October - December)",
+      "title": "Official Seasonal Outlook for Post-Monsoon / Northeast Monsoon Rainfall over South Peninsular India",
+      "published_date": "2024-09-30",
+      "issuing_office": "Regional Meteorological Centre (RMC), IMD Chennai / NWFC New Delhi",
+      "summary": "The India Meteorological Department (IMD) issues the official seasonal outlook for Northeast Monsoon (October to December) rainfall over South Peninsular India (Tamil Nadu, Puducherry & Karaikal, Coastal Andhra Pradesh, Rayalaseema, Kerala & Mahe, and South Interior Karnataka). Seasonal rainfall is projected to be Normal to Above Normal (88-112% of Long Period Average).",
+      "regional_outlooks": {
+        "Tamil Nadu": {
+          "subdivision": "Tamil Nadu, Puducherry & Karaikal",
+          "category": "Normal to Above Normal",
+          "notes": "Major contributor to annual precipitation in coastal and delta districts. Active cyclonic disturbances and easterly wave pulses will govern episodic high-rainfall spells."
+        },
+        "Kerala": {
+          "subdivision": "Kerala and Mahe",
+          "category": "Normal",
+          "notes": "Intermittent post-monsoon showers and thunderstorm activity during October-November."
+        },
+        "Andhra Pradesh": {
+          "subdivision": "Coastal Andhra Pradesh and Rayalaseema",
+          "category": "Normal to Above Normal",
+          "notes": "Rainfall largely dependent on low-pressure systems and depressions forming in the Bay of Bengal."
+        },
+        "Karnataka": {
+          "subdivision": "South Interior Karnataka",
+          "category": "Normal",
+          "notes": "Moderate rainfall during early post-monsoon transition."
+        }
+      },
+      "source_url": "https://mausam.imd.gov.in/responsive/monsoonbulletin.php"
+    }
+  },
+  "monitoring_advisories": [
+    "Monitor district-level rainfall distribution bulletins released bi-weekly by IMD Agromet Advisory Services (GKMS).",
+    "Track Bay of Bengal low-pressure system and depression advisories before scheduling critical field harvesting.",
+    "Verify root-zone soil moisture before initiating post-monsoon sowing or broad-acre planting.",
+    "Inspect farm pond spillways and field bund drainage channels to buffer heavy localized downpours.",
+    "Consult local Krishi Vigyan Kendra (KVK) or Assistant Agricultural Officer (AAO) for block-level contingency plans."
+  ]
+}

@@ -1,0 +1,1885 @@
+{
+  "Moringa": [
+    {
+      "id": "moringa_pod_fly",
+      "name": "Moringa Pod Fly (Gitona distigma)",
+      "type": "Pest",
+      "description": "Major dipteran pest where maggots feed inside tender pods causing internal rotting, gum exudation, and drying.",
+      "symptoms": [
+        "Oozing of gummy liquid from small punctures on tender pods",
+        "Drying and splitting of immature pods from the tip",
+        "Premature drop of young pods and internal pulp rotting",
+        "Small white maggots visible inside split pods upon dissection"
+      ],
+      "risk_conditions": [
+        "Warm humid weather during pod formation",
+        "Unharvested rotten pods left hanging or on the basin floor",
+        "Continuous flowering and fruiting cycles without orchard cleanup"
+      ],
+      "monitoring": [
+        "Inspect 20 random pod clusters weekly across the orchard during pod set",
+        "Install methyl eugenol or fermented jaggery bait traps at 4–5 traps per acre",
+        "Check for gum droplets on young pods measuring 10–25 cm in length"
+      ],
+      "prevention": [
+        "Maintain clean basin sanitation by removing and burying dropped and rotten pods deeply",
+        "Avoid overlapping unpruned old branches that harbor puparia in the soil",
+        "Deep summer ploughing or basin raking to expose pupae to solar heat and predatory birds"
+      ],
+      "cultural_control": [
+        "Prompt collection and burning or deep pit-burial of infested pods",
+        "Prune trees immediately after peak harvest to break the reproductive cycle",
+        "Intercrop with non-host flowering crops like marigold to harbor natural parasitoids"
+      ],
+      "mechanical_control": [
+        "Bagging of young pod clusters with breathable mesh bags in small-scale cultivation",
+        "Erect yellow sticky traps and poison bait traps to capture adult flies"
+      ],
+      "biological_control": [
+        "Conservation of pupal parasitoids like Spalangia endius and Opius spp.",
+        "Soil application of entomopathogenic nematodes (Heterorhabditis spp.) targeting pupating larvae"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Azadirachtin (Neem seed kernel extract 5% / EC formulations)",
+          "Spinosad (where recommended by local extension for severe borer pressure)"
+        ],
+        "target": "Adult pod flies during early pod initiation before maggots enter the fruit tissue",
+        "consideration_criteria": "Consider botanical or approved selective intervention only if pod oozing exceeds 10% of sampled clusters.",
+        "safety_notes": "Do not spray broad-spectrum insecticides during peak blooming to safeguard pollinating bees. Follow current locally approved CIBRC/TNAU label guidelines."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 5% young pods show isolated gum droplets; no widespread pod drying."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 15% pods exhibit gum oozing and localized terminal drying."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 15% pods damaged with severe rotting, premature drop, and abundant fly activity."
+        }
+      ]
+    },
+    {
+      "id": "moringa_hairy_caterpillar",
+      "name": "Moringa Hairy Caterpillar (Eupterote mollifera / Streblote siva)",
+      "type": "Pest",
+      "description": "Defoliating pest where hairy caterpillars congregate in dense colonies on tree trunks during daytime and defoliate branches at night.",
+      "symptoms": [
+        "Dense masses of hairy caterpillars clustered together on tree trunks and main forks",
+        "Severe defoliation of leaves leaving bare branches",
+        "Presence of bristly urticating hairs causing irritation on skin contact",
+        "Faecal pellets accumulating beneath the tree canopy"
+      ],
+      "risk_conditions": [
+        "Post-monsoon warm, humid weather (August to December in South India)",
+        "Overgrown, dense tree canopies with unmanaged weeds around tree bases"
+      ],
+      "monitoring": [
+        "Examine tree trunks, main branch forks, and soil collar weekly for caterpillar clusters",
+        "Check for fresh green leaf fragments and droppings on the basin ground",
+        "Monitor light traps for adult nocturnal moth activity"
+      ],
+      "prevention": [
+        "Regular weed clearance and basin hoeing around tree trunks",
+        "Deep summer ploughing to expose pupae in the soil to solarization and predators",
+        "Prune dead and excessively dense inner branches to maximize sunlight penetration"
+      ],
+      "cultural_control": [
+        "Band tree trunks with smooth plastic sheets or grease barriers to impede upward caterpillar migration",
+        "Mechanically crush or collect congregating colonies using a torch or kerosene-water container during daytime"
+      ],
+      "mechanical_control": [
+        "Hand-collect egg masses and early-instar caterpillar clusters on lower branches using protective gloves",
+        "Operate light traps (1 trap per hectare) to attract and destroy adult female moths"
+      ],
+      "biological_control": [
+        "Conservation of tachinid fly and braconid wasp larval parasitoids",
+        "Foliar application of Bacillus thuringiensis (Bt) or Beauveria bassiana targeting early instars"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem oil / Azadirachtin formulations",
+          "Contact botanical or approved contact sprays directed strictly onto trunk clusters"
+        ],
+        "target": "Congregated caterpillar colonies on trunk bark before they disperse to upper foliage",
+        "consideration_criteria": "Spot-treat clustered colonies on the trunk when aggregations are spotted before significant defoliation occurs.",
+        "safety_notes": "Wear protective gloves and eye gear to prevent skin irritation from stinging hairs. Direct sprays only at trunk aggregations rather than whole-canopy spraying."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated small clusters on 1–2 tree trunks; leaf damage under 10%."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Multiple colonies per tree; 10% to 25% leaf loss with active nighttime feeding."
+        },
+        {
+          "level": "HIGH",
+          "description": "Complete defoliation of several trees; heavy mass congregations on all main trunks."
+        }
+      ]
+    },
+    {
+      "id": "moringa_root_rot",
+      "name": "Root & Collar Rot (Fusarium spp. / Rhizoctonia solani)",
+      "type": "Disease",
+      "description": "Fungal complex attacking collar region and roots under waterlogged or poor drainage conditions, causing wilting and tree collapse.",
+      "symptoms": [
+        "Yellowing and sudden wilting of foliage across one branch or the entire canopy",
+        "Dark brown to black discoloration and softening of the collar region near soil line",
+        "Peeling of root bark with foul odor and decay of feeder roots",
+        "Loosening of the tree in soil, easily toppled by wind"
+      ],
+      "risk_conditions": [
+        "Heavy clay soils with poor internal drainage or prolonged water ponding",
+        "Excessive irrigation around trunk basins without ridge planting",
+        "Physical wounds on collar caused during weeding or intercultural operations"
+      ],
+      "monitoring": [
+        "Check tree collar lines weekly after irrigation or heavy rains for bark softening",
+        "Observe yellowing leaves that fail to revive after standard irrigation",
+        "Inspect root collar zone if young trees exhibit branch dieback"
+      ],
+      "prevention": [
+        "Plant on raised beds or broad ridges with dedicated drainage furrows",
+        "Avoid stagnant water contact with the tree trunk using ring-and-basin irrigation",
+        "Enrich planting pits with well-rotted FYM fortified with Trichoderma harzianum"
+      ],
+      "cultural_control": [
+        "Remove and burn dead or collapsed trees including root stumps to prevent mycelial spread",
+        "Scrape slightly infected collar bark and expose the collar region to sunlight to dry",
+        "Apply neem cake blended with Trichoderma around the basin zone"
+      ],
+      "mechanical_control": [
+        "Excavate drainage channels to rapidly discharge excess monsoon runoff away from tree basins",
+        "Avoid mechanical injury to trunk base during weeding tools operation"
+      ],
+      "biological_control": [
+        "Trichoderma viride or Trichoderma harzianum soil drenching and root-basin application",
+        "Pseudomonas fluorescens root-zone soil application with compost"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Copper oxychloride (protective collar drench)",
+          "Bordeaux paste (for application onto scraped trunk lesions)"
+        ],
+        "target": "Collar region and surrounding soil in newly affected and neighboring healthy trees",
+        "consideration_criteria": "Apply protective copper-based drench at initial wilting symptoms or after prolonged flooding.",
+        "safety_notes": "Ensure drenched liquid reaches the root zone around the collar. Follow statutory safety intervals and locally approved labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Slight yellowing of outer branch tips; collar bark intact and firm."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Noticeable collar discoloration on 10–20% of trees with partial leaf shed."
+        },
+        {
+          "level": "HIGH",
+          "description": "Complete collar rot, bark sloughing, and sudden tree wilting across multiple trees."
+        }
+      ]
+    }
+  ],
+  "Paddy": [
+    {
+      "id": "paddy_stem_borer",
+      "name": "Yellow Stem Borer (Scirpophaga incertulas)",
+      "type": "Pest",
+      "description": "Monophagous pest where larvae bore inside the tillers causing 'deadheart' at vegetative stage and 'white ear' at heading stage.",
+      "symptoms": [
+        "'Deadheart' - central vegetative shoots dry up and can be pulled out easily with severed base",
+        "'White ear' - bleached, empty erect panicles with no grain filling during reproductive stage",
+        "Small exit and entrance pinholes on lower stem nodes",
+        "Buff-colored egg masses covered with yellowish-brown silky anal hairs on upper leaf tips"
+      ],
+      "risk_conditions": [
+        "High nitrogen fertilizer application exceeding recommended doses",
+        "Staggered planting across adjacent fields creating continuous host presence",
+        "Warm, humid weather with overcast skies and high night temperatures"
+      ],
+      "monitoring": [
+        "Scout 20 hill clusters diagonally across the field twice a week",
+        "Install light traps (1 trap/acre) and sex pheromone traps (3–4 traps/acre) to monitor moth flights",
+        "Economic Threshold Level (ETL): 1 egg mass/sq.m or 2 moths/trap/day or 10% deadhearts / 2% white ears"
+      ],
+      "prevention": [
+        "Synchronous community transplanting across contiguous field blocks",
+        "Clip leaf tips of seedlings before transplanting to eliminate attached egg masses",
+        "Adopt balanced nitrogen application split into 3–4 timings rather than heavy basal doses"
+      ],
+      "cultural_control": [
+        "Harvest rice plants at ground level and plough stubbles immediately to expose diapausing larvae",
+        "Alternate wetting and moderate drying irrigation rather than continuous deep flooding",
+        "Allow predatory ducks or birds into fields during fallow and early tillering"
+      ],
+      "mechanical_control": [
+        "Hand-collection and destruction of egg masses from nursery and early transplanted fields",
+        "Erect T-shaped bird perches at 15–20 per acre for insectivorous birds like drongos"
+      ],
+      "biological_control": [
+        "Release egg parasitoid Trichogramma japonicum at weekly intervals starting 30 days after transplanting",
+        "Conservation of spiders (Lycosa pseudoannulata), mirid bugs, and carabid ground beetles"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem formulation (Azadirachtin)",
+          "Cartap hydrochloride / Chlorantraniliprole (where ETL is exceeded under official guidance)"
+        ],
+        "target": "Newly hatched young larvae before they bore completely into the interior of the culm",
+        "consideration_criteria": "Apply intervention only when moth catches or deadhearts exceed established Economic Threshold Levels.",
+        "safety_notes": "Avoid spraying if predator spider population is high. Maintain water level for 24–48 hours post application according to label instructions."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Under 5% deadhearts at vegetative stage; isolated egg masses observed."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 10% deadhearts or active pheromone trap catches crossing ETL."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 10% deadhearts or >2% white ears emerging with widespread tiller loss."
+        }
+      ]
+    },
+    {
+      "id": "paddy_blast",
+      "name": "Rice Blast (Pyricularia oryzae / Magnaporthe oryzae)",
+      "type": "Disease",
+      "description": "Devastating fungal disease affecting leaves, nodes, and panicle neck resulting in spindle-shaped lesions and broken necks.",
+      "symptoms": [
+        "Spindle-shaped (elliptical) spots on leaves with gray centers and dark brownish margins",
+        "Spots coalesce to form large blighted patches causing complete leaf drying",
+        "'Neck blast' - blackening and rotting of panicle neck causing complete grain chaffiness",
+        "Panicles break and droop at the neck node"
+      ],
+      "risk_conditions": [
+        "Intermittent drizzles, high relative humidity (>90%), and prolonged leaf wetness (>10 hours)",
+        "Cool night temperatures (18–24°C) with heavy morning dew deposition",
+        "Excessive nitrogenous fertilization without adequate potassium"
+      ],
+      "monitoring": [
+        "Inspect lower and middle leaves weekly during seedling and tillering stages for diamond spots",
+        "Check boot leaves and emerging panicle necks daily during heading stage under cloudy weather",
+        "Monitor disease progression on susceptible border varieties"
+      ],
+      "prevention": [
+        "Treat seed with Pseudomonas fluorescens or Trichoderma viride before nursery sowing",
+        "Plant resistant or tolerant certified cultivars recommended for your agro-climatic zone",
+        "Apply balanced N:P:K with split potash application to enhance silica deposition in epidermal walls"
+      ],
+      "cultural_control": [
+        "Burn or compost infected straw and weed hosts (e.g. Echinochloa crus-galli) along bunds",
+        "Avoid late transplanting that exposes the heading stage to cool dew-laden weather",
+        "Maintain thin water layer; avoid acute moisture stress followed by sudden flooding"
+      ],
+      "mechanical_control": [
+        "Clean irrigation bunds of wild grasses and collateral hosts that maintain inoculum",
+        "Roguing and burning of severely blighted nursery patches"
+      ],
+      "biological_control": [
+        "Pseudomonas fluorescens foliar spray during tillering and pre-booting stages",
+        "Bacillus subtilis biological suspension applications"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Tricyclazole (approved specifically for blast management under official guidelines)",
+          "Isoprothiolane / Kasugamycin (as per local university recommendations)"
+        ],
+        "target": "Foliar canopy at initial diamond-spot detection, and panicle neck at 5% heading",
+        "consideration_criteria": "Initiate protective spray if spindle lesions appear on upper leaves before panicle emergence.",
+        "safety_notes": "Time protective neck blast application precisely at 5% panicle emergence. Strictly follow maximum residue limits (MRL) and harvest intervals."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Few scattered spindle-shaped spots on lower leaves; no neck infection."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Coalescing spots on 15–25% of leaf area; early leaf drying observed."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe foliar blighting and neck blast observed with breaking panicles."
+        }
+      ]
+    },
+    {
+      "id": "paddy_bacterial_leaf_blight",
+      "name": "Bacterial Leaf Blight (Xanthomonas oryzae pv. oryzae)",
+      "type": "Disease",
+      "description": "Vascular bacterial disease causing wavy marginal leaf drying from tips downward and 'kresek' wilting in young seedlings.",
+      "symptoms": [
+        "Water-soaked stripes starting from leaf margins near the tip, progressing downwards in wavy patterns",
+        "Lesions turn straw-yellow to bleached white with undulating margins",
+        "Bacterial ooze droplets (amber-colored beads) on infected leaves in early morning dew",
+        "'Kresek' (seedling wilt) where whole hills wilt and die 2–4 weeks after transplanting"
+      ],
+      "risk_conditions": [
+        "Cyclonic storms, strong winds, and heavy rainfall causing leaf micro-abrasions",
+        "Deep submergence of fields with flooded irrigation water transmitting bacteria",
+        "Excessive nitrogen fertilizer use creating lush, soft succulent foliage"
+      ],
+      "monitoring": [
+        "Check leaf tips and upper margins across fields weekly after heavy rain or windy weather",
+        "Perform bacterial ooze test in a transparent glass cup with clear water",
+        "Survey field corners receiving entry irrigation water from upstream plots"
+      ],
+      "prevention": [
+        "Seed treatment with Pseudomonas fluorescens or approved bactericide formulations",
+        "Avoid clipping seedling leaves when transplanting under high disease endemicity zones",
+        "Grow resistant varieties carrying robust multi-gene resistance (e.g. Xa21-derived lines)"
+      ],
+      "cultural_control": [
+        "Drain standing water completely from the field and dry the soil for 3–5 days to arrest spread",
+        "Withhold nitrogen top-dressing immediately upon noticing water-soaked margins",
+        "Apply extra potassium muriate of potash to strengthen cell wall thickness and lignification"
+      ],
+      "mechanical_control": [
+        "Isolate field irrigation channels to prevent water flow from infected to healthy plots",
+        "Keep field bunds free of weed hosts like Leersia hexandra"
+      ],
+      "biological_control": [
+        "Pseudomonas fluorescens foliar spray blended with organic carrier",
+        "Bacillus amyloliquefaciens microbial antagonist sprays"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Copper hydroxide / Copper oxychloride + Streptomycin-based formulations where officially approved",
+          "Fresh cow dung water extract foliar spray (20% filtered supernatant, proven traditional barrier)"
+        ],
+        "target": "Foliar canopy at initial appearance of marginal water-soaked lesions",
+        "consideration_criteria": "Apply protective copper/bactericide drench only at the initial symptom onset; drain field first.",
+        "safety_notes": "Avoid broad-spectrum chemical overuse which disrupts natural phyllosphere microflora. Adhere strictly to authorized product labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 5% leaf tips show yellow wavy margins; no kresek wilt."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Marginal drying extending to 15–30% leaf length on multiple tillers."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe blighting across entire canopy with extensive leaf scorching and kresek."
+        }
+      ]
+    }
+  ],
+  "Groundnut": [
+    {
+      "id": "groundnut_leaf_miner",
+      "name": "Groundnut Leaf Miner (Aproaerema modicella)",
+      "type": "Pest",
+      "description": "Oligophagous caterpillar mining inside leaflets and later webbing leaves together to feed internally, turning leaves brown.",
+      "symptoms": [
+        "Small brownish blister-like mines on tender leaves visible on upper surface",
+        "Webbed leaflets tied together with silk, skeletonized from within",
+        "Burnt or scorched appearance of the field during severe infestation",
+        "Tiny greenish-brown caterpillars found inside folded or webbed leaflets"
+      ],
+      "risk_conditions": [
+        "Prolonged dry spells following rain or warm dry weather with high daytime temperatures",
+        "Continuous monocropping of groundnut or soyabean in adjacent plots",
+        "Moisture stress during vegetative and flowering stages"
+      ],
+      "monitoring": [
+        "Examine 20 plants randomly per acre weekly for mining blisters and leaflet webs",
+        "Install light traps to observe small brownish adult moth emergence",
+        "ETL: 5 active larvae per plant or 20% plants showing leaf webbing"
+      ],
+      "prevention": [
+        "Intercrop groundnut with pearl millet (bajra) or cowpea in 4:1 ratio",
+        "Sow trap crops like soyabean on field borders to attract and manage ovipositing moths",
+        "Ensure optimal irrigation during critical vegetative and flowering stages"
+      ],
+      "cultural_control": [
+        "Provide protective irrigation during dry spells to stimulate crop growth and drown soil pupae",
+        "Rotate groundnut with non-leguminous cereals such as sorghum, pearl millet, or maize",
+        "Destroy wild legume weed hosts around field margins"
+      ],
+      "mechanical_control": [
+        "Crush webbed leaves between fingers in small plots to kill larvae inside",
+        "Set up light traps (1 trap/acre) between 7:00 PM and 10:00 PM to capture adult moths"
+      ],
+      "biological_control": [
+        "Conservation of eulophid and braconid larval parasitoids (Goniozus spp., Bracon spp.)",
+        "Foliar spray of Bacillus thuringiensis (Bt) or Beauveria bassiana on young larvae"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem oil / Azadirachtin formulations",
+          "Selective approved larvicide (e.g. Chlorantraniliprole or Quinalphos as per TNAU/ICAR guidelines)"
+        ],
+        "target": "Young mining larvae before leaves become heavily webbed and protected",
+        "consideration_criteria": "Initiate treatment only if active larval count exceeds 5 per plant or leaf webbing crosses 20%.",
+        "safety_notes": "Spray late in the evening to protect pollinating honeybees. Adhere strictly to approved local labels and safety intervals."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated blister mines on lower leaves; under 5% leaflets affected."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Webbed leaves on 10–20% plants; noticeable larval feeding."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 25% foliage skeletonized with general scorched field appearance."
+        }
+      ]
+    },
+    {
+      "id": "groundnut_tikka_leaf_spot",
+      "name": "Tikka Leaf Spot / Cercospora Leaf Spot (Cercospora arachidicola / Phaeoisariopsis personata)",
+      "type": "Disease",
+      "description": "Prevalent fungal disease causing circular dark brown to black spots with yellow halos, causing extensive premature defoliation.",
+      "symptoms": [
+        "Early leaf spot: Circular reddish-brown spots with prominent bright yellow halo on upper leaf surface",
+        "Late leaf spot: Dark brown to carbon-black circular spots on lower leaf surface with faint or no halo",
+        "Coalescing spots causing premature drying, yellowing, and severe leaflet drop",
+        "Elongated dark lesions on petioles, stems, and peg insertions"
+      ],
+      "risk_conditions": [
+        "Prolonged high relative humidity (>85%) with frequent light showers or heavy night dews",
+        "Temperatures between 24°C and 30°C",
+        "Low soil organic carbon and potassium deficiencies predisposing leaves to infection"
+      ],
+      "monitoring": [
+        "Inspect lower canopy leaves weekly beginning 30 days after sowing",
+        "Look for tiny circular specks on lower leaf surfaces after morning dew dries",
+        "Monitor defoliation rate on lower nodes as an indicator of disease momentum"
+      ],
+      "prevention": [
+        "Seed treatment with Trichoderma viride or approved protective fungicide",
+        "Collect and destroy previous crop infected haulms and residues",
+        "Follow crop rotation with cereals like sorghum or pearl millet for at least 2 seasons"
+      ],
+      "cultural_control": [
+        "Ensure wide plant spacing to improve canopy ventilation and reduce humidity build-up",
+        "Apply balanced potash fertilization to increase leaf tissue resistance",
+        "Remove self-sown groundnut seedlings and weed hosts along boundaries"
+      ],
+      "mechanical_control": [
+        "Hand-pull and destroy the earliest blighted lower leaves in small seed production plots",
+        "Deep summer ploughing to bury fungal conidia present on surface stubble"
+      ],
+      "biological_control": [
+        "Foliar spray of Pseudomonas fluorescens at 15-day intervals starting 40 days after sowing",
+        "Trichoderma harzianum foliar formulations applied during cloudy, humid weather"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Mancozeb (protective contact fungicide)",
+          "Carbendazim / Tebuconazole (where recommended under university IPM protocols)"
+        ],
+        "target": "Foliar canopy at initial appearance of circular spots on lower leaves",
+        "consideration_criteria": "Initiate foliar protection when spots first appear on lower canopy and humid weather is forecast.",
+        "safety_notes": "Alternate between contact and systemic chemistry to prevent fungal resistance development. Follow pre-harvest intervals."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Few scattered dark spots on bottom-most leaves; no defoliation."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Spots spreading to middle canopy; 10–20% lower leaf drop observed."
+        },
+        {
+          "level": "HIGH",
+          "description": "Extensive defoliation; only top young leaves remain green with stem lesions."
+        }
+      ]
+    }
+  ],
+  "Tomato": [
+    {
+      "id": "tomato_fruit_borer",
+      "name": "Tomato Fruit Borer (Helicoverpa armigera)",
+      "type": "Pest",
+      "description": "Voracious caterpillar pest that feeds on flowers and bores circular holes into green and ripe fruits, feeding with its body half outside.",
+      "symptoms": [
+        "Clean, circular entry holes bored into green, developing, and ripe fruits",
+        "Internal fruit rot caused by secondary saprophytes entering bore holes",
+        "Premature drop of damaged fruits and flower buds",
+        "Stout greenish, brownish, or yellowish striped caterpillars feeding on fruit clusters"
+      ],
+      "risk_conditions": [
+        "Warm, humid conditions during flowering and fruit set",
+        "Presence of alternative hosts like maize, chickpea, cotton, or marigold nearby",
+        "Continuous tomato cultivation without crop rotation"
+      ],
+      "monitoring": [
+        "Install Helicoverpa pheromone traps (5 traps/acre) to monitor adult male moth flight peaks",
+        "Inspect 20 plants weekly for spherical yellowish-white eggs on tender leaves and flowers",
+        "ETL: 1 larva per plant or 5% damaged fruits across sampled clusters"
+      ],
+      "prevention": [
+        "Plant African marigold (Tagetes erecta) as a trap crop (1 row of marigold for every 16 rows of tomato)",
+        "Deep summer ploughing to expose pupae in the soil to predatory birds and intense solar heat",
+        "Raise barrier crops of maize or sorghum along field borders"
+      ],
+      "cultural_control": [
+        "Regular collection and destruction of bored fruits during each picking",
+        "Hand-picking of large caterpillars during early morning scouting",
+        "Maintain clean field boundaries free of solanaceous weeds (Datura, Solanum nigrum)"
+      ],
+      "mechanical_control": [
+        "Install sex pheromone traps at 12 traps/acre for mass trapping of male moths",
+        "Erect T-shaped bird perches at 15–20 per acre for natural predation by birds"
+      ],
+      "biological_control": [
+        "Release Trichogramma pretiosum / chilonis egg parasitoids at weekly intervals",
+        "Foliar spray of Helicoverpa Nuclear Polyhedrosis Virus (HaNPV) or Bacillus thuringiensis (Bt)",
+        "Conserve predatory anthocorid bugs, spiders, and Chrysoperla carnea"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Azadirachtin (Neem seed kernel extract 5%)",
+          "Spinosad / Chlorantraniliprole / Indoxacarb (as approved by CIBRC/TNAU for tomato fruit borer)"
+        ],
+        "target": "Newly hatched young larvae before they penetrate the internal fruit cavity",
+        "consideration_criteria": "Spray when egg laying peaks or when larval count crosses 1 caterpillar per plant.",
+        "safety_notes": "Adhere strictly to waiting periods before fruit harvesting. Rotate chemical modes of action to prevent insecticide resistance."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated bored fruits (<3% fruit damage); low trap catches."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "3% to 8% fruits damaged; larvae active in flower clusters."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 10% fruit damage with extensive rot and high caterpillar population."
+        }
+      ]
+    },
+    {
+      "id": "tomato_early_blight",
+      "name": "Early Blight (Alternaria solani)",
+      "type": "Disease",
+      "description": "Common fungal disease causing characteristic 'target-board' concentric ring lesions on leaves, stems, and fruit calyx.",
+      "symptoms": [
+        "Small brownish-black spots on older leaves displaying concentric rings (target-board appearance)",
+        "Surrounding leaf tissue turns yellow, dries, and drops prematurely",
+        "Dark sunken spots with concentric rings at the stem end of fruits",
+        "Canopy thins from the ground upwards, exposing green fruits to sunscald"
+      ],
+      "risk_conditions": [
+        "High humidity (>80%) with alternating warm dry days and wet dewy nights",
+        "Crops under nutrient stress (particularly low nitrogen and potassium)",
+        "Dense planting with poor airflow and overhead sprinkler irrigation splashing spores"
+      ],
+      "monitoring": [
+        "Examine lower crown leaves weekly for dark circular target-spots",
+        "Monitor disease spread after heavy dew or rainy spells",
+        "Check stem bases and fruit calyxes for dark leathery lesions"
+      ],
+      "prevention": [
+        "Seed treatment with Trichoderma viride or approved fungicide before nursery sowing",
+        "Mulch soil around plants with straw or plastic film to prevent soil-splash of fungal spores",
+        "Stake plants and prune bottom 15–20 cm leaves to eliminate ground contact"
+      ],
+      "cultural_control": [
+        "Use drip irrigation rather than overhead sprinklers to keep leaf canopy dry",
+        "Remove and burn blighted lower leaves during staking and pruning operations",
+        "Maintain 2–3 year crop rotation with non-solanaceous crops (cereals, legumes)"
+      ],
+      "mechanical_control": [
+        "Pruning and disposal of lowest infected leaves touching the soil",
+        "Ensure adequate plant and row spacing for cross-ventilation"
+      ],
+      "biological_control": [
+        "Foliar application of Pseudomonas fluorescens or Bacillus subtilis",
+        "Trichoderma harzianum root drench and foliar biological spray"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Mancozeb / Copper oxychloride (protective contact fungicides)",
+          "Azoxystrobin / Difenoconazole (systemic fungicides under approved university recommendations)"
+        ],
+        "target": "Foliar canopy upon initial detection of concentric spots on lower leaves",
+        "consideration_criteria": "Initiate protective spray at the first sign of concentric leaf spots during humid weather.",
+        "safety_notes": "Ensure thorough coverage of both upper and lower leaf surfaces. Respect pre-harvest intervals for edible tomatoes."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated concentric spots on bottom leaves; canopy green and dense."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Target-board spots spreading to mid-canopy; 15–25% lower leaf drop."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe defoliation with fruit stem-end lesions and extensive sunscald."
+        }
+      ]
+    },
+    {
+      "id": "tomato_leaf_curl",
+      "name": "Tomato Leaf Curl Virus (TYLCV / ToLCV)",
+      "type": "Disease",
+      "description": "Viral disease transmitted by whiteflies causing extreme leaf curling, stunted growth, puckering, and bushy appearance with no fruit setting.",
+      "symptoms": [
+        "Upward curling, twisting, and puckering of young leaves",
+        "Severe stunting of the plant with shortened internodes giving a bushy appearance",
+        "Chlorosis and pale yellowing of leaf margins and interveinal areas",
+        "Flower drop and failure of fruits to develop or set"
+      ],
+      "risk_conditions": [
+        "High population of whitefly vectors (Bemisia tabaci) during hot, dry spells",
+        "Tomato crops planted adjacent to old infested fields or cotton crops",
+        "Presence of infected weed reservoirs (Parthenium, Datura, Abutilon)"
+      ],
+      "monitoring": [
+        "Install yellow sticky traps (15–20 traps/acre) to monitor whitefly vector flights",
+        "Check undersides of young apical leaves in early morning for whitefly adults and nymphs",
+        "Inspect field borders for early stunting or yellow leaf margins"
+      ],
+      "prevention": [
+        "Grow virus-tolerant or resistant tomato hybrids recommended by ICAR/TNAU",
+        "Raise tomato nursery under 40-mesh insect-proof nylon net covers",
+        "Erect tall border crops like maize, sorghum, or pearl millet (3–4 rows) around the field as physical barriers"
+      ],
+      "cultural_control": [
+        "Rogue out and destroy virus-infected plants immediately in plastic bags to avoid whitefly escape",
+        "Eradicate weed hosts (Parthenium hysterophorus, Datura) within and around the field",
+        "Avoid planting overlapping sequential tomato crops"
+      ],
+      "mechanical_control": [
+        "Erect yellow sticky cards at canopy height to capture adult whitefly vectors",
+        "Cover seedling beds with reflective silver-colored plastic mulch to repel whiteflies"
+      ],
+      "biological_control": [
+        "Conserve predatory mirid bugs (Nesidiocoris tenuis), coccinellid beetles, and lacewings",
+        "Foliar application of entomopathogenic fungus Verticillium lecanii / Beauveria bassiana targeting whitefly nymphs"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem oil / Azadirachtin formulations targeting whitefly nymphs",
+          "Approved systemic vector management products (e.g. Acetamiprid, Diafenthiuron as per CIBRC labels)"
+        ],
+        "target": "Whitefly vectors on leaf undersides during early vegetative and transplanting stages",
+        "consideration_criteria": "Target whitefly vectors early if trap catches exceed 5 whiteflies per card per day.",
+        "safety_notes": "Viruses cannot be cured with chemicals once plants are infected; management is strictly directed at whitefly vector control. Follow label instructions."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated curled plants (<2%); low whitefly population on traps."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 10% stunted plants with noticeable curling; moderate whiteflies."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 20% plants stunted and bushy; widespread flower shedding."
+        }
+      ]
+    }
+  ],
+  "Cotton": [
+    {
+      "id": "cotton_pink_bollworm",
+      "name": "Pink Bollworm (Pectinophora gossypiella)",
+      "type": "Pest",
+      "description": "Internal feeder where larvae bore into flower buds and green bolls, causing rosetted flowers and stained lint.",
+      "symptoms": [
+        "'Rosetted flowers' - twisted flower petals that fail to open fully due to larval webbing",
+        "Premature drop of infested flower buds (squares) and young green bolls",
+        "Tiny entry holes on green bolls that heal and become invisible, but internal lint and seeds are destroyed",
+        "Stained, discolored lint with broken seeds upon boll bursting; pinkish larvae visible inside seeds"
+      ],
+      "risk_conditions": [
+        "Late-sown crops and ratoon cotton crops extending host availability",
+        "Presence of uncleaned ginning waste or cotton seed storage near fields",
+        "Cloudy, humid weather during flowering and boll formation stages"
+      ],
+      "monitoring": [
+        "Install delta / sleeve pheromone traps with gossyplure at 5 traps/acre beginning 45 days after sowing",
+        "Dissect 20 green bolls (approx. 20–25 days old) weekly to check for internal burrowing and pink larvae",
+        "ETL: 8 moths per trap per day for 3 consecutive days OR 10% damaged green bolls / rosetted flowers"
+      ],
+      "prevention": [
+        "Adopt synchronous timely sowing within a defined regional planting window",
+        "Grow non-transgenic non-Bt cotton refuge lines if growing Bt hybrids as per regulatory rules",
+        "Terminate the cotton crop within 150–160 days; strictly avoid ratoon cropping"
+      ],
+      "cultural_control": [
+        "Hand-pick and destroy rosetted flowers along with the caterpillars inside",
+        "Post-harvest grazing of sheep/goats to consume leftover green bolls, followed by deep shredding",
+        "Deep summer ploughing to destroy overwintering diapausing larvae in soil and crop debris"
+      ],
+      "mechanical_control": [
+        "Mass trapping using pheromone traps (10–15 traps/acre) with periodic lure replacement",
+        "Install light traps to capture adult nocturnal moths during active flight periods"
+      ],
+      "biological_control": [
+        "Release Trichogramma bactrae egg parasitoids at weekly intervals",
+        "Conserve green lacewings (Chrysoperla carnea) and predatory spiders in the crop canopy"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem seed kernel extract / Azadirachtin formulations",
+          "Approved selective bollworm chemistry (e.g. Chlorantraniliprole, Emamectin benzoate as per official CIBRC guidance)"
+        ],
+        "target": "Newly hatched young larvae on squares and tender bolls before they bore internally",
+        "consideration_criteria": "Apply intervention only when pheromone catches or boll damage crosses official ETL.",
+        "safety_notes": "Once larvae enter green bolls, chemical efficacy drops dramatically. Adhere strictly to authorized product labels and personal protective equipment standards."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Fewer than 5% rosetted flowers; trap catches below threshold."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 10% green bolls show internal larval presence; steady trap catches."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 15% green bolls infested with extensive lint staining and seed destruction."
+        }
+      ]
+    },
+    {
+      "id": "cotton_bacterial_blight",
+      "name": "Bacterial Blight / Black Arm (Xanthomonas citri pv. malvacearum)",
+      "type": "Disease",
+      "description": "Multi-phase bacterial disease causing angular leaf spots, black arm cankers on branches, and boll rot.",
+      "symptoms": [
+        "Angular, water-soaked spots on leaves bounded by leaf veinlets, later turning dark brown to black",
+        "'Vein blight' - blackening of primary and secondary leaf veins causing leaf blighting",
+        "'Black arm' - deep, elongated black cankers on branches and main stem, causing branch snapping",
+        "Water-soaked circular spots on bolls turning into sunken dark brown lesions causing boll rotting"
+      ],
+      "risk_conditions": [
+        "Frequent monsoon showers accompanied by driving winds and high relative humidity (>85%)",
+        "Temperatures between 28°C and 34°C",
+        "Overhead irrigation or splash dispersal spreading bacterial cells from plant to plant"
+      ],
+      "monitoring": [
+        "Inspect seedling cotyledons for water-soaked angular spots 2–3 weeks after emergence",
+        "Check leaves and branches after stormy rains for angular lesions and stem blackening",
+        "Observe green bolls for water-soaked circular lesions"
+      ],
+      "prevention": [
+        "Acid delinting of cotton seed followed by certified seed treatment with approved bactericides",
+        "Cultivate resistant/tolerant cultivars recommended by agricultural universities",
+        "Deep ploughing to bury crop residue and eliminate volunteer cotton seedlings"
+      ],
+      "cultural_control": [
+        "Collect and burn infected plant debris and fallen leaves after harvest",
+        "Avoid dense planting; maintain adequate spacing to promote rapid canopy drying",
+        "Avoid excessive nitrogenous fertilization; balance with adequate potassium"
+      ],
+      "mechanical_control": [
+        "Prune and dispose of black-arm-affected lateral branches in seed plots",
+        "Field drainage to prevent water stagnation in cotton rows"
+      ],
+      "biological_control": [
+        "Seed treatment and foliar spray of Pseudomonas fluorescens",
+        "Bacillus subtilis microbial biological formulations"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Copper oxychloride + Streptomycin-based formulations (where officially approved for cotton blight)"
+        ],
+        "target": "Foliar canopy and developing branches upon first appearance of angular spots",
+        "consideration_criteria": "Initiate protective spray at the first appearance of angular spots following heavy rainfall.",
+        "safety_notes": "Avoid spraying during intense midday sunlight to prevent leaf scorch. Strictly follow authorized product labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Few scattered angular spots on lower leaves; branches clean."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Angular lesions on 15–25% leaf area; minor black streaks on twigs."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe black arm lesions with snapping branches and boll rot."
+        }
+      ]
+    }
+  ],
+  "Banana": [
+    {
+      "id": "banana_pseudostem_borer",
+      "name": "Banana Pseudostem Borer (Odoiporus longicollis)",
+      "type": "Pest",
+      "description": "Destructive weevil borer where grubs tunnel inside the pseudostem causing internal rotting, vascular blockage, and snapping of pseudostems.",
+      "symptoms": [
+        "Small pinhead-sized holes on the pseudostem with transparent or brownish gummy exudation",
+        "Yellowing and premature drying of outer leaves starting from the leaf tips",
+        "Extensive internal tunneling in pseudostem core filled with rotting larval frass",
+        "Pseudostem becomes hollow and snaps under light wind or fruit bunch weight"
+      ],
+      "risk_conditions": [
+        "Uncleaned plantations with dry leaf sheaths and decaying harvested stumps left in place",
+        "Continuous banana cultivation without sanitizing suckers before planting",
+        "Warm, humid coastal and river basin climates (temperature 25–32°C)"
+      ],
+      "monitoring": [
+        "Inspect pseudostems weekly from the 5th month of planting onwards for gummy exudates",
+        "Set up longitudinal split pseudostem traps (25–30 traps/acre) baited with fermented juice",
+        "Tap pseudostems to check for hollow thudding sounds indicating internal tunneling"
+      ],
+      "prevention": [
+        "Use tissue-cultured planting material or select suckers exclusively from uninfested mother plantations",
+        "Pair suckers thoroughly: peel outer root sheath and dip in biological culture or approved disinfectant",
+        "Maintain strict field sanitation by de-trashing dry and hanging leaf sheaths every month"
+      ],
+      "cultural_control": [
+        "Destroy and chop harvested pseudostems down to ground level and cover with soil",
+        "Uproot and destroy severely infested, hollowed pseudostems to prevent weevil multiplication",
+        "Clean plantation basins and maintain weed-free soil collars"
+      ],
+      "mechanical_control": [
+        "Deploy split pseudostem traps (cut stem pieces 50 cm long placed cut-side down on soil) to collect and kill adult weevils",
+        "Install pheromone traps (Cosmolure / Odoilure) at 4–5 traps per acre"
+      ],
+      "biological_control": [
+        "Stem swab or injection of entomopathogenic fungus Beauveria bassiana or Metarhizium anisopliae",
+        "Application of entomopathogenic nematodes (Steinernema carpocapsae) around leaf axils"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem formulation stem injection or leaf axil application",
+          "Approved systemic insecticide stem application (as per TNAU/ICAR crop production guide)"
+        ],
+        "target": "Leaf axils and pseudostem bore holes before grubs penetrate the inner central core",
+        "consideration_criteria": "Consider targeted stem injection or axil treatment when bore holes and gummy exudate appear on >5% of plants.",
+        "safety_notes": "Do not inject or treat pseudostems within 45 days of bunch harvest. Follow local agricultural university guidelines."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "1–2 isolated bore holes with slight gumming; canopy green and upright."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Multiple bore holes with heavy gum exudate; outer leaf yellowing on 10–20% plants."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe internal hollow tunneling; pseudostem breakage under wind or fruit load."
+        }
+      ]
+    },
+    {
+      "id": "banana_panama_wilt",
+      "name": "Panama Wilt / Fusarium Wilt (Fusarium oxysporum f. sp. cubense)",
+      "type": "Disease",
+      "description": "Lethal vascular wilt pathogen entering through roots and blocking xylem vessels, causing leaf collapse and plant death.",
+      "symptoms": [
+        "Prominent yellowing of the lower, older leaf margins progressing inward",
+        "Leaves buckle and collapse at the petiole junction, hanging down like a skirt around the pseudostem",
+        "Longitudinal splitting of the pseudostem base near the ground line",
+        "Characteristic dark red, purple, or black vascular discoloration seen in cross-section of pseudostem"
+      ],
+      "risk_conditions": [
+        "Planting in fields with historical Fusarium wilt infestation (chlamydospores survive >20 years)",
+        "Waterlogging, poor drainage, or nematode root injury predisposing roots to infection",
+        "Using uncertified suckers sourced from wilt-infected orchards"
+      ],
+      "monitoring": [
+        "Survey plantation monthly for characteristic lower leaf collapse and petiole buckling",
+        "Examine base of pseudostem for longitudinal splits",
+        "Cut discarded sucker cross-sections to verify vascular ring discoloration"
+      ],
+      "prevention": [
+        "Plant certified tissue culture plantlets or wilt-resistant varieties (e.g. resistant Cavendish strains)",
+        "Apply lime or dolomite to acidic soils to raise pH above 6.5, which suppresses Fusarium virulence",
+        "Incorporate organic compost fortified heavily with Trichoderma viride at planting"
+      ],
+      "cultural_control": [
+        "Strict quarantine: do not move suckers, soil, or pruning implements from infected fields",
+        "Uproot and burn diseased plants along with the rhizome inside the pit; treat the pit with lime",
+        "Rotate with wetland paddy for 1–2 years to submerge soil and reduce fungal inoculum load"
+      ],
+      "mechanical_control": [
+        "Sterilize cutting machetes and knives with 10% bleach or flame between individual plants",
+        "Dig isolation trenches around infected mats to prevent root-to-root transmission"
+      ],
+      "biological_control": [
+        "Soil application of Trichoderma viride / T. harzianum blended with neem cake in planting pits",
+        "Pseudomonas fluorescens sucker dipping and root-zone drenching"
+      ],
+      "chemical_control": {
+        "supported": false,
+        "active_ingredients": [],
+        "target": "N/A - Vascular Fusarium wilt cannot be effectively cured chemically once established.",
+        "consideration_criteria": "Chemical foliar sprays are ineffective against vascular Panama wilt.",
+        "safety_notes": "Use only locally approved soil sanitization or biological management. Never rely on chemical sprays to cure wilted plants."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Yellowing on outer margins of 1–2 bottom leaves on isolated plants."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Buckling of multiple leaf petioles; longitudinal splitting at stem base."
+        },
+        {
+          "level": "HIGH",
+          "description": "Complete leaf skirt collapse, severe vascular browning, and plant death across mats."
+        }
+      ]
+    }
+  ],
+  "Chilli": [
+    {
+      "id": "chilli_thrips",
+      "name": "Chilli Thrips (Scirtothrips dorsalis)",
+      "type": "Pest",
+      "description": "Slender rasping-sucking pest causing leaves to curl upward ('boat-shaped'), turn brittle, and develop silvery-bronze underside patches.",
+      "symptoms": [
+        "Upward curling of leaf margins into a boat-like or cup-like shape",
+        "Crinkling, thickening, and brittleness of tender young leaves",
+        "Silvery or bronzed patches on the undersides of leaves and linear scabby scars on fruits",
+        "Stunted crop growth with drop of flowers and deformed small fruits"
+      ],
+      "risk_conditions": [
+        "Dry, warm weather with low relative humidity and absence of rain showers",
+        "Excessive use of nitrogenous fertilizers producing tender succulent growth",
+        "Continuous sole cropping of chilli without border barriers"
+      ],
+      "monitoring": [
+        "Tap terminal shoots over a white sheet of paper or plastic board to count tiny yellowish thrips",
+        "Install blue or yellow sticky traps at canopy level (15–20 traps/acre)",
+        "ETL: 2 thrips per tender leaf or leaf curl symptoms on 10% of plants"
+      ],
+      "prevention": [
+        "Raise barrier crops of maize or sorghum (2–3 border rows) to impede thrips movement",
+        "Intercrop with marigold, cowpea, or coriander to encourage beneficial predatory insects",
+        "Maintain overhead sprinkler irrigation occasionally during dry spells to wash thrips off foliage"
+      ],
+      "cultural_control": [
+        "Avoid continuous monocropping; rotate with non-host crops like cereals or legumes",
+        "Keep field bunds clear of weeds like Parthenium hysterophorus and Achyranthes aspera",
+        "Apply balanced fertilizers and avoid surplus nitrogen top-dressings"
+      ],
+      "mechanical_control": [
+        "Install blue sticky traps (proven higher attraction for thrips than yellow) at canopy level",
+        "Use reflective silver mulch in seedling beds to disorient incoming thrips"
+      ],
+      "biological_control": [
+        "Conservation of predatory anthocorid bugs (Orius spp.) and phytoseiid predatory mites",
+        "Foliar application of entomopathogenic fungus Lecanicillium lecanii / Beauveria bassiana"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem oil / Azadirachtin formulations",
+          "Approved selective chemistry (e.g. Spinosad, Fipronil, Diafenthiuron as per CIBRC labels)"
+        ],
+        "target": "Tender foliage undersides and terminal growing points during early morning or late afternoon",
+        "consideration_criteria": "Spray when counts exceed 2 thrips per leaf or early upward cupping begins on tender flush.",
+        "safety_notes": "Rotate insecticide modes of action to prevent rapid thrips resistance. Adhere strictly to pre-harvest intervals for green and red dry chillies."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Slight upward curling on few shoot tips; under 2 thrips per leaf."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Upward boat-shaped cupping on 10–25% foliage; noticeable bronzing on leaf undersides."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe curling, leaf brittleness, stunted growth, and distorted small fruits."
+        }
+      ]
+    },
+    {
+      "id": "chilli_anthracnose",
+      "name": "Anthracnose & Fruit Rot / Die-Back (Colletotrichum capsici)",
+      "type": "Disease",
+      "description": "Major fungal disease causing circular sunken lesions with concentric rings of black acervuli on ripe fruits, and twig die-back.",
+      "symptoms": [
+        "Circular or elliptical sunken lesions on developing and ripe fruits with concentric black rings",
+        "Diseased fruits turn straw-colored to bleached white, shrivel, and drop prematurely",
+        "'Die-back' - tender twigs dry and wither from tip downwards, turning white to grayish-brown",
+        "Tiny black dot-like fungal fruiting bodies (acervuli) visible inside fruit lesions"
+      ],
+      "risk_conditions": [
+        "High relative humidity (>80%) with warm temperatures (28–32°C) and cloudy days",
+        "Intermittent rains during fruit ripening and maturity stages",
+        "Dense plant canopy with stagnant air and poor drainage"
+      ],
+      "monitoring": [
+        "Inspect ripening fruits and green fruit clusters weekly for water-soaked sunken specks",
+        "Check upper branch tips for downward drying (die-back)",
+        "Monitor disease after sudden unseasonal showers during harvesting phase"
+      ],
+      "prevention": [
+        "Seed treatment with Trichoderma viride or approved protective fungicide",
+        "Collect seeds exclusively from certified disease-free ripe fruits",
+        "Follow wide plant spacing (60 x 45 cm or 75 x 60 cm) to facilitate canopy aeration"
+      ],
+      "cultural_control": [
+        "Prompt collection and burning of rotten and dropped fruits during each picking round",
+        "Prune and burn die-back-affected twigs cutting 2–3 cm into healthy tissue",
+        "Avoid overhead sprinkler irrigation during the flowering and fruit ripening stages"
+      ],
+      "mechanical_control": [
+        "Hand-pick spotted fruits early before fungal spores produce black acervuli rings",
+        "Ensure field drainage channels rapidly evacuate excess rain runoff"
+      ],
+      "biological_control": [
+        "Foliar spray of Pseudomonas fluorescens at 15-day intervals from flowering stage",
+        "Trichoderma harzianum foliar application during humid periods"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Copper oxychloride / Mancozeb (protective contact fungicides)",
+          "Azoxystrobin / Difenoconazole / Tebuconazole (where recommended by university IPM guidelines)"
+        ],
+        "target": "Foliar canopy and fruit clusters at initial spotting or during sudden overcast rain spells",
+        "consideration_criteria": "Initiate foliar protection at the onset of flowering and repeat if wet weather coincides with fruit ripening.",
+        "safety_notes": "Avoid spraying close to harvest without respecting pre-harvest safety intervals. Alternate chemistries to prevent resistance."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated small sunken spots on <3% fruits; twig dieback absent."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Sunken lesions on 5–15% ripening fruits; occasional dieback twigs."
+        },
+        {
+          "level": "HIGH",
+          "description": "Widespread fruit rotting with black acervuli rings and extensive branch die-back."
+        }
+      ]
+    }
+  ],
+  "Maize": [
+    {
+      "id": "maize_fall_armyworm",
+      "name": "Fall Armyworm (Spodoptera frugiperda)",
+      "type": "Pest",
+      "description": "Invasive, highly destructive noctuid caterpillar that feeds deep within the leaf whorl, causing ragged 'shot-hole' feeding and ear damage.",
+      "symptoms": [
+        "Elongated pinholes and 'shot-holes' in young whorl leaves developing into large ragged tears",
+        "Abundant moist, saw-dust-like golden-brown fecal frass filling the central whorl",
+        "Larva displays an inverted white 'Y' mark on the dark head and 4 dark spots arranged in a square on the 8th abdominal segment",
+        "Direct boring into developing tassels and corn ear cobs"
+      ],
+      "risk_conditions": [
+        "Staggered planting of maize in adjacent fields creating continuous vegetative host availability",
+        "Warm weather (25–30°C) with intermittent dry spells and light showers",
+        "Monoculture of sweet corn or fodder maize without refuge or trap crops"
+      ],
+      "monitoring": [
+        "Scout field in a 'W' or zigzag pattern examining 20 consecutive plants in 5 locations weekly",
+        "Install pheromone traps with FAW lure (5 traps/acre) to detect early male moth activity",
+        "ETL: 5% damaged plants at seedling stage; 10% damaged plants at mid-whorl (V4–V8) stage"
+      ],
+      "prevention": [
+        "Adopt synchronous community sowing within the recommended local agro-climatic window",
+        "Intercrop maize with pulses like cowpea, pigeonpea, or blackgram in 2:1 or 4:1 ratio",
+        "Apply neem cake in the soil during final land preparation to suppress pupation"
+      ],
+      "cultural_control": [
+        "Hand-pick and crush egg masses (covered with yellowish-brown scales) and young caterpillars",
+        "Whorl application of dry soil or fine river sand mixed with ash (traditional physical barrier that irritates larvae)",
+        "Deep ploughing after harvest to expose pupae in the soil to bird predators and solar heat"
+      ],
+      "mechanical_control": [
+        "Install pheromone traps (10–15 traps/acre) for mass trapping and monitoring",
+        "Erect T-shaped bird perches at 15–20 per acre at early crop stages"
+      ],
+      "biological_control": [
+        "Release egg parasitoid Trichogramma pretiosum or Telenomus remus",
+        "Whorl application of entomopathogenic fungus Metarhizium rileyi or Beauveria bassiana",
+        "Foliar spray of Spodoptera frugiperda Nuclear Polyhedrosis Virus (SfNPV) or Bacillus thuringiensis (Bt)"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem formulation (Azadirachtin 1500 ppm) for early whorl application",
+          "Chlorantraniliprole / Spinetoram / Emamectin benzoate (approved by DPPQ&S/ICAR guidelines)"
+        ],
+        "target": "Directly into the central leaf whorl where caterpillars hide and feed",
+        "consideration_criteria": "Apply targeted whorl treatment when window pane damage exceeds 10% of plants at early whorl stage.",
+        "safety_notes": "Direct spray nozzle directly into the leaf whorl for effective contact. Wear PPE and follow CIBRC authorized labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Pinholes on whorl leaves in <5% plants; minimal fecal frass."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Ragged tears and visible saw-dust frass in 5–15% plants; active caterpillars in whorls."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 20% plants severely skeletonized, whorl destruction, and ear cob damage."
+        }
+      ]
+    },
+    {
+      "id": "maize_turcicum_leaf_blight",
+      "name": "Turcicum Leaf Blight / Northern Corn Leaf Blight (Exserohilum turcicum)",
+      "type": "Disease",
+      "description": "Fungal foliar disease causing large, elongated spindle-shaped grayish-green to tan lesions that coalesce to kill entire leaves.",
+      "symptoms": [
+        "Long, elliptical, spindle-shaped lesions (2.5 to 15 cm long) on leaves",
+        "Lesions start as grayish-green, turning tan or straw-colored with dark margins",
+        "Dark velvety fungal sporulation visible inside lesions under humid morning conditions",
+        "Premature drying and burning of the entire foliage from bottom leaves upwards"
+      ],
+      "risk_conditions": [
+        "Moderate temperatures (18–27°C) accompanied by high relative humidity (>90%)",
+        "Heavy dews and frequent overcast cloudy weather during vegetative growth",
+        "Continuous maize-on-maize cropping with infected residue remaining on the surface"
+      ],
+      "monitoring": [
+        "Inspect lower leaves weekly starting at knee-high stage (V6 stage)",
+        "Check for elongated grayish streaks after foggy or dewy mornings",
+        "Assess percentage of leaf area affected on leaves at and below the ear cob"
+      ],
+      "prevention": [
+        "Plant certified resistant/tolerant hybrids recommended by ICAR/SAUs",
+        "Seed treatment with Trichoderma viride or approved protective fungicide",
+        "Deep ploughing to bury crop residue and encourage microbial decomposition of fungal stroma"
+      ],
+      "cultural_control": [
+        "Rotate maize with non-grass crops like pulses, soybean, or oilseeds",
+        "Avoid high plant densities; ensure proper row spacing to enhance airflow and sunlight",
+        "Apply balanced NPK fertilization with split potassium application to improve leaf resilience"
+      ],
+      "mechanical_control": [
+        "Collect and compost or burn infected lower leaves in small seed production plots",
+        "Ensure field ditches rapidly evacuate excess surface water after storms"
+      ],
+      "biological_control": [
+        "Foliar application of Pseudomonas fluorescens or Bacillus subtilis",
+        "Trichoderma harzianum foliar biological spray"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Mancozeb (protective contact fungicide)",
+          "Azoxystrobin / Pyraclostrobin (where officially recommended under university IPM protocols)"
+        ],
+        "target": "Foliar canopy at initial detection of spindle lesions before ear emergence",
+        "consideration_criteria": "Initiate foliar protection when spindle lesions appear on lower leaves prior to tasseling.",
+        "safety_notes": "Spray early morning or late evening for thorough coverage. Respect pre-harvest safety intervals for green cob harvest."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Few scattered spindle lesions on bottom leaves; ear leaf clean."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Lesions spreading to mid-canopy; 15–25% leaf area affected below ear."
+        },
+        {
+          "level": "HIGH",
+          "description": "Extensive blighting of upper leaves including the ear leaf; premature drying."
+        }
+      ]
+    }
+  ],
+  "Rice": [
+    {
+      "id": "paddy_stem_borer",
+      "name": "Yellow Stem Borer (Scirpophaga incertulas)",
+      "type": "Pest",
+      "description": "Monophagous pest where larvae bore inside the tillers causing 'deadheart' at vegetative stage and 'white ear' at heading stage.",
+      "symptoms": [
+        "'Deadheart' - central vegetative shoots dry up and can be pulled out easily with severed base",
+        "'White ear' - bleached, empty erect panicles with no grain filling during reproductive stage",
+        "Small exit and entrance pinholes on lower stem nodes",
+        "Buff-colored egg masses covered with yellowish-brown silky anal hairs on upper leaf tips"
+      ],
+      "risk_conditions": [
+        "High nitrogen fertilizer application exceeding recommended doses",
+        "Staggered planting across adjacent fields creating continuous host presence",
+        "Warm, humid weather with overcast skies and high night temperatures"
+      ],
+      "monitoring": [
+        "Scout 20 hill clusters diagonally across the field twice a week",
+        "Install light traps (1 trap/acre) and sex pheromone traps (3–4 traps/acre) to monitor moth flights",
+        "Economic Threshold Level (ETL): 1 egg mass/sq.m or 2 moths/trap/day or 10% deadhearts / 2% white ears"
+      ],
+      "prevention": [
+        "Synchronous community transplanting across contiguous field blocks",
+        "Clip leaf tips of seedlings before transplanting to eliminate attached egg masses",
+        "Adopt balanced nitrogen application split into 3–4 timings rather than heavy basal doses"
+      ],
+      "cultural_control": [
+        "Harvest rice plants at ground level and plough stubbles immediately to expose diapausing larvae",
+        "Alternate wetting and moderate drying irrigation rather than continuous deep flooding",
+        "Allow predatory ducks or birds into fields during fallow and early tillering"
+      ],
+      "mechanical_control": [
+        "Hand-collection and destruction of egg masses from nursery and early transplanted fields",
+        "Erect T-shaped bird perches at 15–20 per acre for insectivorous birds like drongos"
+      ],
+      "biological_control": [
+        "Release egg parasitoid Trichogramma japonicum at weekly intervals starting 30 days after transplanting",
+        "Conservation of spiders (Lycosa pseudoannulata), mirid bugs, and carabid ground beetles"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem formulation (Azadirachtin)",
+          "Cartap hydrochloride / Chlorantraniliprole (where ETL is exceeded under official guidance)"
+        ],
+        "target": "Newly hatched young larvae before they bore completely into the interior of the culm",
+        "consideration_criteria": "Apply intervention only when moth catches or deadhearts exceed established Economic Threshold Levels.",
+        "safety_notes": "Avoid spraying if predator spider population is high. Maintain water level for 24–48 hours post application according to label instructions."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Under 5% deadhearts at vegetative stage; isolated egg masses observed."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 10% deadhearts or active pheromone trap catches crossing ETL."
+        },
+        {
+          "level": "HIGH",
+          "description": "Over 10% deadhearts or >2% white ears emerging with widespread tiller loss."
+        }
+      ]
+    },
+    {
+      "id": "paddy_blast",
+      "name": "Rice Blast (Pyricularia oryzae / Magnaporthe oryzae)",
+      "type": "Disease",
+      "description": "Devastating fungal disease affecting leaves, nodes, and panicle neck resulting in spindle-shaped lesions and broken necks.",
+      "symptoms": [
+        "Spindle-shaped (elliptical) spots on leaves with gray centers and dark brownish margins",
+        "Spots coalesce to form large blighted patches causing complete leaf drying",
+        "'Neck blast' - blackening and rotting of panicle neck causing complete grain chaffiness",
+        "Panicles break and droop at the neck node"
+      ],
+      "risk_conditions": [
+        "Intermittent drizzles, high relative humidity (>90%), and prolonged leaf wetness (>10 hours)",
+        "Cool night temperatures (18–24°C) with heavy morning dew deposition",
+        "Excessive nitrogenous fertilization without adequate potassium"
+      ],
+      "monitoring": [
+        "Inspect lower and middle leaves weekly during seedling and tillering stages for diamond spots",
+        "Check boot leaves and emerging panicle necks daily during heading stage under cloudy weather",
+        "Monitor disease progression on susceptible border varieties"
+      ],
+      "prevention": [
+        "Treat seed with Pseudomonas fluorescens or Trichoderma viride before nursery sowing",
+        "Plant resistant or tolerant certified cultivars recommended for your agro-climatic zone",
+        "Apply balanced N:P:K with split potash application to enhance silica deposition in epidermal walls"
+      ],
+      "cultural_control": [
+        "Burn or compost infected straw and weed hosts (e.g. Echinochloa crus-galli) along bunds",
+        "Avoid late transplanting that exposes the heading stage to cool dew-laden weather",
+        "Maintain thin water layer; avoid acute moisture stress followed by sudden flooding"
+      ],
+      "mechanical_control": [
+        "Clean irrigation bunds of wild grasses and collateral hosts that maintain inoculum",
+        "Roguing and burning of severely blighted nursery patches"
+      ],
+      "biological_control": [
+        "Pseudomonas fluorescens foliar spray during tillering and pre-booting stages",
+        "Bacillus subtilis biological suspension applications"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Tricyclazole (approved specifically for blast management under official guidelines)",
+          "Isoprothiolane / Kasugamycin (as per local university recommendations)"
+        ],
+        "target": "Foliar canopy at initial diamond-spot detection, and panicle neck at 5% heading",
+        "consideration_criteria": "Initiate protective spray if spindle lesions appear on upper leaves before panicle emergence.",
+        "safety_notes": "Time protective neck blast application precisely at 5% panicle emergence. Strictly follow maximum residue limits (MRL) and harvest intervals."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Few scattered spindle-shaped spots on lower leaves; no neck infection."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Coalescing spots on 15–25% of leaf area; early leaf drying observed."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe foliar blighting and neck blast observed with breaking panicles."
+        }
+      ]
+    },
+    {
+      "id": "paddy_bacterial_leaf_blight",
+      "name": "Bacterial Leaf Blight (Xanthomonas oryzae pv. oryzae)",
+      "type": "Disease",
+      "description": "Vascular bacterial disease causing wavy marginal leaf drying from tips downward and 'kresek' wilting in young seedlings.",
+      "symptoms": [
+        "Water-soaked stripes starting from leaf margins near the tip, progressing downwards in wavy patterns",
+        "Lesions turn straw-yellow to bleached white with undulating margins",
+        "Bacterial ooze droplets (amber-colored beads) on infected leaves in early morning dew",
+        "'Kresek' (seedling wilt) where whole hills wilt and die 2–4 weeks after transplanting"
+      ],
+      "risk_conditions": [
+        "Cyclonic storms, strong winds, and heavy rainfall causing leaf micro-abrasions",
+        "Deep submergence of fields with flooded irrigation water transmitting bacteria",
+        "Excessive nitrogen fertilizer use creating lush, soft succulent foliage"
+      ],
+      "monitoring": [
+        "Check leaf tips and upper margins across fields weekly after heavy rain or windy weather",
+        "Perform bacterial ooze test in a transparent glass cup with clear water",
+        "Survey field corners receiving entry irrigation water from upstream plots"
+      ],
+      "prevention": [
+        "Seed treatment with Pseudomonas fluorescens or approved bactericide formulations",
+        "Avoid clipping seedling leaves when transplanting under high disease endemicity zones",
+        "Grow resistant varieties carrying robust multi-gene resistance (e.g. Xa21-derived lines)"
+      ],
+      "cultural_control": [
+        "Drain standing water completely from the field and dry the soil for 3–5 days to arrest spread",
+        "Withhold nitrogen top-dressing immediately upon noticing water-soaked margins",
+        "Apply extra potassium muriate of potash to strengthen cell wall thickness and lignification"
+      ],
+      "mechanical_control": [
+        "Isolate field irrigation channels to prevent water flow from infected to healthy plots",
+        "Keep field bunds free of weed hosts like Leersia hexandra"
+      ],
+      "biological_control": [
+        "Pseudomonas fluorescens foliar spray blended with organic carrier",
+        "Bacillus amyloliquefaciens microbial antagonist sprays"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Copper hydroxide / Copper oxychloride + Streptomycin-based formulations where officially approved",
+          "Fresh cow dung water extract foliar spray (20% filtered supernatant, proven traditional barrier)"
+        ],
+        "target": "Foliar canopy at initial appearance of marginal water-soaked lesions",
+        "consideration_criteria": "Apply protective copper/bactericide drench only at the initial symptom onset; drain field first.",
+        "safety_notes": "Avoid broad-spectrum chemical overuse which disrupts natural phyllosphere microflora. Adhere strictly to authorized product labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 5% leaf tips show yellow wavy margins; no kresek wilt."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "Marginal drying extending to 15–30% leaf length on multiple tillers."
+        },
+        {
+          "level": "HIGH",
+          "description": "Severe blighting across entire canopy with extensive leaf scorching and kresek."
+        }
+      ]
+    }
+  ],
+  "Sorghum": [
+    {
+      "id": "sorghum_shoot_fly",
+      "name": "Sorghum Shoot Fly (Atherigona soccata)",
+      "type": "Pest",
+      "description": "Major dipteran seedling pest where maggots cut the central growing point, creating deadhearts in 1-4 week old seedlings.",
+      "symptoms": [
+        "Drying and withering of the central shoot (deadheart) in young seedlings",
+        "Dead central leaf pulls out easily, giving off a foul rotting odor",
+        "Excessive tillering in damaged plants, resulting in weak, unthrifty growth"
+      ],
+      "risk_conditions": [
+        "Delayed monsoon sowing",
+        "Cloudy weather and high humidity during seedling stage"
+      ],
+      "monitoring": [
+        "Inspect 20 seedlings per quadrant weekly; calculate deadheart percentage"
+      ],
+      "prevention": [
+        "Sow early with the onset of monsoon",
+        "Use higher seed rate (10-12 kg/ha) and thin out affected deadhearts at 15 days"
+      ],
+      "cultural_control": [
+        "Intercrop sorghum with pulses like red gram or cowpea (2:1 ratio)",
+        "Clean weeding and removal of wild grass hosts"
+      ],
+      "mechanical_control": [
+        "Install fishmeal bait traps (10-12 traps/ha) to capture adult shoot flies"
+      ],
+      "biological_control": [
+        "Conserve natural parasitoids like Trichogramma chilonis and predatory earwigs"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem seed kernel extract 5%",
+          "Approved seed treatment or granular soil insecticides as per local extension guide"
+        ],
+        "target": "Emerging adult flies and young seedlings within 15 days of sowing",
+        "consideration_criteria": "Initiate control if more than 10% seedlings show central shoot deadhearts.",
+        "safety_notes": "Follow registered CIBRC product label directions. Avoid spraying in rain."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 5% seedlings exhibit shoot fly deadhearts."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 10% seedlings damaged; localized tillering starting."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 10% seedlings destroyed with widespread deadheart formation."
+        }
+      ]
+    }
+  ],
+  "Pearl Millet": [
+    {
+      "id": "bajra_downy_mildew",
+      "name": "Downy Mildew / Green Ear (Sclerospora graminicola)",
+      "type": "Disease",
+      "description": "Severe oomycete disease causing systemic chlorosis and transformation of floral earheads into leafy green leafy structures.",
+      "symptoms": [
+        "Pale yellow chlorotic streaks on upper leaves starting from base",
+        "White downy fungal growth on lower leaf surfaces under high humidity",
+        "Earheads fully or partially transformed into a mass of leafy green twisted structures (green ear symptom)"
+      ],
+      "risk_conditions": [
+        "Cool nights (15-20°C) with high relative humidity (>85%) during early vegetative growth"
+      ],
+      "monitoring": [
+        "Scout fields at seedling (20 days) and boot stages for foliar downy streaks and green ears"
+      ],
+      "prevention": [
+        "Use certified downy mildew resistant hybrids",
+        "Rogue out infected chlorotic seedlings at first weeding"
+      ],
+      "cultural_control": [
+        "Crop rotation with non-host crops (pulses/oilseeds)",
+        "Deep summer ploughing to bury oospores"
+      ],
+      "mechanical_control": [
+        "Rogue and burn green-ear heads before fungal sporangia disperse"
+      ],
+      "biological_control": [
+        "Seed treatment with Trichoderma viride or Pseudomonas fluorescens formulations"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Approved systemic fungicide seed treatment or foliar spray as recommended by state agricultural university"
+        ],
+        "target": "Foliar downy mildew at early vegetative stage",
+        "consideration_criteria": "Apply foliar treatment if disease incidence exceeds 5% in high-humidity periods.",
+        "safety_notes": "Follow statutory CIBRC dosage instructions and personal safety measures."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated chlorotic plants (<2%) with minimal downy growth."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "2% to 5% plants exhibiting foliar streaks and early head deformation."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 5% green ear malformation and significant yield loss risk."
+        }
+      ]
+    }
+  ],
+  "Finger Millet": [
+    {
+      "id": "ragi_blast",
+      "name": "Finger Millet Blast (Magnaporthe grisea)",
+      "type": "Disease",
+      "description": "Most destructive fungal disease affecting finger millet leaves, stems, necks, and earhead fingers.",
+      "symptoms": [
+        "Spindle-shaped elliptical lesions with gray centers and dark brown margins on leaves",
+        "Black neck lesion causing complete earhead choking and premature chaffy grains (neck blast)",
+        "Blackish lesions on individual fingers resulting in grain abortion (finger blast)"
+      ],
+      "risk_conditions": [
+        "Intermittent rains, cloudy weather, and high relative humidity (>90%) with night temperatures 20-22°C"
+      ],
+      "monitoring": [
+        "Inspect nursery seedlings and field crop at tillering, flowering, and grain filling stages"
+      ],
+      "prevention": [
+        "Sow blast-tolerant varieties recommended for your agro-climatic zone",
+        "Avoid excessive synthetic nitrogen applications"
+      ],
+      "cultural_control": [
+        "Maintain proper plant spacing for canopy aeration",
+        "Destroy volunteer hosts and wild grasses around field bunds"
+      ],
+      "mechanical_control": [
+        "Collection and safe disposal of heavily infected blast stubbles"
+      ],
+      "biological_control": [
+        "Seed bio-priming and foliar spray of Pseudomonas fluorescens (0.2%)"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Approved triazole or strobilurin fungicides as per local extension guide"
+        ],
+        "target": "Leaf and neck blast at early symptom appearance",
+        "consideration_criteria": "Spray when leaf blast lesions appear on more than 5% canopy leaves before head emergence.",
+        "safety_notes": "Comply with pre-harvest intervals (PHI) and container label recommendations."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated spindle spots on lower leaves with no neck infection."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 15% leaf canopy affected; occasional neck blast lesions."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 15% leaf infection with widespread neck and finger blast."
+        }
+      ]
+    }
+  ],
+  "Chickpea": [
+    {
+      "id": "chickpea_pod_borer",
+      "name": "Gram Pod Borer (Helicoverpa armigera)",
+      "type": "Pest",
+      "description": "Polyphagous noctuid caterpillar that defoliates tender leaves and bores clean circular entry holes into green pods.",
+      "symptoms": [
+        "Defoliation and severed flower buds in early reproductive phase",
+        "Clean circular holes bored into developing green pods",
+        "Caterpillar feeding with anterior half of body inside the pod and posterior half exposed outside"
+      ],
+      "risk_conditions": [
+        "Warm winter days followed by cool nights",
+        "Dense vegetative canopy and cloudy spells during flowering"
+      ],
+      "monitoring": [
+        "Erect pheromone traps at 5-10 traps/ha; scout 20 plants weekly for egg and larval counts"
+      ],
+      "prevention": [
+        "Intercrop chickpea with coriander, mustard, or marigold to invite natural predator wasps",
+        "Deep summer ploughing to expose pupae"
+      ],
+      "cultural_control": [
+        "Install bird perches (T-shaped bamboo perches at 50/ha) for insectivorous birds",
+        "Hand-pick large larvae during early morning hours"
+      ],
+      "mechanical_control": [
+        "Pheromone traps for male moth trapping and monitoring threshold triggers"
+      ],
+      "biological_control": [
+        "Foliar spray of Helicoverpa armigera Nuclear Polyhedrosis Virus (HaNPV @ 250 LE/ha)",
+        "Conserve larval parasitoids (Campoletis chlorideae) and predatory bugs"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem Seed Kernel Extract (NSKE 5%)",
+          "CIBRC-approved diamide or spinosad chemistries where ETL is breached"
+        ],
+        "target": "Young 1st and 2nd instar larvae before they enter pods",
+        "consideration_criteria": "Intervene if moth catches exceed 5 moths/trap/night or larval count exceeds 1 larva/meter row (ETL).",
+        "safety_notes": "Do not spray broad-spectrum chemicals during peak bee pollination. Strict adherence to label guidelines."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 1 larva per meter row; minimal pod scratching."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "1 to 2 larvae per meter row; initial pod entry holes visible."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 2 larvae per meter row with extensive pod damage."
+        }
+      ]
+    }
+  ],
+  "Sugarcane": [
+    {
+      "id": "sugarcane_early_shoot_borer",
+      "name": "Early Shoot Borer (Chilo infuscatellus)",
+      "type": "Pest",
+      "description": "Destructive borer attacking young sugarcane shoots within 1-3 months of planting, creating characteristic deadhearts.",
+      "symptoms": [
+        "Drying and death of the central spindle (deadheart) in 30-100 day old canes",
+        "Emits a foul offensive odor upon pulling out the dead central shoot",
+        "Bore hole visible at soil level or base of the shoot with sawdust-like frass"
+      ],
+      "risk_conditions": [
+        "High temperature (>35°C) and low atmospheric humidity during early tillering stage"
+      ],
+      "monitoring": [
+        "Inspect 100 shoots per row; calculate deadheart percentage at 30, 45, and 60 days"
+      ],
+      "prevention": [
+        "Plant early in December-January to escape peak shoot borer attack",
+        "Trash mulching (3 t/ha) across cane furrows suppresses egg laying"
+      ],
+      "cultural_control": [
+        "Frequent light irrigations to moderate microclimate temperature",
+        "Earthing up along cane rows at 45 days to bury shoot entry points"
+      ],
+      "mechanical_control": [
+        "Remove and destroy deadheart shoots by cutting below ground level"
+      ],
+      "biological_control": [
+        "Release egg parasitoid Trichogramma chilonis at 50,000/ha at 10-day intervals",
+        "Conservation of predatory earwigs and spiders"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "CIBRC registered systemic granular or spray insecticide as per state agricultural university recommendation"
+        ],
+        "target": "Early shoot base prior to larval boring",
+        "consideration_criteria": "Initiate control if deadheart incidence exceeds 15% economic threshold level.",
+        "safety_notes": "Observe safe handling and application guidelines as specified on the registered label."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Deadhearts below 5%; minimal tillering impact."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "5% to 15% deadhearts; compensatory tillering active."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 15% deadhearts with severe shoot mortality."
+        }
+      ]
+    }
+  ],
+  "Brinjal": [
+    {
+      "id": "brinjal_shoot_and_fruit_borer",
+      "name": "Shoot and Fruit Borer (Leucinodes orbonalis)",
+      "type": "Pest",
+      "description": "Key insect pest causing drooping of growing shoots in early stage and boring clean holes filled with frass into fruits.",
+      "symptoms": [
+        "Wilting and drooping of tender terminal shoot tips in young plants",
+        "Exit holes plugged with excreta/frass on developing brinjal fruits",
+        "Internal fruit pulp rotting and unmarketable distorted fruits"
+      ],
+      "risk_conditions": [
+        "Continuous warm humid weather and overlapping solanaceous crops"
+      ],
+      "monitoring": [
+        "Scout plants weekly; install Lucinlure pheromone traps at 12 traps/ha"
+      ],
+      "prevention": [
+        "Clip and destroy wilted terminal shoots along with larvae weekly",
+        "Avoid continuous brinjal monoculture"
+      ],
+      "cultural_control": [
+        "Intercrop with coriander or fennel to encourage natural parasitoids",
+        "Clean cultivation and destruction of crop residues"
+      ],
+      "mechanical_control": [
+        "Pheromone mass trapping using Lucinlure septa",
+        "Manual removal and deep burial of bore-damaged fruits"
+      ],
+      "biological_control": [
+        "Conserve natural larval parasitoids like Trathala flavo-orbitalis",
+        "Foliar application of Bacillus thuringiensis (Bt) or NSKE 5%"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem Seed Kernel Extract 5%",
+          "CIBRC-registered selective insecticides as per local extension guide"
+        ],
+        "target": "Adult moths and young larvae prior to fruit boring",
+        "consideration_criteria": "Spray if fruit damage exceeds 5% or shoot wilting exceeds 1-2 per plant.",
+        "safety_notes": "Observe mandatory pre-harvest interval (PHI) between spraying and fruit picking. Strictly follow registered label directions."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Isolated shoot drooping (<2%); zero fruit damage."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "2% to 5% fruit infestation with moderate shoot wilting."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 5% fruits bored; heavy frass and unmarketable yield."
+        }
+      ]
+    }
+  ],
+  "Okra": [
+    {
+      "id": "okra_fruit_borer",
+      "name": "Shoot and Fruit Borer (Earias vittella / Earias insulana)",
+      "type": "Pest",
+      "description": "Lepidopteran borer that bores into tender vegetative shoots causing wilting, and enters developing pods making them distorted.",
+      "symptoms": [
+        "Drooping and withering of growing tips in vegetative stage",
+        "Bored holes on pods plugged with larval excreta",
+        "Distorted, deformed pods with internal seed consumption"
+      ],
+      "risk_conditions": [
+        "High humidity with warm temperatures and proximity to cotton crops"
+      ],
+      "monitoring": [
+        "Weekly field scouting of 20 plants; install pheromone traps at 10/ha"
+      ],
+      "prevention": [
+        "Collect and destroy infested shoots and bored fruits during every harvest picking",
+        "Deep summer ploughing"
+      ],
+      "cultural_control": [
+        "Avoid continuous okra-cotton crop rotation",
+        "Grow marigold on borders as a trap and nectar crop"
+      ],
+      "mechanical_control": [
+        "Install yellow sticky traps and pheromone traps"
+      ],
+      "biological_control": [
+        "Release Trichogramma chilonis at 50,000/ha",
+        "Foliar spray of NSKE 5% at early square and pod formation"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem formulations",
+          "Approved active ingredients registered by CIBRC for okra borer"
+        ],
+        "target": "Young caterpillars before entry into pods",
+        "consideration_criteria": "Spray if fruit infestation crosses 5% threshold level.",
+        "safety_notes": "Pick tender pods before spraying and respect harvest withholding period. Adhere to product labels."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Less than 2% pod damage; isolated shoot drooping."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "2% to 5% pod infestation; localized entry holes."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 5% pods infested with visible frass and distortion."
+        }
+      ]
+    }
+  ],
+  "Onion": [
+    {
+      "id": "onion_thrips",
+      "name": "Onion Thrips (Thrips tabaci)",
+      "type": "Pest",
+      "description": "Minute rasping-sucking insect feeding between leaf sheaths, creating silvery blotches and predisposing plants to purple blotch disease.",
+      "symptoms": [
+        "Silvery-white patches and streaks on leaves giving foliage a bleached appearance",
+        "Curling, twisting, and premature drying of leaf tips",
+        "Reduced bulb size and vigor due to impaired chlorophyll photosynthesis"
+      ],
+      "risk_conditions": [
+        "Dry, hot weather with low humidity (<50%) and absence of rain"
+      ],
+      "monitoring": [
+        "Inspect 20 random plants weekly by gently pulling inner leaf sheaths apart"
+      ],
+      "prevention": [
+        "Maintain adequate soil moisture through sprinkler or drip irrigation",
+        "Avoid excessive nitrogen fertilizers"
+      ],
+      "cultural_control": [
+        "Intercrop onion with barrier crops like maize or barrier grass to reduce thrips movement",
+        "Field sanitation and removal of weed hosts"
+      ],
+      "mechanical_control": [
+        "Erect blue or yellow sticky traps at 25-30 traps/ha"
+      ],
+      "biological_control": [
+        "Foliar application of entomopathogenic fungus Beauveria bassiana or Verticillium lecanii",
+        "Conserve predatory minute pirate bugs (Orius spp.) and ladybird beetles"
+      ],
+      "chemical_control": {
+        "supported": true,
+        "active_ingredients": [
+          "Neem seed extract / Azadirachtin",
+          "CIBRC-registered contact/systemic insecticide for onion thrips"
+        ],
+        "target": "Nymphs and adults concealed within inner leaf sheaths",
+        "consideration_criteria": "Treat when population exceeds 15-20 thrips per plant (ETL).",
+        "safety_notes": "Use wetting agent for waxy onion foliage. Follow registered label and local extension guidelines."
+      },
+      "severity_levels": [
+        {
+          "level": "LOW",
+          "description": "Fewer than 10 thrips per plant; faint silvery specks."
+        },
+        {
+          "level": "MEDIUM",
+          "description": "10 to 25 thrips per plant; distinct silvery patches on foliage."
+        },
+        {
+          "level": "HIGH",
+          "description": "More than 25 thrips per plant; severe leaf blighting and tip curling."
+        }
+      ]
+    }
+  ]
+}

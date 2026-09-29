@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+
+{% block title %}Monsoon Outlook - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">Monsoon Outlook</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1>Monsoon Outlook</h1>
+            <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.875rem;">
+                Official Meteorological Guidance & Agricultural Decision Support
+            </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            {% if monsoon and monsoon.status == 'Available' %}
+            <span class="badge badge-success" style="font-size: 0.75rem;">
+                ✓ Official IMD Data
+            </span>
+            <span class="badge badge-outline" style="font-size: 0.75rem;">
+                🗓️ {{ monsoon.published_date }}
+            </span>
+            {% else %}
+            <span class="badge badge-warning" style="font-size: 0.75rem;">
+                Official Source Unavailable
+            </span>
+            {% endif %}
+            <a href="https://mausam.imd.gov.in/" target="_blank" rel="noopener noreferrer" 
+               class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.4rem 0.85rem;">
+                🌐 Visit IMD Official Portal ↗
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT BODY -->
+<div class="content-body">
+
+    <!-- FARM LOCATION CONTEXT BANNER -->
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-primary); background-color: var(--color-bg-secondary);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 700; letter-spacing: 0.5px;">
+                    Farm Location Context
+                </span>
+                <h3 style="margin: 0.25rem 0 0 0; font-size: 1.15rem; color: var(--color-text-primary);">
+                    {% if interpretation.location_context and interpretation.location_context.has_location %}
+                        📍 {{ interpretation.location_context.display }}
+                    {% else %}
+                        📍 Location Not Specified
+                    {% endif %}
+                </h3>
+                <p style="margin: 0.35rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.4;">
+                    {% if interpretation.location_context and interpretation.location_context.has_location %}
+                        {{ interpretation.location_context.note }}
+                    {% else %}
+                        Complete your location in <a href="/crop-advisor" style="color: var(--color-primary); font-weight: 600;">Crop Advisor</a> to receive location context.
+                    {% endif %}
+                </p>
+            </div>
+            {% if interpretation.location_context and interpretation.location_context.has_location %}
+            <span class="badge badge-primary" style="font-size: 0.8125rem;">
+                Subdivision: {{ interpretation.region }}
+            </span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- UNAVAILABLE STATE NOTICE -->
+    {% if not monsoon or monsoon.status != 'Available' %}
+    <div class="card" style="margin-bottom: 2.5rem; text-align: center; padding: 3rem 1.5rem; border: 1px dashed var(--color-warning);">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🌧️</div>
+        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; color: var(--color-text-primary);">
+            Official IMD Monsoon Information is Currently Unavailable
+        </h3>
+        <p style="margin: 0 auto 1.5rem auto; font-size: 0.875rem; color: var(--color-text-secondary); max-width: 520px; line-height: 1.5;">
+            Official meteorological publications from the India Meteorological Department could not be retrieved at this time. 
+            AgriAI does not invent or simulate monsoon predictions.
+        </p>
+        <a href="https://mausam.imd.gov.in/" target="_blank" rel="noopener noreferrer" 
+           class="btn btn-primary" style="font-size: 0.875rem; padding: 0.6rem 1.5rem;">
+            View Official IMD Portal (mausam.imd.gov.in) ↗
+        </a>
+    </div>
+    {% else %}
+
+    <!-- SECTION 1: OFFICIAL IMD OUTLOOK (CLEARLY DISTINGUISHED) -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 2px solid #0284c7; background: linear-gradient(to bottom, #ffffff, #f0f9ff);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #bae6fd; padding-bottom: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">🇮🇳</span>
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="badge" style="background-color: #0284c7; color: #ffffff; font-weight: 700; font-size: 0.75rem;">
+                            OFFICIAL IMD INFORMATION
+                        </span>
+                        <span style="font-size: 0.8125rem; color: #0369a1; font-weight: 600;">
+                            {{ monsoon.agency }}
+                        </span>
+                    </div>
+                    <h2 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; color: #0f172a;">
+                        {{ monsoon.title }}
+                    </h2>
+                    <p style="margin: 0.2rem 0 0 0; font-size: 0.8125rem; color: #475569;">
+                        Issued by: {{ monsoon.issuing_office }} &bull; Published: {{ monsoon.published_date }}
+                    </p>
+                </div>
+            </div>
+            <a href="{{ monsoon.source_url }}" target="_blank" rel="noopener noreferrer" 
+               class="btn btn-outline" style="border-color: #0284c7; color: #0284c7; font-size: 0.8125rem;">
+                Official Bulletin Source ↗
+            </a>
+        </div>
+
+        <div style="padding-top: 1.25rem;">
+            <div style="background-color: #ffffff; border-radius: var(--radius-md); padding: 1.25rem; border: 1px solid #e0f2fe; margin-bottom: 1.25rem;">
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #0369a1; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Official Seasonal Summary
+                </h4>
+                <p style="margin: 0; font-size: 0.9375rem; color: #1e293b; line-height: 1.6;">
+                    {{ monsoon.summary }}
+                </p>
+            </div>
+
+            {% if monsoon.regional_outlook %}
+            <div style="background-color: #f8fafc; border-radius: var(--radius-md); padding: 1rem 1.25rem; border-left: 4px solid #0284c7;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
+                    <strong style="font-size: 0.875rem; color: #0f172a;">
+                        Regional Subdivision: {{ monsoon.regional_outlook.subdivision }}
+                    </strong>
+                    <span class="badge badge-success" style="font-size: 0.75rem;">
+                        {{ monsoon.regional_outlook.category }}
+                    </span>
+                </div>
+                <p style="margin: 0.35rem 0 0 0; font-size: 0.8125rem; color: #475569; line-height: 1.45;">
+                    {{ monsoon.regional_outlook.notes }}
+                </p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- SECTION 2: WHAT THIS MEANS FOR FARMERS (AGRIAI CONSERVATIVE INTERPRETATION) -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 2px solid var(--color-primary); background: #ffffff;">
+        <div class="card-header" style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">🌾</span>
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="badge badge-primary" style="font-size: 0.75rem;">
+                            AGRIAI FARM INTERPRETATION
+                        </span>
+                        <span style="font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Conservative Agronomic Decision Support
+                        </span>
+                    </div>
+                    <h3 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; color: var(--color-text-primary);">
+                        What This Means for Farmers
+                    </h3>
+                    <p style="margin: 0.2rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Practical field considerations based on official seasonal meteorological trends
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 Practical Field Agronomy Points -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+            {% for item in interpretation.agri_context %}
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--color-border-light); border-left: 3px solid var(--color-primary);">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span style="font-size: 1.35rem;">{{ item.icon }}</span>
+                    <strong style="font-size: 0.95rem; color: var(--color-text-primary);">
+                        {{ item.topic }}
+                    </strong>
+                </div>
+                <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.5;">
+                    {{ item.text }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- SECTION 3: 2-COLUMN LAYOUT: FARMER MONITORING CHECKLIST & CURRENT WEATHER CONTEXT -->
+    <div class="grid grid-2" style="gap: 1.5rem; margin-bottom: 2.5rem;">
+
+        <!-- FARMER MONITORING CHECKLIST -->
+        <div class="card" style="border: 1px solid var(--color-border); height: 100%;">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">✅</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.15rem;">Farmer Monitoring Checklist</h3>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Core practices during the seasonal monsoon period
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem;">
+                {% for pt in interpretation.monitoring_points %}
+                <div style="display: flex; align-items: flex-start; gap: 0.75rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+                    <span style="color: var(--color-primary); font-size: 1.15rem; font-weight: bold; line-height: 1;">☑</span>
+                    <p style="margin: 0; font-size: 0.84rem; color: var(--color-text-primary); line-height: 1.45;">
+                        {{ pt }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- CURRENT WEATHER CONNECTION (STEP 7 INTEGRATION) -->
+        <div class="card" style="border: 1px solid var(--color-border); height: 100%;">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">⛅</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.15rem;">Current Weather Context</h3>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Short-term observations alongside seasonal trends
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {% if interpretation.weather_context and interpretation.weather_context.available %}
+            <div style="margin-top: 1rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Current Temp</span>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--color-primary); margin: 0.2rem 0;">
+                            {{ interpretation.weather_context.temperature }}°C
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--color-text-secondary);">
+                            {{ interpretation.weather_context.condition }}
+                        </span>
+                    </div>
+
+                    <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">7-Day Total Rain</span>
+                        <div style="font-size: 2rem; font-weight: 800; color: #0284c7; margin: 0.2rem 0;">
+                            {{ interpretation.weather_context.rainfall_7d_total }} <span style="font-size: 1rem; font-weight: 500;">mm</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--color-text-secondary);">
+                            Today's Rain Prob: {{ interpretation.weather_context.rain_probability_today }}%
+                        </span>
+                    </div>
+                </div>
+
+                <!-- EXPLICIT SEPARATION NOTICE -->
+                <div style="background-color: #fefce8; border-radius: var(--radius-md); padding: 0.85rem 1rem; border-left: 3px solid #ca8a04; margin-bottom: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem;">
+                        <span style="font-size: 0.9rem;">⚠️</span>
+                        <strong style="font-size: 0.8125rem; color: #854d0e;">Notice on Meteorological Scales</strong>
+                    </div>
+                    <p style="margin: 0; font-size: 0.775rem; color: #713f12; line-height: 1.4;">
+                        {{ interpretation.weather_context.disclaimer }}
+                    </p>
+                </div>
+
+                <a href="/weather" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.8125rem;">
+                    View Detailed 7-Day Farm Forecast →
+                </a>
+            </div>
+            {% else %}
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; margin-top: 1rem;">
+                <p style="margin: 0; font-size: 0.84rem; color: var(--color-text-secondary);">
+                    Current weather observations are temporarily unavailable.
+                </p>
+                <a href="/weather" class="btn btn-outline" style="margin-top: 1rem; font-size: 0.8125rem;">
+                    Open Weather Module
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- SECTION 4: CROP CONTEXT (IF CROP SELECTED) -->
+    {% if interpretation.crop_context %}
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🌱</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.15rem;">
+                        Crop Context: {{ interpretation.crop_context.crop }}
+                    </h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        General seasonal agronomic alignment with crop water demands
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-primary" style="font-size: 0.8125rem;">
+                Water Demand: {{ interpretation.crop_context.water_requirement }}
+            </span>
+        </div>
+
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border-left: 3px solid var(--color-success);">
+            <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.5;">
+                {{ interpretation.crop_context.agronomic_note }}
+            </p>
+            <p style="margin: 0.75rem 0 0 0; font-size: 0.75rem; color: var(--color-text-light);">
+                {{ interpretation.crop_context.disclaimer }}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- SECTION 5: OFFICIAL SOURCE & ATTRIBUTION -->
+    <div class="card" style="margin-bottom: 2rem; border: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem; color: var(--color-text-primary);">
+                    Official Authority: India Meteorological Department (IMD)
+                </h4>
+                <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.4;">
+                    Ministry of Earth Sciences, Government of India. Official weather bulletins, radar observations, and seasonal forecasts.
+                </p>
+            </div>
+            <a href="https://mausam.imd.gov.in/" target="_blank" rel="noopener noreferrer" 
+               class="btn btn-primary" style="font-size: 0.8125rem; padding: 0.5rem 1.25rem;">
+                View Official IMD Information ↗
+            </a>
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}

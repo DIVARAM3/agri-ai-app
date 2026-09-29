@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+{% block title %}Soil Lab - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">Soil Lab</span>
+    </div>
+    <h1>Soil Lab</h1>
+    <p>Upload and analyze your soil test reports to extract key parameters automatically, or enter values manually.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-body">
+
+    <!-- ALERT MESSAGES -->
+    {% if error %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-danger); background-color: rgba(239, 68, 68, 0.05); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">⚠️</span>
+            <div style="color: var(--color-danger); font-weight: 500;">{{ error }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if warning %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-warning); background-color: rgba(245, 158, 11, 0.08); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">ℹ️</span>
+            <div style="color: var(--color-text-primary); font-weight: 500;">{{ warning }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if success_message %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-success); background-color: rgba(16, 185, 129, 0.08); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">✅</span>
+            <div style="color: var(--color-success); font-weight: 500;">{{ success_message }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- TWO COLUMN LAYOUT: UPLOAD & MANUAL ENTRY -->
+    <div class="grid grid-2" style="margin-bottom: 3rem; align-items: start;">
+        
+        <!-- 1. UPLOAD REPORT FORM -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">📤</span>
+                    <h3>Upload Soil Report</h3>
+                </div>
+            </div>
+            <p class="text-muted" style="margin-bottom: 1.5rem;">Upload your laboratory test report (PDF, JPG, PNG) to extract key nutrients and soil parameters automatically.</p>
+
+            <form method="POST" action="/soil" enctype="multipart/form-data" id="soilUploadForm">
+                <input type="hidden" name="action" value="upload">
+                
+                <div class="upload-area" id="uploadDropArea" style="cursor: pointer;" onclick="document.getElementById('reportFileInput').click();">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">
+                        <h3 id="uploadPromptTitle">Drag & drop your soil report</h3>
+                        <p id="uploadPromptSub">or click to browse from your device</p>
+                        <p style="font-size: 0.8125rem; color: var(--color-text-light); margin-top: 0.75rem;">
+                            Supported formats: PDF, PNG, JPG, JPEG (Max 15MB)
+                        </p>
+                    </div>
+                </div>
+
+                <input type="file" name="report_file" id="reportFileInput" accept=".pdf,.png,.jpg,.jpeg" style="display: none;" onchange="handleFileSelected(this)">
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        💾 Extract & Analyze Report
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 2. MANUAL ENTRY / VALUE CORRECTION FORM -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">✍️</span>
+                    <h3>Manual Entry & Correction</h3>
+                </div>
+            </div>
+            <p class="text-muted" style="margin-bottom: 1.5rem;">Enter values directly or adjust extracted numbers. Fields can be left blank if not available in your report.</p>
+
+            <form method="POST" action="/soil">
+                <input type="hidden" name="action" value="manual_entry">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="soil_farmer_name">Farmer Name (Optional)</label>
+                        <input type="text" id="soil_farmer_name" name="farmer_name" class="form-input" 
+                               placeholder="e.g. Murugan K." value="{{ user.farmer_name or '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="soil_survey_number">Survey No. / Field ID</label>
+                        <input type="text" id="soil_survey_number" name="survey_number" class="form-input" 
+                               placeholder="e.g. SF-142/B" value="{{ user.survey_number or '' }}">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_ph">pH Level</label>
+                        <input type="number" step="0.01" min="0" max="14" id="param_ph" name="ph" class="form-input" 
+                               placeholder="e.g. 6.8" value="{{ soil_data.ph if soil_data.ph is not none else '' }}">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_ec">EC (dS/m)</label>
+                        <input type="number" step="0.01" min="0" max="50" id="param_ec" name="ec" class="form-input" 
+                               placeholder="e.g. 0.42" value="{{ soil_data.ec if soil_data.ec is not none else '' }}">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_nitrogen">Nitrogen - N (kg/ha)</label>
+                        <input type="number" step="0.1" min="0" max="3000" id="param_nitrogen" name="nitrogen" class="form-input" 
+                               placeholder="e.g. 245" value="{{ soil_data.nitrogen if soil_data.nitrogen is not none else '' }}">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_phosphorus">Phosphorus - P (kg/ha)</label>
+                        <input type="number" step="0.1" min="0" max="1000" id="param_phosphorus" name="phosphorus" class="form-input" 
+                               placeholder="e.g. 18" value="{{ soil_data.phosphorus if soil_data.phosphorus is not none else '' }}">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_potassium">Potassium - K (kg/ha)</label>
+                        <input type="number" step="0.1" min="0" max="3000" id="param_potassium" name="potassium" class="form-input" 
+                               placeholder="e.g. 320" value="{{ soil_data.potassium if soil_data.potassium is not none else '' }}">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" for="param_oc">Organic Carbon - OC (%)</label>
+                        <input type="number" step="0.01" min="0" max="100" id="param_oc" name="organic_carbon" class="form-input" 
+                               placeholder="e.g. 0.72" value="{{ soil_data.organic_carbon if soil_data.organic_carbon is not none else '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem;">
+                    <button type="submit" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                        🔄 Update & Save Soil Values
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- 3. SOIL HEALTH ANALYSIS SECTION -->
+    {% if has_analysis and report_summary %}
+    <div class="card" style="margin-bottom: 3rem; border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🧪</span>
+                <div>
+                    <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-text-primary);">SOIL HEALTH ANALYSIS</h2>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                        Extracted and validated laboratory soil parameters
+                    </p>
+                </div>
+            </div>
+            <div>
+                <a href="/crop-advisor" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.95rem; font-weight: 600;">
+                    Continue to Crop Advisor →
+                </a>
+            </div>
+        </div>
+
+        <!-- REPORT SUMMARY -->
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 2rem; border: 1px solid var(--color-border-light);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); font-weight: 600;">Report Source</span>
+                    <div style="font-weight: 600; font-size: 0.95rem; color: var(--color-text-primary); margin-top: 0.25rem; word-break: break-all;">
+                        📄 {{ report_summary.filename }}
+                    </div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); font-weight: 600;">Analysis Date</span>
+                    <div style="font-weight: 600; font-size: 0.95rem; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        📅 {{ report_summary.date }}
+                    </div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); font-weight: 600;">Parameters Detected</span>
+                    <div style="margin-top: 0.25rem;">
+                        <span class="badge badge-success" style="font-size: 0.875rem; font-weight: 600;">
+                            ✓ {{ report_summary.detected_count }} of 6 detected
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); font-weight: 600;">Parameters Missing</span>
+                    <div style="margin-top: 0.25rem;">
+                        {% if report_summary.missing_count > 0 %}
+                        <span class="badge badge-warning" style="font-size: 0.875rem; font-weight: 600;">
+                            ⚠️ {{ report_summary.missing_count }} missing
+                        </span>
+                        {% else %}
+                        <span class="badge badge-success" style="font-size: 0.875rem; font-weight: 600;">
+                            None (Complete)
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIX PARAMETER CARDS -->
+        <div class="grid grid-3" style="gap: 1.5rem; margin-bottom: 2rem;">
+            
+            <!-- 1. pH -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">pH Level</div>
+                    {% if soil_data.ph is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.ph if soil_data.ph is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.ph.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.ph.desc }}
+                </div>
+            </div>
+
+            <!-- 2. Nitrogen -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">Nitrogen (N)</div>
+                    {% if soil_data.nitrogen is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.nitrogen if soil_data.nitrogen is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.nitrogen.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.nitrogen.desc }}
+                </div>
+            </div>
+
+            <!-- 3. Phosphorus -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">Phosphorus (P)</div>
+                    {% if soil_data.phosphorus is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.phosphorus if soil_data.phosphorus is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.phosphorus.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.phosphorus.desc }}
+                </div>
+            </div>
+
+            <!-- 4. Potassium -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">Potassium (K)</div>
+                    {% if soil_data.potassium is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.potassium if soil_data.potassium is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.potassium.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.potassium.desc }}
+                </div>
+            </div>
+
+            <!-- 5. Organic Carbon -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">Organic Carbon (OC)</div>
+                    {% if soil_data.organic_carbon is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.organic_carbon if soil_data.organic_carbon is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.organic_carbon.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.organic_carbon.desc }}
+                </div>
+            </div>
+
+            <!-- 6. Electrical Conductivity -->
+            <div class="kpi-card" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <div class="kpi-label" style="margin: 0;">Electrical Conductivity (EC)</div>
+                    {% if soil_data.ec is not none %}
+                    <span class="badge badge-success">✓ Detected</span>
+                    {% else %}
+                    <span class="badge badge-warning">Missing</span>
+                    {% endif %}
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 0.5rem 0;">
+                    <span style="font-size: 2.25rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                        {{ soil_data.ec if soil_data.ec is not none else '—' }}
+                    </span>
+                    <span style="font-size: 1rem; color: var(--color-text-secondary);">{{ param_display.ec.unit }}</span>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--color-text-secondary); margin-top: 0.5rem;">
+                    {{ param_display.ec.desc }}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONTINUE TO CROP ADVISOR BUTTON -->
+        <div style="display: flex; justify-content: flex-end; padding-top: 1rem; border-top: 1px solid var(--color-border-light);">
+            <a href="/crop-advisor" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+                Continue to Crop Advisor →
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- INFO SECTION -->
+    <div class="grid grid-2" style="margin-bottom: 3rem;">
+        <!-- Extracted Parameters Info -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">🔍</span>
+                    <h3>Supported Parameters</h3>
+                </div>
+            </div>
+            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1.5rem;">AgriAI automatically extracts and tracks these 6 key soil properties:</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">pH Level</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">Soil acidity / alkalinity</p>
+                </div>
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">Nitrogen (N)</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">Available N (kg/ha)</p>
+                </div>
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">Phosphorus (P)</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">Available P (kg/ha)</p>
+                </div>
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">Potassium (K)</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">Available K (kg/ha)</p>
+                </div>
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">Organic Carbon</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">Percentage (%)</p>
+                </div>
+                <div style="background-color: var(--color-bg-secondary); padding: 1rem; border-radius: var(--radius-lg);">
+                    <p style="margin: 0; font-weight: 500; font-size: 0.875rem;">EC (Salinity)</p>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.75rem;">dS/m measurement</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">⚙️</span>
+                    <h3>How It Works</h3>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-text">
+                        <h4 style="margin: 0;">1. Upload Soil Report</h4>
+                        <p style="margin: 0.5rem 0 0 0;">Upload your laboratory PDF or image report</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-text">
+                        <h4 style="margin: 0;">2. Parameter Extraction</h4>
+                        <p style="margin: 0.5rem 0 0 0;">PyMuPDF parses and extracts the 6 soil parameters</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-text">
+                        <h4 style="margin: 0;">3. Review & Verify</h4>
+                        <p style="margin: 0.5rem 0 0 0;">Review cards and correct or fill any missing values</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-text">
+                        <h4 style="margin: 0;">4. Proceed to Advisor</h4>
+                        <p style="margin: 0.5rem 0 0 0;">Continue with validated soil data to Crop Advisor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function handleFileSelected(input) {
+    if (input.files && input.files[0]) {
+        var file = input.files[0];
+        document.getElementById('uploadPromptTitle').innerText = file.name;
+        document.getElementById('uploadPromptSub').innerText = (file.size / 1024).toFixed(1) + ' KB selected — Ready to extract';
+    }
+}
+
+// Drag and drop handlers
+var dropArea = document.getElementById('uploadDropArea');
+if (dropArea) {
+    ['dragenter', 'dragover'].forEach(function(eventName) {
+        dropArea.addEventListener(eventName, function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropArea.style.borderColor = 'var(--color-primary)';
+            dropArea.style.backgroundColor = 'var(--color-primary-pale)';
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(function(eventName) {
+        dropArea.addEventListener(eventName, function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropArea.style.borderColor = 'var(--color-border)';
+            dropArea.style.backgroundColor = 'transparent';
+        }, false);
+    });
+
+    dropArea.addEventListener('drop', function(e) {
+        var dt = e.dataTransfer;
+        var files = dt.files;
+        if (files.length > 0) {
+            var fileInput = document.getElementById('reportFileInput');
+            fileInput.files = files;
+            handleFileSelected(fileInput);
+        }
+    }, false);
+}
+</script>
+{% endblock %}

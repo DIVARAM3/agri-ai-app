@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+
+{% block title %}Weather & Farm Forecast - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">Weather & Farm Forecast</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1>Farm Weather Intelligence</h1>
+            <p style="margin: 0.25rem 0 0 0; color: var(--color-text-secondary); font-size: 0.875rem;">
+                Hyperlocal observations and 7-day meteorological decision support for 
+                <strong>{{ location.village }}{% if location.district %}, {{ location.district }}{% endif %}{% if location.state %}, {{ location.state }}{% endif %}</strong>
+            </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            {% if weather and weather.success and weather.cached %}
+            <span class="badge badge-outline" style="font-size: 0.75rem;">
+                ⏱️ Updated {{ weather.updated_minutes_ago }}m ago
+            </span>
+            {% elif weather and weather.success %}
+            <span class="badge badge-success" style="font-size: 0.75rem;">
+                ✓ Live Weather Data
+            </span>
+            {% endif %}
+            <button onclick="document.getElementById('locationFormCard').style.display = document.getElementById('locationFormCard').style.display === 'none' ? 'block' : 'none';" 
+                    class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.4rem 0.85rem;">
+                📍 Change Location
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT BODY -->
+<div class="content-body">
+
+    <!-- LOCATION INPUT / UPDATE CARD (HIDDEN BY DEFAULT UNLESS ERROR OR TOGGLED) -->
+    <div id="locationFormCard" class="card" style="margin-bottom: 2rem; border: 1px solid var(--color-border); {% if weather and weather.success %}display: none;{% endif %}">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">📍</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.15rem;">Farm Location Settings</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Enter village, district, and state to query high-resolution Open-Meteo forecasts.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <form method="POST" action="/weather" style="margin-top: 1rem;">
+            <div class="grid grid-3" style="gap: 1rem;">
+                <div>
+                    <label class="form-label" for="locVillage" style="font-size: 0.8125rem;">Village / Town</label>
+                    <input type="text" id="locVillage" name="village" class="form-control" 
+                           value="{{ location.village }}" placeholder="e.g. Kammadikottai">
+                </div>
+                <div>
+                    <label class="form-label" for="locDistrict" style="font-size: 0.8125rem;">District</label>
+                    <input type="text" id="locDistrict" name="district" class="form-control" 
+                           value="{{ location.district }}" placeholder="e.g. Thoothukudi">
+                </div>
+                <div>
+                    <label class="form-label" for="locState" style="font-size: 0.8125rem;">State</label>
+                    <input type="text" id="locState" name="state" class="form-control" 
+                           value="{{ location.state }}" placeholder="e.g. Tamil Nadu">
+                </div>
+            </div>
+            <div style="margin-top: 1.25rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+                {% if weather and weather.success %}
+                <button type="button" onclick="document.getElementById('locationFormCard').style.display='none';" class="btn btn-outline" style="font-size: 0.8125rem;">
+                    Cancel
+                </button>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="font-size: 0.8125rem; padding: 0.6rem 1.5rem;">
+                    Update Weather Location
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ERROR ALERT (IF WEATHER FAILED OR LOCATION NOT FOUND) -->
+    {% if not weather or not weather.success %}
+    <div class="card" style="margin-bottom: 2.5rem; text-align: center; padding: 2.5rem 1.5rem; border: 1px dashed var(--color-danger);">
+        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">⚠️</div>
+        <h3 style="margin: 0; color: var(--color-text-primary); font-size: 1.25rem;">
+            {{ weather.message if weather and weather.message else "Weather data is temporarily unavailable." }}
+        </h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0.5rem auto 1.5rem auto; max-width: 500px;">
+            Please ensure the district or state name is spelled correctly above, or check your internet connection.
+        </p>
+    </div>
+    {% else %}
+
+    <!-- 1. CURRENT WEATHER CARD -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">{{ weather.current.icon }}</span>
+                <div>
+                    <h2 style="margin: 0; font-size: 1.25rem; color: var(--color-text-primary);">
+                        Current Weather Conditions
+                    </h2>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Coordinates: {{ weather.location.latitude }}°N, {{ weather.location.longitude }}°E 
+                        (Matched: {{ weather.location.resolved_name }})
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-primary" style="font-size: 0.8125rem;">
+                {{ weather.current.condition }}
+            </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+            <!-- Temperature Hero -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: center;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600; letter-spacing: 0.5px;">Temperature</span>
+                <div style="font-size: 3.5rem; font-weight: 800; color: var(--color-primary); line-height: 1.1; margin: 0.35rem 0;">
+                    {{ weather.current.temperature }}<span style="font-size: 2rem; font-weight: 500;">°C</span>
+                </div>
+                <span style="font-size: 0.875rem; font-weight: 500; color: var(--color-text-primary);">
+                    {{ weather.current.condition }}
+                </span>
+            </div>
+
+            <!-- Humidity -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span style="font-size: 1.25rem;">💧</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary); text-transform: uppercase; font-weight: 600;">Relative Humidity</span>
+                </div>
+                <div style="font-size: 1.75rem; font-weight: 700; color: var(--color-text-primary);">
+                    {{ weather.current.humidity }}%
+                </div>
+                <span style="font-size: 0.75rem; color: var(--color-text-light); margin-top: 0.25rem;">Atmospheric moisture</span>
+            </div>
+
+            <!-- Rain / Precipitation -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span style="font-size: 1.25rem;">🌧️</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary); text-transform: uppercase; font-weight: 600;">Precipitation</span>
+                </div>
+                <div style="font-size: 1.75rem; font-weight: 700; color: var(--color-text-primary);">
+                    {{ weather.current.rain }} <span style="font-size: 1rem; font-weight: 500;">mm</span>
+                </div>
+                <span style="font-size: 0.75rem; color: var(--color-text-light); margin-top: 0.25rem;">
+                    Today's Rain Prob: {{ weather.daily[0].rain_probability if weather.daily else 0 }}%
+                </span>
+            </div>
+
+            <!-- Wind Speed -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span style="font-size: 1.25rem;">💨</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary); text-transform: uppercase; font-weight: 600;">Wind Speed</span>
+                </div>
+                <div style="font-size: 1.75rem; font-weight: 700; color: var(--color-text-primary);">
+                    {{ weather.current.wind_speed }} <span style="font-size: 1rem; font-weight: 500;">km/h</span>
+                </div>
+                <span style="font-size: 0.75rem; color: var(--color-text-light); margin-top: 0.25rem;">Standard 10m altitude</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 7-DAY FARM FORECAST -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">📅</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">7-Day Farm Forecast</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Daily thermal bounds, rain probability, and expected precipitation sum
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESPONSIVE 7-DAY FORECAST GRID -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 1.25rem; overflow-x: auto;">
+            {% for day in weather.daily %}
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1rem 0.75rem; border: 1px solid var(--color-border-light); text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-width: 120px;">
+                <div>
+                    <div style="font-weight: 700; font-size: 0.875rem; color: var(--color-text-primary);">
+                        {{ day.day }}
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        {{ day.date }}
+                    </div>
+                    
+                    <div style="font-size: 2rem; margin: 0.35rem 0;" title="{{ day.condition }}">
+                        {{ day.icon }}
+                    </div>
+
+                    <div style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 0.5rem; height: 32px; display: flex; align-items: center; justify-content: center; line-height: 1.2;">
+                        {{ day.condition }}
+                    </div>
+                </div>
+
+                <div>
+                    <div style="display: flex; justify-content: center; align-items: baseline; gap: 0.35rem; margin-bottom: 0.35rem;">
+                        <span style="font-weight: 700; font-size: 1.05rem; color: var(--color-text-primary);">
+                            {{ day.temperature_max }}°
+                        </span>
+                        <span style="font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            {{ day.temperature_min }}°
+                        </span>
+                    </div>
+
+                    <div style="background-color: rgba(59, 130, 246, 0.1); border-radius: var(--radius-sm); padding: 0.25rem 0.4rem; font-size: 0.75rem; color: var(--color-primary); font-weight: 600; margin-bottom: 0.25rem;">
+                        💧 {{ day.rain_probability }}%
+                    </div>
+
+                    <div style="font-size: 0.75rem; color: var(--color-text-light);">
+                        {% if day.rainfall > 0 %}{{ day.rainfall }} mm{% else %}0 mm{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 3. FARM WEATHER INSIGHTS & WEATHER ALERTS (2-COLUMN GRID) -->
+    <div class="grid grid-2" style="gap: 1.5rem; margin-bottom: 2.5rem;">
+
+        <!-- FARM WEATHER INSIGHTS -->
+        <div class="card" style="border: 1px solid var(--color-border); height: 100%;">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">🌾</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.15rem;">Farm Weather Insights</h3>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Practical agricultural interpretations for field operations
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem;">
+                {% for ins in insights %}
+                <div style="padding: 1rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 3px solid var(--color-primary);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                        <span>{{ ins.icon }}</span>
+                        <strong style="font-size: 0.875rem; color: var(--color-text-primary);">{{ ins.category }}</strong>
+                    </div>
+                    <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.45;">
+                        {{ ins.text }}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- WEATHER ALERTS -->
+        <div class="card" style="border: 1px solid var(--color-border); height: 100%;">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">⚠️</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.15rem;">Weather Alerts</h3>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Forecast-driven warnings for extreme conditions
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem;">
+                {% if alerts %}
+                    {% for alt in alerts %}
+                    <div style="padding: 1rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid {% if alt.level == 'danger' %}var(--color-danger){% elif alt.level == 'warning' %}var(--color-warning){% else %}var(--color-primary){% endif %};">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                            <h4 style="margin: 0; font-size: 0.95rem; color: var(--color-text-primary);">
+                                {{ alt.title }}
+                            </h4>
+                            <span class="badge {{ alt.badge }}" style="font-size: 0.75rem; font-weight: 700;">
+                                {{ alt.category }}
+                            </span>
+                        </div>
+                        <p style="margin: 0 0 0.35rem 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.4;">
+                            <strong>Reason:</strong> {{ alt.reason }}
+                        </p>
+                        <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-primary); font-weight: 500; line-height: 1.4;">
+                            <strong>Action:</strong> {{ alt.action }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--color-border-light);">
+                        <span style="font-size: 1.75rem;">☀️</span>
+                        <h4 style="margin: 0.5rem 0 0.25rem 0; font-size: 0.95rem; color: var(--color-text-primary);">
+                            No Severe Weather Alerts
+                        </h4>
+                        <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                            Forecast conditions are within standard operational limits for the next 7 days.
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 4. CROP WEATHER CONTEXT (IF CROP SELECTED) -->
+    {% if crop_context %}
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🌱</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.15rem;">
+                        Crop Weather Context: {{ crop_context.crop }}
+                    </h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Agronomic alignment with crop water requirement category
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-primary" style="font-size: 0.8125rem;">
+                Water Demand: {{ crop_context.water_requirement }}
+            </span>
+        </div>
+
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border-left: 3px solid var(--color-success);">
+            <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.5;">
+                {{ crop_context.interpretation }}
+            </p>
+            <p style="margin: 0.75rem 0 0 0; font-size: 0.75rem; color: var(--color-text-light);">
+                Note: {{ crop_context.disclaimer }}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 5. MONSOON OUTLOOK SECTION -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🌦️</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.15rem;">Monsoon Outlook</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Official seasonal meteorological intelligence & agricultural planning
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-success" style="font-size: 0.75rem;">
+                Source: IMD
+            </span>
+        </div>
+
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border-light);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="font-size: 1.75rem;">🌧️</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 0.95rem; color: var(--color-text-primary);">
+                            Official IMD Seasonal Guidance Available
+                        </h4>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.84rem; color: var(--color-text-secondary); line-height: 1.45;">
+                            View official Long-Range Forecast bulletins, regional subdivision outlooks, and conservative agricultural decision support.
+                        </p>
+                    </div>
+                </div>
+                <a href="/monsoon" class="btn btn-primary" style="font-size: 0.8125rem; padding: 0.5rem 1.25rem;">
+                    View Monsoon Outlook →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. DATA SOURCE & ATTRIBUTION -->
+    <div style="text-align: center; padding: 1rem; font-size: 0.8125rem; color: var(--color-text-light); border-top: 1px solid var(--color-border); margin-bottom: 2rem;">
+        Weather data source: <strong>Open-Meteo</strong>. Forecast accuracy can vary by location and time. 
+        For official national weather warnings, consult the India Meteorological Department (IMD).
+    </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,598 @@
+{% extends "base.html" %}
+
+{% block title %}Crop Advisor - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">Crop Advisor</span>
+    </div>
+    <h1>Crop Advisor</h1>
+    <p>Select the crop you want to analyze against your soil profile.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-body">
+
+    <!-- ALERT & NOTIFICATION BANNERS -->
+    {% if error %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-danger); background-color: rgba(239, 68, 68, 0.06); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">⚠️</span>
+            <div style="color: var(--color-danger); font-weight: 600;">{{ error }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if notification %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-success); background-color: rgba(16, 185, 129, 0.08); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">✅</span>
+            <div style="color: var(--color-success); font-weight: 500;">{{ notification }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if success_message and not error %}
+    <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--color-primary); background-color: var(--color-primary-pale); padding: 1.25rem 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.25rem;">🌱</span>
+            <div style="color: var(--color-primary); font-weight: 600;">{{ success_message }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 1. LOCATION AND SOIL PROFILE OVERVIEW (2 COLUMNS) -->
+    <div class="grid grid-2" style="margin-bottom: 2.5rem; align-items: start;">
+        
+        <!-- LOCATION SECTION -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">📍</span>
+                    <h3>Farmer & Field Identity</h3>
+                </div>
+            </div>
+            <p class="text-muted" style="margin-bottom: 1.25rem; font-size: 0.875rem;">Specify your farmer name, field survey number, and location to personalize intelligence and field reports.</p>
+
+            <form method="POST" action="/crop-advisor">
+                <input type="hidden" name="action" value="update_location">
+                <input type="hidden" name="crop" value="{{ selected_crop }}">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="farmer_name">Farmer Name</label>
+                        <input type="text" id="farmer_name" name="farmer_name" class="form-input" 
+                               placeholder="e.g. Murugan K." value="{{ user.farmer_name or '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="survey_number">Survey No. / Field ID</label>
+                        <input type="text" id="survey_number" name="survey_number" class="form-input" 
+                               placeholder="e.g. SF-142/B" value="{{ user.survey_number or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label class="form-label" for="loc_village">Village / Town</label>
+                    <input type="text" id="loc_village" name="village" class="form-input" 
+                           placeholder="e.g. Kammadikottai" value="{{ location.village }}" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="loc_district">District</label>
+                        <input type="text" id="loc_district" name="district" class="form-input" 
+                               placeholder="e.g. Thoothukudi" value="{{ location.district }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="loc_state">State</label>
+                        <input type="text" id="loc_state" name="state" class="form-input" 
+                               placeholder="e.g. Tamil Nadu" value="{{ location.state }}" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.875rem;">
+                    📍 Save Farmer & Location
+                </button>
+            </form>
+        </div>
+
+        <!-- CONNECT TO SOIL LAB / SOIL STATUS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span style="font-size: 1.5rem;">🧪</span>
+                    <h3>Your Soil Profile</h3>
+                </div>
+                {% if has_soil_data %}
+                <a href="/soil" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                    Edit Soil Lab
+                </a>
+                {% endif %}
+            </div>
+
+            {% if has_soil_data %}
+            <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.875rem;">
+                {% if report_summary and report_summary.filename %}
+                Source: <strong>{{ report_summary.filename }}</strong>
+                {% else %}
+                Active soil measurements from Soil Lab session:
+                {% endif %}
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;">
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">pH</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.ph if soil_data.ph is not none else '—' }}
+                    </div>
+                </div>
+
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">EC</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.ec if soil_data.ec is not none else '—' }}
+                    </div>
+                    <div style="font-size: 0.65rem; color: var(--color-text-light);">dS/m</div>
+                </div>
+
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">OC</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.organic_carbon if soil_data.organic_carbon is not none else '—' }}
+                    </div>
+                    <div style="font-size: 0.65rem; color: var(--color-text-light);">%</div>
+                </div>
+
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">Nitrogen (N)</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.nitrogen if soil_data.nitrogen is not none else '—' }}
+                    </div>
+                    <div style="font-size: 0.65rem; color: var(--color-text-light);">kg/ha</div>
+                </div>
+
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">Phosphorus (P)</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.phosphorus if soil_data.phosphorus is not none else '—' }}
+                    </div>
+                    <div style="font-size: 0.65rem; color: var(--color-text-light);">kg/ha</div>
+                </div>
+
+                <div style="background-color: var(--color-bg-secondary); padding: 0.85rem; border-radius: var(--radius-md); text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--color-text-secondary); text-transform: uppercase;">Potassium (K)</div>
+                    <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ soil_data.potassium if soil_data.potassium is not none else '—' }}
+                    </div>
+                    <div style="font-size: 0.65rem; color: var(--color-text-light);">kg/ha</div>
+                </div>
+            </div>
+            {% else %}
+            <div style="padding: 1.5rem 1rem; text-align: center; background-color: var(--color-bg-secondary); border-radius: var(--radius-md);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📄</div>
+                <h4 style="margin: 0; color: var(--color-text-primary); font-size: 1rem;">No soil report has been analyzed yet.</h4>
+                <p style="color: var(--color-text-secondary); font-size: 0.8125rem; margin: 0.5rem 0 1.25rem 0;">
+                    Upload your soil test report or enter parameters in the Soil Lab to evaluate nutrient conditions.
+                </p>
+                <a href="/soil" class="btn btn-primary" style="display: inline-flex; justify-content: center; padding: 0.65rem 1.25rem;">
+                    🧪 Go to Soil Lab
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- 2. CROP SELECTION GRID -->
+    <div class="card" style="margin-bottom: 2.5rem;">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🌾</span>
+                <div>
+                    <h3 style="margin: 0;">Available Crops</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                        Select a crop to examine agronomic parameters and align with your soil profile.
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-success" style="font-size: 0.8125rem;">{{ crops|length }} Crops Available</span>
+        </div>
+
+        <div class="grid grid-4" style="gap: 1.25rem; margin-top: 1rem;">
+            {% for c in crops %}
+            <div class="card" style="padding: 1.25rem; border: {% if c.name == selected_crop %}2px solid var(--color-primary){% else %}1px solid var(--color-border){% endif %}; background-color: {% if c.name == selected_crop %}var(--color-primary-pale){% else %}var(--color-bg-primary){% endif %}; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between; transition: all var(--transition-fast);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-size: 2rem;">{{ c.icon }}</span>
+                        {% if c.name == selected_crop %}
+                        <span class="badge badge-success" style="font-size: 0.75rem;">Selected</span>
+                        {% endif %}
+                    </div>
+                    <h4 style="margin: 0 0 0.25rem 0; font-size: 1.15rem; color: var(--color-text-primary);">{{ c.name }}</h4>
+                    <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: var(--color-text-secondary); font-style: italic;">
+                        {{ c.scientific_name }}
+                    </p>
+                    <div style="font-size: 0.8125rem; color: var(--color-text-primary); margin-bottom: 0.35rem;">
+                        <strong>Category:</strong> {{ c.category }}
+                    </div>
+                    <div style="font-size: 0.8125rem; color: var(--color-text-primary); margin-bottom: 0.35rem;">
+                        <strong>Duration:</strong> {{ c.growth_duration }}
+                    </div>
+                    <div style="font-size: 0.8125rem; color: var(--color-text-primary); margin-bottom: 0.75rem;">
+                        <strong>Water:</strong> {{ c.water_requirement }}
+                    </div>
+                </div>
+
+                <a href="/crop-advisor?crop={{ c.name }}" class="btn {% if c.name == selected_crop %}btn-primary{% else %}btn-outline{% endif %}" style="width: 100%; justify-content: center; padding: 0.5rem; font-size: 0.875rem; margin-top: 0.5rem;">
+                    {% if c.name == selected_crop %}✓ Active Selection{% else %}Select Crop{% endif %}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 3. SELECTED CROP PROFILE -->
+    {% if crop_profile %}
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">{{ crop_profile.icon }}</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.25rem;">Selected Crop Profile: {{ crop_profile.name }}</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary); font-style: italic;">
+                        {{ crop_profile.scientific_name }} — {{ crop_profile.category }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Agronomic Attributes -->
+        <div class="grid grid-4" style="gap: 1rem; margin-bottom: 2rem;">
+            <div style="background-color: var(--color-bg-secondary); padding: 1.25rem; border-radius: var(--radius-lg);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Preferred Soil pH</span>
+                <div style="font-size: 1.35rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.35rem;">
+                    {{ crop_profile.preferred_ph.min }} - {{ crop_profile.preferred_ph.max }}
+                </div>
+                <div style="font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 0.25rem;">Optimal reaction range</div>
+            </div>
+
+            <div style="background-color: var(--color-bg-secondary); padding: 1.25rem; border-radius: var(--radius-lg);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Growth Duration</span>
+                <div style="font-size: 1.15rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.35rem;">
+                    {{ crop_profile.growth_duration }}
+                </div>
+                <div style="font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 0.25rem;">Sowing to harvest</div>
+            </div>
+
+            <div style="background-color: var(--color-bg-secondary); padding: 1.25rem; border-radius: var(--radius-lg);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Water Requirement</span>
+                <div style="font-size: 1.15rem; font-weight: 700; color: var(--color-text-primary); margin-top: 0.35rem;">
+                    {{ crop_profile.water_requirement }}
+                </div>
+                <div style="font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 0.25rem;">Irrigation category</div>
+            </div>
+
+            <div style="background-color: var(--color-bg-secondary); padding: 1.25rem; border-radius: var(--radius-lg);">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Preferred Soil</span>
+                <div style="font-size: 0.95rem; font-weight: 600; color: var(--color-text-primary); margin-top: 0.35rem;">
+                    {{ crop_profile.preferred_soil }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Growth Stages Timeline -->
+        <div>
+            <h4 style="margin: 0 0 1.25rem 0; font-size: 1.05rem;">Major Growth Stages</h4>
+            <div class="timeline">
+                {% for stage in crop_profile.growth_stages %}
+                <div class="timeline-item">
+                    <div class="timeline-text">
+                        <h4 style="margin: 0; font-size: 0.95rem; color: var(--color-text-primary);">Stage {{ loop.index }}: {{ stage }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 4. SOIL + CROP PROFILE PREPARATION / ACTION CARD -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">⚙️</span>
+                <div>
+                    <h3 style="margin: 0;">Soil & Crop Profile Consolidation</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                        Cross-evaluate soil parameters against {{ selected_crop }}'s physiological requirements.
+                    </p>
+                </div>
+            </div>
+
+            <form method="POST" action="/crop-advisor" id="analyzeForm" onsubmit="document.getElementById('analyzeBtn').innerHTML = '⏳ Evaluating Soil & Crop...';">
+                <input type="hidden" name="action" value="analyze">
+                <input type="hidden" name="crop" value="{{ selected_crop }}">
+                <button type="submit" id="analyzeBtn" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    Analyze Soil & Crop →
+                </button>
+            </form>
+        </div>
+
+        <!-- SUMMARY META BAR -->
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border-light);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Selected Crop</span>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        {{ crop_profile.icon if crop_profile else '🌱' }} {{ selected_crop }}
+                    </div>
+                </div>
+
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Farm Location</span>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--color-text-primary); margin-top: 0.25rem;">
+                        📍 {{ location.village }}, {{ location.district }}, {{ location.state }}
+                    </div>
+                </div>
+
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600;">Soil Report Status</span>
+                    <div style="margin-top: 0.25rem;">
+                        {% if has_soil_data %}
+                        <span class="badge badge-success">✓ Soil Data Loaded</span>
+                        {% else %}
+                        <span class="badge badge-warning">⚠️ No Soil Report (Pending)</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SOIL + CROP INTELLIGENCE REPORT (Displayed after Analysis) -->
+    {% if has_intelligence and intelligence %}
+    <div id="intelligenceReport" class="card" style="margin-bottom: 3rem; border: 2px solid var(--color-primary); box-shadow: var(--shadow-md);">
+        
+        <!-- SECTION TITLE -->
+        <div class="card-header" style="border-bottom: 1px solid var(--color-border-light); padding-bottom: 1.25rem; margin-bottom: 1.75rem;">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">🌾</span>
+                <div>
+                    <h2 style="margin: 0; font-size: 1.4rem; color: var(--color-primary); letter-spacing: -0.01em;">
+                        SOIL + CROP INTELLIGENCE REPORT
+                    </h2>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                        Agronomic suitability evaluation for <strong>{{ intelligence.crop.name }}</strong> in <strong>{{ intelligence.location.village }}, {{ intelligence.location.district }}</strong>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <span class="badge badge-success" style="font-size: 0.8125rem; font-weight: 600;">
+                    AgriAI Intelligence Active
+                </span>
+            </div>
+        </div>
+
+        <!-- TOP METRICS: SUITABILITY & SOIL HEALTH -->
+        <div class="grid grid-2" style="gap: 1.5rem; margin-bottom: 2rem;">
+            
+            <!-- Overall Suitability Card -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-xl); padding: 1.5rem; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600; letter-spacing: 0.05em;">
+                        Overall Crop Suitability
+                    </span>
+                    
+                    <div style="margin-top: 0.75rem; display: flex; align-items: center; gap: 0.75rem;">
+                        {% set suit_status = intelligence.suitability.status %}
+                        {% if suit_status == 'Highly Suitable' %}
+                        <span class="badge badge-success" style="font-size: 1.15rem; padding: 0.4rem 1rem; font-weight: 700;">
+                            🌟 Highly Suitable
+                        </span>
+                        {% elif suit_status == 'Suitable' %}
+                        <span class="badge badge-success" style="font-size: 1.15rem; padding: 0.4rem 1rem; font-weight: 700;">
+                            ✓ Suitable
+                        </span>
+                        {% elif suit_status == 'Needs Attention' %}
+                        <span class="badge badge-warning" style="font-size: 1.15rem; padding: 0.4rem 1rem; font-weight: 700;">
+                            ⚠️ Needs Attention
+                        </span>
+                        {% else %}
+                        <span class="badge badge-danger" style="font-size: 1.15rem; padding: 0.4rem 1rem; font-weight: 700;">
+                            ⛔ Not Recommended
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <p style="margin: 1rem 0 0 0; font-size: 0.95rem; color: var(--color-text-primary); line-height: 1.5;">
+                        {{ intelligence.suitability.summary }}
+                    </p>
+                </div>
+
+                <div style="margin-top: 1.25rem; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                    Target Soil pH: <strong>{{ intelligence.crop.preferred_ph.min }} - {{ intelligence.crop.preferred_ph.max }}</strong> &nbsp;|&nbsp; 
+                    Water: <strong>{{ intelligence.crop.water_requirement }}</strong>
+                </div>
+            </div>
+
+            <!-- Soil Health Indicator Card -->
+            <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-xl); padding: 1.5rem; border: 1px solid var(--color-border-light); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600; letter-spacing: 0.05em;">
+                        Soil Health Index
+                    </span>
+
+                    <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.5rem;">
+                        <span style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary); line-height: 1;">
+                            {{ intelligence.soil_analysis.soil_health.score }}%
+                        </span>
+                        <span class="badge {% if intelligence.soil_analysis.soil_health.score >= 70 %}badge-success{% elif intelligence.soil_analysis.soil_health.score >= 50 %}badge-warning{% else %}badge-danger{% endif %}" style="font-size: 0.875rem; font-weight: 600;">
+                            {{ intelligence.soil_analysis.soil_health.label }}
+                        </span>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar" style="height: 10px; margin-top: 0.75rem;">
+                        <div class="progress-fill {% if intelligence.soil_analysis.soil_health.score < 50 %}danger{% elif intelligence.soil_analysis.soil_health.score < 70 %}warning{% endif %}" 
+                             style="width: {{ intelligence.soil_analysis.soil_health.score }}%;"></div>
+                    </div>
+
+                    <p style="margin: 0.75rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.45;">
+                        {{ intelligence.soil_analysis.soil_health.explanation }}
+                    </p>
+                </div>
+
+                <div style="margin-top: 1rem; font-size: 0.75rem; color: var(--color-text-light);">
+                    Deterministic ICAR/TNAU parameter evaluation model
+                </div>
+            </div>
+
+        </div>
+
+        <!-- DETAILED SOIL PARAMETER EVALUATION (6 CARDS) -->
+        <div style="margin-bottom: 2.25rem;">
+            <h3 style="font-size: 1.15rem; margin: 0 0 1rem 0; color: var(--color-text-primary);">
+                Soil Parameters Condition
+            </h3>
+
+            <div class="grid grid-3" style="gap: 1rem;">
+                {% for p_key, p_val in intelligence.soil_analysis.parameters.items() %}
+                <div style="background-color: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600; font-size: 0.875rem; color: var(--color-text-primary);">
+                                {{ param_display[p_key].name if p_key in param_display else p_key }}
+                            </span>
+                            {% if p_val.status_code == 'optimal' %}
+                            <span class="badge badge-success" style="font-size: 0.75rem;">{{ p_val.status }}</span>
+                            {% elif p_val.status_code == 'moderate' %}
+                            <span class="badge badge-warning" style="font-size: 0.75rem;">{{ p_val.status }}</span>
+                            {% elif p_val.status_code == 'warning' %}
+                            <span class="badge badge-danger" style="font-size: 0.75rem;">{{ p_val.status }}</span>
+                            {% else %}
+                            <span class="badge" style="font-size: 0.75rem; background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Missing</span>
+                            {% endif %}
+                        </div>
+
+                        <div style="display: flex; align-items: baseline; gap: 0.35rem; margin: 0.35rem 0;">
+                            <span style="font-size: 1.75rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">
+                                {{ p_val.value if p_val.value is not none else '—' }}
+                            </span>
+                            <span style="font-size: 0.8125rem; color: var(--color-text-secondary);">{{ p_val.unit }}</span>
+                        </div>
+
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.4;">
+                            {{ p_val.message }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- OBSERVATIONS: WHAT LOOKS GOOD vs NEEDS ATTENTION (2 COLUMNS) -->
+        <div class="grid grid-2" style="gap: 1.5rem; margin-bottom: 2.25rem;">
+            
+            <!-- WHAT LOOKS GOOD -->
+            <div style="background-color: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-xl); padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span style="font-size: 1.35rem;">✓</span>
+                    <h3 style="margin: 0; font-size: 1.15rem; color: var(--color-success);">WHAT LOOKS GOOD</h3>
+                </div>
+
+                {% if intelligence.observations.strengths or intelligence.suitability.reasons %}
+                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                    {% for item in intelligence.suitability.reasons %}
+                    <li style="font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.45;">
+                        {{ item }}
+                    </li>
+                    {% endfor %}
+                    {% for item in intelligence.observations.strengths %}
+                    {% if item not in intelligence.suitability.reasons %}
+                    <li style="font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.45;">
+                        {{ item }}
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                    No significant soil strengths recorded in available parameters.
+                </p>
+                {% endif %}
+            </div>
+
+            <!-- NEEDS ATTENTION -->
+            <div style="background-color: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-xl); padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span style="font-size: 1.35rem;">⚠️</span>
+                    <h3 style="margin: 0; font-size: 1.15rem; color: var(--color-warning);">NEEDS ATTENTION</h3>
+                </div>
+
+                {% if intelligence.observations.concerns or intelligence.suitability.concerns %}
+                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                    {% for item in intelligence.suitability.concerns %}
+                    <li style="font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.45;">
+                        {{ item }}
+                    </li>
+                    {% endfor %}
+                    {% for item in intelligence.observations.concerns %}
+                    {% if item not in intelligence.suitability.concerns %}
+                    <li style="font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.45;">
+                        {{ item }}
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p style="margin: 0; font-size: 0.875rem; color: var(--color-success); font-weight: 500;">
+                    ✓ Zero critical nutrient or chemical concerns detected for {{ intelligence.crop.name }}.
+                </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- PRIORITY ACTIONS -->
+        <div style="margin-bottom: 2rem;">
+            <h3 style="font-size: 1.15rem; margin: 0 0 1rem 0; color: var(--color-text-primary);">
+                Priority Actions
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                {% for action in intelligence.priority_actions %}
+                <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.15rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid {% if action.priority == 'HIGH' %}var(--color-danger){% elif action.priority == 'MEDIUM' %}var(--color-warning){% else %}var(--color-primary){% endif %};">
+                    <div>
+                        <span class="badge {% if action.priority == 'HIGH' %}badge-danger{% elif action.priority == 'MEDIUM' %}badge-warning{% else %}badge-success{% endif %}" style="font-size: 0.75rem; font-weight: 700;">
+                            {{ action.priority }} PRIORITY
+                        </span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem; color: var(--color-text-primary);">
+                            {{ action.title }}
+                        </h4>
+                        <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.45;">
+                            {{ action.guidance }}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- DECISION SUPPORT DISCLAIMER -->
+        <div style="background-color: var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 1rem 1.25rem; border: 1px solid var(--color-border); font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.5;">
+            <strong>⚠️ Agricultural Decision Support Notice:</strong> {{ intelligence.disclaimer }}
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

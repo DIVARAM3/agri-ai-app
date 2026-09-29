@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AgriAI - AI Agriculture Intelligence{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">🌱</div>
+                    <div class="sidebar-logo-text">
+                        <h3>AgriAI</h3>
+                        <p>AI Agriculture</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigation</div>
+                    
+                    <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                        <span class="nav-icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                    
+                    <a href="/farmer-guide" class="nav-link {% if request.path.startswith('/farmer-guide') %}active{% endif %}">
+                        <span class="nav-icon">🧭</span>
+                        <span>Farmer Guide</span>
+                    </a>
+                    
+                    <a href="/soil" class="nav-link {% if request.path == '/soil' %}active{% endif %}">
+                        <span class="nav-icon">🧪</span>
+                        <span>Soil Lab</span>
+                    </a>
+                    
+                    <a href="/crop-advisor" class="nav-link {% if request.path == '/crop-advisor' %}active{% endif %}">
+                        <span class="nav-icon">🌾</span>
+                        <span>Crop Advisor</span>
+                    </a>
+                    
+                    <a href="/bioboost" class="nav-link {% if request.path == '/bioboost' %}active{% endif %}">
+                        <span class="nav-icon">🌿</span>
+                        <span>BioBoost</span>
+                    </a>
+                    
+                    <a href="/pest-advisor" class="nav-link {% if request.path == '/pest-advisor' %}active{% endif %}">
+                        <span class="nav-icon">🐛</span>
+                        <span>Pest Advisor</span>
+                    </a>
+                    
+                    <a href="/weather" class="nav-link {% if request.path == '/weather' %}active{% endif %}">
+                        <span class="nav-icon">⛅</span>
+                        <span>Weather & Forecast</span>
+                    </a>
+                    
+                    <a href="/monsoon" class="nav-link {% if request.path == '/monsoon' %}active{% endif %}">
+                        <span class="nav-icon">🌧️</span>
+                        <span>Monsoon Outlook</span>
+                    </a>
+                    
+                    <a href="/crop-guide" class="nav-link {% if request.path == '/crop-guide' %}active{% endif %}">
+                        <span class="nav-icon">📋</span>
+                        <span>Crop Guide</span>
+                    </a>
+                    
+                    <a href="/history" class="nav-link {% if request.path == '/history' %}active{% endif %}">
+                        <span class="nav-icon">📜</span>
+                        <span>History</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-item">
+                    👤 Profile
+                </div>
+                <div class="sidebar-footer-item">
+                    ⚙️ Settings
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,1537 @@
+{% extends "base.html" %}
+
+{% block title %}AGRIORA - Farmer Guide (Step-by-Step Intelligence){% endblock %}
+
+{% block extra_css %}
+<style>
+/* Farmer Guide Custom Styling */
+.guide-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.guide-header-card {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+    color: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-header-card::after {
+    content: "🌱";
+    position: absolute;
+    right: 2rem;
+    bottom: -1rem;
+    font-size: 8rem;
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.guide-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200, 150, 62, 0.25);
+    color: #f6d38e;
+    border: 1px solid rgba(200, 150, 62, 0.4);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.guide-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.guide-subtitle {
+    color: #d1e7dd;
+    font-size: 0.95rem;
+    max-width: 750px;
+    line-height: 1.5;
+}
+
+/* Stepper Bar */
+.stepper-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.stepper-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.stepper-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+.stepper-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2d6a4f, #1b4332);
+    border-radius: 9999px;
+    transition: width 0.4s ease;
+}
+
+.stepper-scroll-container {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+}
+
+.stepper-track {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 900px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.825rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.step-item.completed {
+    background: #e8f4f0;
+    color: #0f5132;
+    border-color: #c2dcce;
+}
+
+.step-item.current {
+    background: #1b4332;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(27, 67, 50, 0.25);
+    border-color: #c8963e;
+}
+
+.step-item.upcoming {
+    background: #f8fafc;
+    color: #64748b;
+    border-color: #e2e8f0;
+}
+
+.step-item:hover:not(.current) {
+    background: #f1f5f9;
+}
+
+.step-icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.step-item.completed .step-icon-circle {
+    background: #10b981;
+    color: #ffffff;
+}
+
+.step-item.current .step-icon-circle {
+    background: #c8963e;
+    color: #ffffff;
+}
+
+.step-item.upcoming .step-icon-circle {
+    background: #cbd5e1;
+    color: #475569;
+}
+
+/* Step Content Box */
+.step-content-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.step-content-header {
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.step-content-header h2 {
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+}
+
+.step-content-header p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Forms & Fields */
+.guide-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.guide-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.guide-field-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.guide-input, .guide-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    background: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.guide-input:focus, .guide-select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 94, 63, 0.15);
+}
+
+/* Crop Selection UI */
+.crop-search-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.crop-search-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    background: #f8faf7;
+}
+
+.crop-category-pills {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.category-pill {
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-pill.active {
+    background: #1b4332;
+    color: #ffffff;
+    border-color: #1b4332;
+    font-weight: 600;
+}
+
+.selected-crops-bar {
+    background: #f1f8f4;
+    border: 1px solid #c2dcce;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.selected-chips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.crop-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #ffffff;
+    color: #1b4332;
+    border: 1px solid #2d6a4f;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.crop-chip-remove {
+    background: none;
+    border: none;
+    color: #842029;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.crop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.crop-card-selectable {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.crop-card-selectable:hover {
+    border-color: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.crop-card-selectable.selected {
+    border-color: #2d6a4f;
+    background: #f4faf6;
+    box-shadow: 0 0 0 2px #2d6a4f;
+}
+
+.crop-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.crop-card-icon {
+    font-size: 1.85rem;
+}
+
+.crop-check-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: transparent;
+    transition: all 0.2s;
+}
+
+.crop-card-selectable.selected .crop-check-indicator {
+    background: #2d6a4f;
+    border-color: #2d6a4f;
+    color: #ffffff;
+}
+
+.crop-card-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.crop-card-sci {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.crop-card-cat-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #2d6a4f;
+    background: #e8f4f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.crop-card-desc {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.35;
+}
+
+/* Growth Stages Selectors */
+.crop-stages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.crop-stage-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    background: #ffffff;
+}
+
+.stage-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.stage-option-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stage-option-item:hover {
+    border-color: var(--color-primary-light);
+    background: #f8faf8;
+}
+
+.stage-option-item.selected {
+    border-color: #2d6a4f;
+    background: #eef6f1;
+    font-weight: 600;
+}
+
+/* Nav Actions */
+.guide-actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.btn-primary {
+    background: #1b4332;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background: #2d6a4f;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #f8fafc;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: #f1f5f9;
+}
+
+/* Responsive Table */
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.guide-table th {
+    background: #1b4332;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.guide-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text-primary);
+}
+
+.guide-table tr:nth-child(even) td {
+    background: #fbfdfb;
+}
+
+/* Tabs */
+.guide-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+}
+
+.guide-tab-btn {
+    padding: 0.6rem 1.25rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.guide-tab-btn.active {
+    color: #1b4332;
+    border-bottom-color: #1b4332;
+}
+
+/* Checklist */
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    margin-bottom: 0.75rem;
+    transition: background 0.2s;
+}
+
+.checklist-item.checked {
+    background: #f4faf6;
+    border-color: #c2dcce;
+}
+
+.checklist-checkbox {
+    margin-top: 0.25rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checklist-label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 0.925rem;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .guide-container { padding: 1rem; }
+    .step-content-card { padding: 1.25rem; }
+    .guide-title { font-size: 1.4rem; }
+    .guide-actions-bar { flex-direction: column-reverse; gap: 1rem; }
+    .guide-actions-bar .btn-primary, .guide-actions-bar .btn-secondary { width: 100%; justify-content: center; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="guide-container">
+    <!-- Header Card -->
+    <div class="guide-header-card">
+        <div class="guide-badge">AGRIORA Precision Workflow</div>
+        <h1 class="guide-title">Farmer Guide & Precision Field Dossier</h1>
+        <p class="guide-subtitle">A guided, 13-step agricultural decision-support workflow integrating farmer identity, soil laboratory analysis, multi-crop agronomy, BioBoost fertility, IPM, and real-time agro-meteorology.</p>
+    </div>
+
+    <!-- Stepper Card -->
+    <div class="stepper-card">
+        <div class="stepper-progress-info">
+            <span><strong>STEP {{ current_step }} OF 13:</strong> {{ current_step_meta.title }}</span>
+            <span><strong>{{ guide_status.completed_count }} / 13 completed</strong> ({{ guide_status.progress_pct }}%)</span>
+        </div>
+        <div class="stepper-progress-bar">
+            <div class="stepper-progress-fill" style="width: {{ guide_status.progress_pct }}%;"></div>
+        </div>
+
+        <div class="stepper-scroll-container">
+            <div class="stepper-track">
+                {% for s in guide_status.steps %}
+                <a href="{{ url_for('farmer_guide', step=s.step) }}" class="step-item {{ s.status_class }}">
+                    <span class="step-icon-circle">{{ s.icon_status }}</span>
+                    <span>{{ s.step }}. {{ s.short_title }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}" style="margin-bottom: 1.5rem; padding: 1rem 1.25rem; border-radius: 8px; background: {% if category=='error' %}#f8d7da{% else %}#d1e7dd{% endif %}; color: {% if category=='error' %}#842029{% else %}#0f5132{% endif %};">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- ================================================================= -->
+    <!-- STEP CONTENT CONTAINER -->
+    <!-- ================================================================= -->
+    <div class="step-content-card">
+
+        <!-- STEP 1: FARMER PROFILE -->
+        {% if current_step == 1 %}
+        <div class="step-content-header">
+            <h2><span>👤</span> 1. Farmer Profile</h2>
+            <p>Enter the primary farmer identity and contact information to personalize all agronomic dossiers.</p>
+        </div>
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="1">
+            <div class="guide-form-grid">
+                <div class="guide-field-group">
+                    <label for="farmer_name">Farmer Full Name *</label>
+                    <input type="text" id="farmer_name" name="farmer_name" class="guide-input" value="{{ user.farmer_name }}" placeholder="e.g. Ramesh Kumar" required>
+                    <small style="color: #64748b;">Printed as the authorized field operator on all official reports.</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="farm_name">Farm Name / Holding (Optional)</label>
+                    <input type="text" id="farm_name" name="farm_name" class="guide-input" value="{{ user.farm_name }}" placeholder="e.g. Sri Venkateswara Farm">
+                </div>
+                <div class="guide-field-group">
+                    <label for="mobile_number">Mobile Number (Optional)</label>
+                    <input type="tel" id="mobile_number" name="mobile_number" class="guide-input" value="{{ user.mobile_number }}" placeholder="e.g. 9876543210">
+                    <small style="color: #64748b;">Used solely for local farmer dossier reference.</small>
+                </div>
+            </div>
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('dashboard') }}" class="btn-secondary">← Back to Dashboard</a>
+                <button type="submit" class="btn-primary">Save & Continue to Farm Details →</button>
+            </div>
+        </form>
+
+        <!-- STEP 2: FARM DETAILS -->
+        {% elif current_step == 2 %}
+        <div class="step-content-header">
+            <h2><span>🏡</span> 2. Farm & Survey Details</h2>
+            <p>Document field plot identifiers and cultivated land area for precise input allocation.</p>
+        </div>
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="2">
+            <div class="guide-form-grid">
+                <div class="guide-field-group">
+                    <label for="survey_number">Survey Number / Field ID *</label>
+                    <input type="text" id="survey_number" name="survey_number" class="guide-input" value="{{ user.survey_number }}" placeholder="e.g. SF-217/A or Plot 4" required>
+                    <small style="color: #64748b;">Official land record revenue survey or field subdivision number.</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="farm_area">Total Cultivated Area *</label>
+                    <input type="number" step="0.1" id="farm_area" name="farm_area" class="guide-input" value="{{ user.farm_area if user.farm_area != 'Not specified' else '2.5' }}" placeholder="e.g. 2.5" required>
+                </div>
+                <div class="guide-field-group">
+                    <label for="area_unit">Area Measurement Unit</label>
+                    <select id="area_unit" name="area_unit" class="guide-select">
+                        <option value="Acre" {% if user.area_unit == 'Acre' %}selected{% endif %}>Acre (ac)</option>
+                        <option value="Hectare" {% if user.area_unit == 'Hectare' %}selected{% endif %}>Hectare (ha)</option>
+                        <option value="Guntha" {% if user.area_unit == 'Guntha' %}selected{% endif %}>Guntha</option>
+                        <option value="Cent" {% if user.area_unit == 'Cent' %}selected{% endif %}>Cent</option>
+                        <option value="Bigha" {% if user.area_unit == 'Bigha' %}selected{% endif %}>Bigha</option>
+                    </select>
+                </div>
+            </div>
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=1) }}" class="btn-secondary">← Back to Profile</a>
+                <button type="submit" class="btn-primary">Save & Continue to Location →</button>
+            </div>
+        </form>
+
+        <!-- STEP 3: FARM LOCATION -->
+        {% elif current_step == 3 %}
+        <div class="step-content-header">
+            <h2><span>📍</span> 3. Farm Geographic Location</h2>
+            <p>Pinpoint the village, district, and state to automatically calibrate numerical weather prediction and IMD monsoon forecasts.</p>
+        </div>
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="3">
+            <div class="guide-form-grid">
+                <div class="guide-field-group">
+                    <label for="village">Village / Town *</label>
+                    <input type="text" id="village" name="village" class="guide-input" value="{{ user.village or 'Kammadikottai' }}" placeholder="e.g. Kammadikottai" required>
+                </div>
+                <div class="guide-field-group">
+                    <label for="district">District *</label>
+                    <input type="text" id="district" name="district" class="guide-input" value="{{ user.district or 'Thoothukudi' }}" placeholder="e.g. Thoothukudi" required>
+                </div>
+                <div class="guide-field-group">
+                    <label for="state">State *</label>
+                    <input type="text" id="state" name="state" class="guide-input" value="{{ user.state or 'Tamil Nadu' }}" placeholder="e.g. Tamil Nadu" required>
+                </div>
+            </div>
+            <div style="background: #eef6f1; border-left: 4px solid #1b4332; padding: 1rem 1.25rem; border-radius: 6px; margin-bottom: 1.75rem; font-size: 0.875rem; color: #1e3a29;">
+                <strong>Automatic Agro-Meteorology Linkage:</strong> Entering this location immediately synchronizes Open-Meteo 7-day operational agromet forecast windows and official India Meteorological Department (IMD) seasonal bulletins for your specific district.
+            </div>
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=2) }}" class="btn-secondary">← Back to Farm Details</a>
+                <button type="submit" class="btn-primary">Save & Continue to Soil Lab →</button>
+            </div>
+        </form>
+
+        <!-- STEP 4: SOIL LAB -->
+        {% elif current_step == 4 %}
+        <div class="step-content-header">
+            <h2><span>🧪</span> 4. Soil Laboratory Test Data</h2>
+            <p>Record physico-chemical test values from your official Soil Health Card. A single soil profile serves all your selected crops.</p>
+        </div>
+
+        {% if has_soil %}
+        <div style="background: #e8f4f0; border: 1px solid #c2dcce; border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <span style="background: #10b981; color: #ffffff; padding: 0.25rem 0.65rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">✓ Active Soil Profile</span>
+                <h3 style="margin: 0.35rem 0 0.2rem 0; color: #0f5132;">Soil Health Index: {{ soil_health_score }}/100 ({{ soil_health_label }})</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: #1e3a29;">Benchmark based on standard ICAR Soil Health Card Scheme rating thresholds.</p>
+            </div>
+            <a href="{{ url_for('soil_lab') }}" class="btn-secondary" style="font-size: 0.85rem;">Upload New Soil PDF Card</a>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="4">
+            <h4 style="font-size: 1.05rem; margin-bottom: 1rem; color: var(--color-primary);">Physico-Chemical Nutrient Values:</h4>
+            <div class="guide-form-grid">
+                <div class="guide-field-group">
+                    <label for="soil_ph">Soil pH (Reaction) [Range: 3.5 - 10.5]</label>
+                    <input type="number" step="0.01" min="3.5" max="10.5" id="soil_ph" name="ph" class="guide-input" value="{{ soil_data.ph if soil_data and soil_data.ph is not none else '' }}" placeholder="e.g. 6.8">
+                    <small style="color: #64748b;">Optimal benchmark: 6.5 – 7.5</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="soil_ec">Electrical Conductivity (EC, dS/m) [Max: 10.0]</label>
+                    <input type="number" step="0.01" min="0" max="10.0" id="soil_ec" name="ec" class="guide-input" value="{{ soil_data.ec if soil_data and soil_data.ec is not none else '' }}" placeholder="e.g. 0.35">
+                    <small style="color: #64748b;">Normal non-saline: ≤ 1.0 dS/m</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="soil_oc">Organic Carbon (%) [Max: 5.0%]</label>
+                    <input type="number" step="0.01" min="0" max="5.0" id="soil_oc" name="organic_carbon" class="guide-input" value="{{ soil_data.organic_carbon if soil_data and soil_data.organic_carbon is not none else '' }}" placeholder="e.g. 0.65">
+                    <small style="color: #64748b;">Optimal benchmark: > 0.75%</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="soil_n">Available Nitrogen (N, kg/ha) [Max: 1200]</label>
+                    <input type="number" step="0.1" min="0" max="1200" id="soil_n" name="nitrogen" class="guide-input" value="{{ soil_data.nitrogen if soil_data and soil_data.nitrogen is not none else '' }}" placeholder="e.g. 285.0">
+                    <small style="color: #64748b;">Adequate range: 280 – 560 kg/ha</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="soil_p">Available Phosphorus (P, kg/ha) [Max: 300]</label>
+                    <input type="number" step="0.1" min="0" max="300" id="soil_p" name="phosphorus" class="guide-input" value="{{ soil_data.phosphorus if soil_data and soil_data.phosphorus is not none else '' }}" placeholder="e.g. 18.5">
+                    <small style="color: #64748b;">Adequate range: 11.0 – 25.0 kg/ha</small>
+                </div>
+                <div class="guide-field-group">
+                    <label for="soil_k">Available Potassium (K, kg/ha) [Max: 1500]</label>
+                    <input type="number" step="0.1" min="0" max="1500" id="soil_k" name="potassium" class="guide-input" value="{{ soil_data.potassium if soil_data and soil_data.potassium is not none else '' }}" placeholder="e.g. 220.0">
+                    <small style="color: #64748b;">Adequate range: 140 – 280 kg/ha</small>
+                </div>
+            </div>
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=3) }}" class="btn-secondary">← Back to Location</a>
+                <button type="submit" class="btn-primary">Save & Continue to Select Crops →</button>
+            </div>
+        </form>
+
+        <!-- STEP 5: SELECT CROPS (MULTI-CROP SELECTION) -->
+        {% elif current_step == 5 %}
+        <div class="step-content-header">
+            <h2><span>🌾</span> 5. Select Crops (Multi-Crop Selection)</h2>
+            <p>Select one or multiple crops grown on your farm from the verified 30-crop ICAR/TNAU catalog.</p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="crop-search-bar">
+            <input type="text" id="cropSearchInput" class="crop-search-input" placeholder="🔍 Search crops by name, category, or scientific botanical name..." oninput="filterCrops()">
+        </div>
+
+        <div class="crop-category-pills">
+            <button type="button" class="category-pill active" onclick="setCategory('All', this)">All ({{ all_crops|length }})</button>
+            <button type="button" class="category-pill" onclick="setCategory('Cereals', this)">Cereals</button>
+            <button type="button" class="category-pill" onclick="setCategory('Pulses', this)">Pulses</button>
+            <button type="button" class="category-pill" onclick="setCategory('Oilseeds', this)">Oilseeds</button>
+            <button type="button" class="category-pill" onclick="setCategory('Vegetables', this)">Vegetables</button>
+            <button type="button" class="category-pill" onclick="setCategory('Commercial / Perennial', this)">Commercial / Perennial</button>
+        </div>
+
+        <!-- Selected Crops Chips Bar -->
+        <div class="selected-crops-bar">
+            <div>
+                <span id="selectedCountText" style="font-weight: 700; color: #1b4332;">{{ user.selected_crops|length }} crops selected</span>
+                <span style="color: #64748b; font-size: 0.85rem; margin-left: 0.5rem;">(Click cards to add/remove)</span>
+            </div>
+            <div class="selected-chips-list" id="selectedChipsList">
+                {% for cname in user.selected_crops %}
+                <span class="crop-chip" data-crop="{{ cname }}">
+                    {{ cname }}
+                    <button type="button" class="crop-chip-remove" onclick="toggleCrop('{{ cname }}')">&times;</button>
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Crop Cards Grid -->
+        <form id="cropSelectionForm" method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="5">
+            <div id="hiddenInputsContainer">
+                {% for cname in user.selected_crops %}
+                <input type="hidden" name="selected_crops" value="{{ cname }}" id="input_{{ cname }}">
+                {% endfor %}
+            </div>
+
+            <div class="crop-grid" id="cropGrid">
+                {% for crop in all_crops %}
+                {% set is_sel = crop.name in user.selected_crops %}
+                <div class="crop-card-selectable {% if is_sel %}selected{% endif %}"
+                     data-name="{{ crop.name }}"
+                     data-cat="{{ crop.category }}"
+                     data-sci="{{ crop.scientific_name }}"
+                     data-desc="{{ crop.short_description }}"
+                     onclick="toggleCrop('{{ crop.name }}')">
+                    <div>
+                        <div class="crop-card-header">
+                            <span class="crop-card-icon">{{ crop.icon or '🌱' }}</span>
+                            <div class="crop-check-indicator">✓</div>
+                        </div>
+                        <div class="crop-card-title">{{ crop.name }}</div>
+                        <div class="crop-card-sci">{{ crop.scientific_name }}</div>
+                        <span class="crop-card-cat-badge">{{ crop.category }}</span>
+                        <div class="crop-card-desc">{{ crop.short_description }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=4) }}" class="btn-secondary">← Back to Soil Lab</a>
+                <button type="submit" class="btn-primary" id="continueToStagesBtn">Continue to Growth Stages →</button>
+            </div>
+        </form>
+
+        <!-- STEP 6: CROP GROWTH STAGES -->
+        {% elif current_step == 6 %}
+        <div class="step-content-header">
+            <h2><span>🌱</span> 6. Set Crop Growth Stages</h2>
+            <p>Select the current phenological growth stage for each of your selected crops. Growth stages determine nutrient demand and pest vulnerabilities.</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="6">
+            <div class="crop-stages-container">
+                {% for cname in user.selected_crops %}
+                {% set cprof = get_crop_profile(cname) %}
+                {% set current_stage = user.crop_growth_stages.get(cname) or (cprof.growth_stages[1] if cprof and cprof.growth_stages|length > 1 else (cprof.growth_stages[0] if cprof else 'Active Vegetative Stage')) %}
+                <div class="crop-stage-card">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                        <span style="font-size: 1.5rem;">{{ cprof.icon if cprof else '🌱' }}</span>
+                        <div>
+                            <h3 style="margin: 0; color: #1b4332; font-size: 1.15rem;">{{ cname }}</h3>
+                            <span style="font-size: 0.8rem; color: #64748b;"><em>{{ cprof.scientific_name if cprof else '' }}</em> • Duration: {{ cprof.growth_duration if cprof else 'Standard' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="stage-options-grid">
+                        {% if cprof and cprof.growth_stages %}
+                            {% for stg in cprof.growth_stages %}
+                            <label class="stage-option-item {% if stg == current_stage %}selected{% endif %}">
+                                <input type="radio" name="stage_{{ cname }}" value="{{ stg }}" {% if stg == current_stage %}checked{% endif %} style="accent-color: #1b4332;" onchange="updateStageSelectStyle(this)">
+                                <span style="font-size: 0.85rem;">{{ stg }}</span>
+                            </label>
+                            {% endfor %}
+                        {% else %}
+                            <label class="stage-option-item selected">
+                                <input type="radio" name="stage_{{ cname }}" value="Active Vegetative Stage" checked>
+                                <span>Active Vegetative Stage</span>
+                            </label>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="guide-actions-bar" style="margin-top: 2rem;">
+                <a href="{{ url_for('farmer_guide', step=5) }}" class="btn-secondary">← Back to Crop Selection</a>
+                <button type="submit" class="btn-primary">Analyze Selected Crops →</button>
+            </div>
+        </form>
+
+        <!-- STEP 7: CROP INTELLIGENCE & COMPARISON -->
+        {% elif current_step == 7 %}
+        <div class="step-content-header">
+            <h2><span>📊</span> 7. Farm Crop Intelligence & Suitability</h2>
+            <p>Deterministic suitability evaluation of each selected crop against your farm's soil pH, salinity, and macronutrient balance.</p>
+        </div>
+
+        {% if multi_crop_results %}
+        <!-- Side-by-Side Comparison Table -->
+        <h3 style="color: #1b4332; font-size: 1.1rem; margin-bottom: 0.75rem;">Farm-Level Crop Comparison:</h3>
+        <div style="overflow-x: auto; margin-bottom: 2rem;">
+            <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Category</th>
+                        <th>Suitability Score</th>
+                        <th>Status Rating</th>
+                        <th>Growth Stage</th>
+                        <th>Main Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in multi_crop_results %}
+                    <tr>
+                        <td><strong>{{ item.icon }} {{ item.name }}</strong><br/><small style="color: #64748b;"><em>{{ item.scientific_name }}</em></small></td>
+                        <td><span class="crop-card-cat-badge">{{ item.category }}</span></td>
+                        <td><span style="font-weight: 700; color: #1b4332; font-size: 1.1rem;">{{ item.score }}/100</span></td>
+                        <td>
+                            {% if 'Highly' in item.status %}
+                            <span style="background: #d1e7dd; color: #0f5132; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">HIGHLY SUITABLE</span>
+                            {% elif 'Suitable' in item.status %}
+                            <span style="background: #d1e7dd; color: #0f5132; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">SUITABLE</span>
+                            {% elif 'Attention' in item.status %}
+                            <span style="background: #fff3cd; color: #664d03; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">NEEDS ATTENTION</span>
+                            {% else %}
+                            <span style="background: #f8d7da; color: #842029; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">NOT RECOMMENDED</span>
+                            {% endif %}
+                        </td>
+                        <td><span style="font-size: 0.85rem;">{{ item.growth_stage }}</span></td>
+                        <td>
+                            <small>
+                                {% if item.concerns %}
+                                    <span style="color: #842029;">⚠️ {{ item.concerns[0] }}</span>
+                                {% elif item.reasons %}
+                                    <span style="color: #0f5132;">✓ {{ item.reasons[0] }}</span>
+                                {% else %}
+                                    Balanced soil parameters.
+                                {% endif %}
+                            </small>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Detailed Cards Grid -->
+        <h3 style="color: #1b4332; font-size: 1.1rem; margin-bottom: 0.75rem;">Detailed Crop Analysis Cards:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+            {% for item in multi_crop_results %}
+            <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; background: #ffffff; box-shadow: var(--shadow-xs);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                    <h4 style="margin: 0; font-size: 1.15rem; color: #1b4332;">{{ item.icon }} {{ item.name }}</h4>
+                    <span style="font-weight: 700; color: #1b4332;">Score: {{ item.score }}/100</span>
+                </div>
+                <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">{{ item.summary }}</p>
+                
+                {% if item.reasons %}
+                <div style="margin-bottom: 0.5rem;">
+                    <strong style="font-size: 0.8rem; color: #0f5132;">Supporting Factors:</strong>
+                    <ul style="margin: 0.25rem 0 0 1.25rem; font-size: 0.8rem; color: #334155;">
+                        {% for r in item.reasons[:2] %}
+                        <li>{{ r }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if item.concerns %}
+                <div>
+                    <strong style="font-size: 0.8rem; color: #842029;">Soil Constraints to Manage:</strong>
+                    <ul style="margin: 0.25rem 0 0 1.25rem; font-size: 0.8rem; color: #334155;">
+                        {% for c in item.concerns[:2] %}
+                        <li>{{ c }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="padding: 2rem; background: #f8fafc; border-radius: 8px; text-align: center;">
+            <p>Please select crops in Step 5 and record soil data to generate intelligence.</p>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="7">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=6) }}" class="btn-secondary">← Back to Growth Stages</a>
+                <button type="submit" class="btn-primary">Continue to BioBoost Soil Biology →</button>
+            </div>
+        </form>
+
+        <!-- STEP 8: BIOBOOST SOIL BIOLOGY -->
+        {% elif current_step == 8 %}
+        <div class="step-content-header">
+            <h2><span>🌿</span> 8. BioBoost / Biological Nutrient Management</h2>
+            <p>Tailored biofertilizer inoculation, organic carbon replenishment, and soil ecology practices for your selected crops.</p>
+        </div>
+
+        {% if bioboost_data_by_crop %}
+        <div class="guide-tabs" id="bioboostTabs">
+            {% for cname, bdata in bioboost_data_by_crop.items() %}
+            <button type="button" class="guide-tab-btn {% if loop.first %}active{% endif %}" onclick="switchCropTab('bioboost', '{{ cname }}', this)">
+                {{ bdata.crop_profile.icon if bdata.crop_profile else '🌱' }} {{ cname }}
+            </button>
+            {% endfor %}
+        </div>
+
+        {% for cname, bdata in bioboost_data_by_crop.items() %}
+        <div class="crop-tab-content bioboost-tab-pane" id="bioboost_pane_{{ cname }}" style="display: {% if loop.first %}block{% else %}none{% endif %};">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="background: #f8faf7; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
+                    <h4 style="color: #1b4332; margin-top: 0; font-size: 1rem;">Biological Soil Considerations for {{ cname }}:</h4>
+                    <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.875rem; color: #334155; line-height: 1.5;">
+                        {% for item in bdata.biological_soil_considerations %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div style="background: #f8faf7; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem;">
+                    <h4 style="color: #1b4332; margin-top: 0; font-size: 1rem;">Organic Matter Management:</h4>
+                    <ul style="margin: 0.5rem 0 0 1.25rem; font-size: 0.875rem; color: #334155; line-height: 1.5;">
+                        {% for item in bdata.organic_matter_considerations %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="color: #1b4332; font-size: 1.05rem; margin-bottom: 0.75rem;">Recommended Biological & Microbe Practices:</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                {% for prac in bdata.biological_practices %}
+                <div style="border: 1px solid #c2dcce; background: #ffffff; border-radius: 8px; padding: 1rem; border-left: 4px solid #2d6a4f;">
+                    <div style="font-weight: 700; color: #1b4332; font-size: 0.95rem; margin-bottom: 0.35rem;">{{ prac.title }}</div>
+                    <span style="font-size: 0.72rem; background: #e8f4f0; color: #0f5132; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600;">{{ prac.category }}</span>
+                    <p style="font-size: 0.825rem; color: #475569; margin: 0.5rem 0 0 0; line-height: 1.4;">{{ prac.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Safety Notice -->
+        <div style="background: #fff8e6; border: 1px solid #f6d38e; border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem; color: #664d03; margin-bottom: 1.5rem;">
+            <strong>Mandatory Dosage Safety Notice:</strong> AGRIORA strictly adheres to scientific stewardship and does NOT fabricate arbitrary synthetic fertilizer quantities or chemical tank mixes. Soil-test-based commercial fertilizer applications must follow your official Soil Testing Laboratory (STL) prescription slip and State Agricultural University Package of Practices.
+        </div>
+        {% else %}
+        <p>No BioBoost records loaded. Complete previous steps to view biological recommendations.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="8">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=7) }}" class="btn-secondary">← Back to Crop Intelligence</a>
+                <button type="submit" class="btn-primary">Continue to Pest & Disease IPM →</button>
+            </div>
+        </form>
+
+        <!-- STEP 9: PEST & DISEASE / IPM -->
+        {% elif current_step == 9 %}
+        <div class="step-content-header">
+            <h2><span>🐛</span> 9. Integrated Pest Management (IPM)</h2>
+            <p>Ecological, stage-specific pest and disease decision support emphasizing cultural, mechanical, and biological controls first.</p>
+        </div>
+
+        {% if ipm_data_by_crop %}
+        <div class="guide-tabs" id="ipmTabs">
+            {% for cname, cissues in ipm_data_by_crop.items() %}
+            <button type="button" class="guide-tab-btn {% if loop.first %}active{% endif %}" onclick="switchCropTab('ipm', '{{ cname }}', this)">
+                🌱 {{ cname }} ({{ cissues|length }})
+            </button>
+            {% endfor %}
+        </div>
+
+        {% for cname, cissues in ipm_data_by_crop.items() %}
+        <div class="crop-tab-content ipm-tab-pane" id="ipm_pane_{{ cname }}" style="display: {% if loop.first %}block{% else %}none{% endif %};">
+            {% if cissues %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+                {% for issue in cissues %}
+                <div style="border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem; background: #ffffff;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                        <h4 style="margin: 0; color: #1b4332; font-size: 1.05rem;">{{ issue.name }}</h4>
+                        <span style="font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; background: {% if issue.type == 'Pest' %}#fff3cd{% else %}#f8d7da{% endif %}; color: {% if issue.type == 'Pest' %}#664d03{% else %}#842029{% endif %};">
+                            {{ issue.type|upper }}
+                        </span>
+                    </div>
+                    <p style="font-size: 0.825rem; color: #475569; margin-bottom: 0.75rem;">{{ issue.description }}</p>
+
+                    <strong style="font-size: 0.8rem; color: #1b4332;">Key Symptoms:</strong>
+                    <ul style="margin: 0.25rem 0 0.75rem 1.25rem; font-size: 0.8rem; color: #334155;">
+                        {% for s in issue.symptoms[:2] %}
+                        <li>{{ s }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <strong style="font-size: 0.8rem; color: #0f5132;">Ecological Controls:</strong>
+                    <ul style="margin: 0.25rem 0 0.75rem 1.25rem; font-size: 0.8rem; color: #334155;">
+                        {% if issue.cultural_control %}
+                        <li><strong>Cultural:</strong> {{ issue.cultural_control[0] }}</li>
+                        {% endif %}
+                        {% if issue.biological_control %}
+                        <li><strong>Biological:</strong> {{ issue.biological_control[0] }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No specific pests recorded for {{ cname }}. Routine weekly field scouting recommended.</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div style="background: #fff8e6; border: 1px solid #f6d38e; border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem; color: #664d03; margin-bottom: 1.5rem;">
+            <strong>Statutory Chemical Safety Notice:</strong> AGRIORA strictly prohibits fabricated pesticide doses or unverified tank mixtures. Chemical pesticides may only be selected from the registered list approved by the Central Insecticides Board & Registration Committee (CIBRC). Follow current registered product labels and consult local agricultural extension officers before application.
+        </div>
+        {% else %}
+        <p>No IPM datasets loaded.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="9">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=8) }}" class="btn-secondary">← Back to BioBoost</a>
+                <button type="submit" class="btn-primary">Continue to Weather & Forecast →</button>
+            </div>
+        </form>
+
+        <!-- STEP 10: WEATHER & FORECAST -->
+        {% elif current_step == 10 %}
+        <div class="step-content-header">
+            <h2><span>⛅</span> 10. Live Weather & 7-Day Farm Forecast</h2>
+            <p>Microclimate intelligence synchronized with your farm location ({{ user.location }}).</p>
+        </div>
+
+        {% if weather and weather.success %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.75rem;">
+            <div style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem; text-align: center;">
+                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">TEMPERATURE</span>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1b4332; margin: 0.25rem 0;">{{ weather.current.temperature }} °C</div>
+                <small style="color: #64748b;">{{ weather.current.condition }}</small>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem; text-align: center;">
+                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">RELATIVE HUMIDITY</span>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1b4332; margin: 0.25rem 0;">{{ weather.current.humidity }} %</div>
+                <small style="color: #64748b;">Ambient Moisture</small>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem; text-align: center;">
+                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">WIND SPEED</span>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1b4332; margin: 0.25rem 0;">{{ weather.current.wind_speed }} km/h</div>
+                <small style="color: #64748b;">Breeze Condition</small>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem; text-align: center;">
+                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">PRECIPITATION (24h)</span>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #1b4332; margin: 0.25rem 0;">{{ weather.current.rain }} mm</div>
+                <small style="color: #64748b;">Rainfall Accumulation</small>
+            </div>
+        </div>
+
+        <h4 style="color: #1b4332; font-size: 1.05rem; margin-bottom: 0.75rem;">7-Day Operational Farm Forecast:</h4>
+        <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+            <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th>Day / Date</th>
+                        <th>Temp (Min / Max)</th>
+                        <th>Rain Probability</th>
+                        <th>Rainfall</th>
+                        <th>Wind Speed</th>
+                        <th>Operational Window</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for day in weather.daily[:7] %}
+                    <tr>
+                        <td><strong>{{ day.date }}</strong></td>
+                        <td>{{ day.temp_min }}° - {{ day.temp_max }}°C</td>
+                        <td><span style="font-weight: 600; color: {% if day.rain_probability > 50 %}#842029{% else %}#0f5132{% endif %};">{{ day.rain_probability }}%</span></td>
+                        <td>{{ day.rain_sum }} mm</td>
+                        <td>{{ day.wind_speed_max }} km/h</td>
+                        <td><small>{{ day.condition }}</small></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>Live weather forecast temporarily unavailable. Numerical forecast will sync on connection.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="10">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=9) }}" class="btn-secondary">← Back to IPM</a>
+                <button type="submit" class="btn-primary">Continue to Monsoon Outlook →</button>
+            </div>
+        </form>
+
+        <!-- STEP 11: MONSOON OUTLOOK -->
+        {% elif current_step == 11 %}
+        <div class="step-content-header">
+            <h2><span>🌧️</span> 11. Official IMD Seasonal Monsoon Outlook</h2>
+            <p>Official meteorological seasonal assessment from the India Meteorological Department (IMD).</p>
+        </div>
+
+        {% if monsoon and monsoon.status == 'Available' %}
+        <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid #1b4332;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h3 style="margin: 0; color: #1b4332; font-size: 1.2rem;">{{ monsoon.title }}</h3>
+                <span style="background: #e8f4f0; color: #0f5132; padding: 0.25rem 0.65rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;">
+                    Bulletin Date: {{ monsoon.published_date }}
+                </span>
+            </div>
+            <p style="font-size: 0.95rem; color: #334155; line-height: 1.5; margin-bottom: 1rem;">{{ monsoon.summary }}</p>
+
+            <div style="font-size: 0.8rem; color: #64748b;">
+                <strong>Source:</strong> India Meteorological Department (IMD), Ministry of Earth Sciences, Govt. of India.
+            </div>
+        </div>
+        {% else %}
+        <div style="background: #fff8e6; border: 1px solid #f6d38e; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid #c8963e;">
+            <h4 style="margin-top: 0; color: #664d03; font-size: 1.1rem;">Latest verified IMD outlook unavailable</h4>
+            <p style="font-size: 0.9rem; color: #475569; line-height: 1.5;">Official seasonal meteorological bulletin records could not be verified from the server at this time. AGRIORA adheres strictly to factual data integrity and never presents stale historical meteorological information as current outlook.</p>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0;">Consult your local District Agromet Bulletin (GKMS) or official IMD Mausam portal directly at <a href="https://mausam.imd.gov.in/" target="_blank" style="color: #1b4332; font-weight: 600;">https://mausam.imd.gov.in/</a>.</p>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="11">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=10) }}" class="btn-secondary">← Back to Weather</a>
+                <button type="submit" class="btn-primary">Continue to Farm Action Plan →</button>
+            </div>
+        </form>
+
+        <!-- STEP 12: FARM ACTION PLAN -->
+        {% elif current_step == 12 %}
+        <div class="step-content-header">
+            <h2><span>✅</span> 12. Farm Action Plan & Field Milestones</h2>
+            <p>Prioritized operational action checklist consolidating soil conditioning, crop establishment, and agromet synchronization.</p>
+        </div>
+
+        <div style="margin-bottom: 1.75rem;">
+            <h3 style="color: #1b4332; font-size: 1.1rem; margin-bottom: 0.75rem;">Pre-Season & Operational Milestones:</h3>
+
+            <div class="checklist-item {% if action_checklist.get('soil_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_soil" class="checklist-checkbox" {% if action_checklist.get('soil_done', True) %}checked{% endif %} onchange="toggleActionItem('soil_done', this)">
+                <label for="chk_soil" class="checklist-label">
+                    <strong>1. Soil Health Baseline:</strong> Review laboratory nutrient ratings. Prioritize organic carbon replenishment and basal FYM incorporation prior to seedbed preparation.
+                </label>
+            </div>
+
+            <div class="checklist-item {% if action_checklist.get('crops_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_crops" class="checklist-checkbox" {% if action_checklist.get('crops_done', True) %}checked{% endif %} onchange="toggleActionItem('crops_done', this)">
+                <label for="chk_crops" class="checklist-label">
+                    <strong>2. Multi-Crop Seed Sourcing:</strong> Procure certified, disease-free seed stocks or planting seedlings for {{ user.selected_crops|join(', ') }} from authorized agricultural depots.
+                </label>
+            </div>
+
+            <div class="checklist-item {% if action_checklist.get('bioboost_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_bioboost" class="checklist-checkbox" {% if action_checklist.get('bioboost_done') %}checked{% endif %} onchange="toggleActionItem('bioboost_done', this)">
+                <label for="chk_bioboost" class="checklist-label">
+                    <strong>3. Rhizosphere Microbial Priming:</strong> Inoculate seed/roots with crop-specific biofertilizers (Azospirillum, Rhizobium, Phosphobacteria, or VAM) shaded 24h prior to sowing.
+                </label>
+            </div>
+
+            <div class="checklist-item {% if action_checklist.get('ipm_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_ipm" class="checklist-checkbox" {% if action_checklist.get('ipm_done') %}checked{% endif %} onchange="toggleActionItem('ipm_done', this)">
+                <label for="chk_ipm" class="checklist-label">
+                    <strong>4. IPM Scouting & Traps:</strong> Install yellow sticky traps / pheromone traps (5-10/acre) across crop borders. Scout lower leaf surfaces weekly against ETL thresholds.
+                </label>
+            </div>
+
+            <div class="checklist-item {% if action_checklist.get('weather_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_weather" class="checklist-checkbox" {% if action_checklist.get('weather_done') %}checked{% endif %} onchange="toggleActionItem('weather_done', this)">
+                <label for="chk_weather" class="checklist-label">
+                    <strong>5. Agromet Operational Synchronization:</strong> Align foliar applications with calm early morning hours (<15 km/h wind) and verify 7-day forecast before scheduling supplementary irrigation.
+                </label>
+            </div>
+
+            <div class="checklist-item {% if action_checklist.get('extension_done') %}checked{% endif %}">
+                <input type="checkbox" id="chk_extension" class="checklist-checkbox" {% if action_checklist.get('extension_done') %}checked{% endif %} onchange="toggleActionItem('extension_done', this)">
+                <label for="chk_extension" class="checklist-label">
+                    <strong>6. Extension Cross-Verification:</strong> Cross-check commercial fertilizer dosages and registered pesticide labels with your local Block Agricultural Extension Officer (AEO) or KVK expert.
+                </label>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ url_for('farmer_guide') }}">
+            <input type="hidden" name="step" value="12">
+            <div class="guide-actions-bar">
+                <a href="{{ url_for('farmer_guide', step=11) }}" class="btn-secondary">← Back to Monsoon Outlook</a>
+                <button type="submit" class="btn-primary">Final Step: Generate Farm Report →</button>
+            </div>
+        </form>
+
+        <!-- STEP 13: GENERATE FARM REPORT -->
+        {% elif current_step == 13 %}
+        <div class="step-content-header">
+            <h2><span>📄</span> 13. Official AGRIORA Precision Farm Report</h2>
+            <p>Your complete farm intelligence dossier is assembled, verified, and ready for publication-grade PDF generation.</p>
+        </div>
+
+        <div style="background: #f8faf7; border: 1px solid #c2dcce; border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2rem;">
+            <h3 style="margin-top: 0; color: #1b4332; font-size: 1.25rem;">Dossier Summary Overview:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                <div>
+                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">FARMER NAME</span>
+                    <div style="font-weight: 700; color: #1b4332;">{{ user.farmer_name or 'Farmer Field Record' }}</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">SURVEY / FIELD ID</span>
+                    <div style="font-weight: 700; color: #1b4332;">{{ user.survey_number or 'Unspecified' }}</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">LOCATION</span>
+                    <div style="font-weight: 700; color: #1b4332;">{{ user.location }}</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">SOIL HEALTH INDEX</span>
+                    <div style="font-weight: 700; color: #1b4332;">{{ soil_health_score }}/100 ({{ soil_health_label }})</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">SELECTED CROPS</span>
+                    <div style="font-weight: 700; color: #1b4332;">{{ user.selected_crops|join(', ') }} ({{ user.selected_crops|length }} crops)</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 2rem 1rem; background: #ffffff; border: 2px dashed #c2dcce; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">📄</div>
+            <h3 style="color: #1b4332; font-size: 1.35rem; margin-bottom: 0.5rem;">Download Official AGRIORA Precision Field Report</h3>
+            <p style="color: #64748b; font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem auto;">
+                A comprehensive visual dossier containing farmer identity, soil parameters with status badges, multi-crop suitability evaluations, BioBoost recommendations, IPM dossiers, 7-day forecast windows, official IMD bulletin, action plan, and statutory disclaimers.
+            </p>
+            <a href="{{ url_for('generate_report') }}" class="btn-primary" style="font-size: 1.05rem; padding: 0.85rem 2.25rem;">
+                📥 Download Farm Report (PDF)
+            </a>
+        </div>
+
+        <div class="guide-actions-bar">
+            <a href="{{ url_for('farmer_guide', step=12) }}" class="btn-secondary">← Back to Action Plan</a>
+            <a href="{{ url_for('dashboard') }}" class="btn-secondary">Return to Farm Dashboard →</a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// --- CLIENT-SIDE MULTI-CROP SELECTION LOGIC ---
+let selectedCrops = new Set({{ user.selected_crops|tojson }});
+
+function toggleCrop(cropName) {
+    if (selectedCrops.has(cropName)) {
+        selectedCrops.delete(cropName);
+    } else {
+        selectedCrops.add(cropName);
+    }
+    updateCropSelectionUI();
+}
+
+function updateCropSelectionUI() {
+    // 1. Update Card States
+    document.querySelectorAll('.crop-card-selectable').forEach(card => {
+        const cname = card.getAttribute('data-name');
+        if (selectedCrops.has(cname)) {
+            card.classList.add('selected');
+        } else {
+            card.classList.remove('selected');
+        }
+    });
+
+    // 2. Update Counter
+    const count = selectedCrops.size;
+    const countEl = document.getElementById('selectedCountText');
+    if (countEl) {
+        countEl.textContent = `${count} crop${count === 1 ? '' : 's'} selected`;
+    }
+
+    // 3. Update Chips
+    const chipsList = document.getElementById('selectedChipsList');
+    if (chipsList) {
+        chipsList.innerHTML = '';
+        selectedCrops.forEach(cname => {
+            const chip = document.createElement('span');
+            chip.className = 'crop-chip';
+            chip.innerHTML = `${cname} <button type="button" class="crop-chip-remove" onclick="toggleCrop('${cname}')">&times;</button>`;
+            chipsList.appendChild(chip);
+        });
+    }
+
+    // 4. Update Hidden Inputs for Form Submission
+    const container = document.getElementById('hiddenInputsContainer');
+    if (container) {
+        container.innerHTML = '';
+        selectedCrops.forEach(cname => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'selected_crops';
+            input.value = cname;
+            container.appendChild(input);
+        });
+    }
+}
+
+function filterCrops() {
+    const q = (document.getElementById('cropSearchInput')?.value || '').toLowerCase().trim();
+    const activeCatBtn = document.querySelector('.category-pill.active');
+    const cat = activeCatBtn ? activeCatBtn.textContent.split(' ')[0] : 'All';
+
+    document.querySelectorAll('.crop-card-selectable').forEach(card => {
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const cardCat = (card.getAttribute('data-cat') || '');
+        const sci = (card.getAttribute('data-sci') || '').toLowerCase();
+        const desc = (card.getAttribute('data-desc') || '').toLowerCase();
+
+        const matchCat = (cat === 'All' || cardCat.toLowerCase().includes(cat.toLowerCase()));
+        const matchText = (!q || name.includes(q) || sci.includes(q) || desc.includes(q));
+
+        if (matchCat && matchText) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function setCategory(category, btn) {
+    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    filterCrops();
+}
+
+// Stage Selector Styling Helper
+function updateStageSelectStyle(radio) {
+    if (!radio) return;
+    const parentGrid = radio.closest('.stage-options-grid');
+    if (parentGrid) {
+        parentGrid.querySelectorAll('.stage-option-item').forEach(item => item.classList.remove('selected'));
+    }
+    const parentItem = radio.closest('.stage-option-item');
+    if (parentItem) {
+        parentItem.classList.add('selected');
+    }
+}
+
+// Tab Switching
+function switchCropTab(section, cropName, btn) {
+    document.querySelectorAll(`.${section}-tab-pane`).forEach(pane => pane.style.display = 'none');
+    const target = document.getElementById(`${section}_pane_${cropName}`);
+    if (target) target.style.display = 'block';
+
+    const tabContainer = document.getElementById(`${section}Tabs`);
+    if (tabContainer) {
+        tabContainer.querySelectorAll('.guide-tab-btn').forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+}
+
+// Action Checklist Persistence
+function toggleActionItem(key, checkbox) {
+    const itemBox = checkbox.closest('.checklist-item');
+    if (checkbox.checked) {
+        itemBox?.classList.add('checked');
+    } else {
+        itemBox?.classList.remove('checked');
+    }
+
+    fetch('/farmer-guide/toggle-action', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: key, checked: checkbox.checked })
+    }).catch(err => console.error('Failed to save checklist state', err));
+}
+
+// Validation check on Step 5 submit
+document.getElementById('cropSelectionForm')?.addEventListener('submit', function(e) {
+    if (selectedCrops.size === 0) {
+        e.preventDefault();
+        alert('Please select at least one crop before continuing.');
+    }
+});
+</script>
+{% endblock %}

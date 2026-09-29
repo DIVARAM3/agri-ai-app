@@ -1,0 +1,100 @@
+{
+  "ph": {
+    "parameter": "Soil pH",
+    "name": "pH Level",
+    "unit": "",
+    "description": "Soil Reaction / Acidity / Alkalinity",
+    "ranges": {
+      "strongly_acidic": { "min": 0.0, "max": 5.49, "status": "Strongly Acidic" },
+      "moderately_acidic": { "min": 5.5, "max": 6.49, "status": "Moderately Acidic" },
+      "neutral": { "min": 6.5, "max": 7.5, "status": "Neutral / Optimal" },
+      "moderately_alkaline": { "min": 7.51, "max": 8.49, "status": "Moderately Alkaline" },
+      "strongly_alkaline": { "min": 8.5, "max": 14.0, "status": "Strongly Alkaline" }
+    },
+    "interpretation": {
+      "acidic": "Acidic soils may restrict phosphorus availability and micro-nutrients like molybdenum. Consider agricultural lime or dolomite if recommended by local soil testing.",
+      "neutral": "Near-neutral pH provides optimal availability of primary, secondary, and micronutrients for most field and horticultural crops.",
+      "alkaline": "Alkaline conditions can reduce the availability of phosphorus, iron, zinc, and manganese. Organic matter incorporation and gypsum may be evaluated based on local guidance."
+    }
+  },
+  "nitrogen": {
+    "parameter": "Available Nitrogen (N)",
+    "name": "Nitrogen (N)",
+    "unit": "kg/ha",
+    "description": "Primary macronutrient for vegetative canopy and protein synthesis",
+    "ranges": {
+      "low": { "min": 0.0, "max": 279.99, "status": "Low" },
+      "normal": { "min": 280.0, "max": 560.0, "status": "Medium / Adequate" },
+      "high": { "min": 560.01, "max": 5000.0, "status": "High" }
+    },
+    "interpretation": {
+      "low": "Available nitrogen is below standard agronomic sufficiency. Crops may show reduced vigor, pale leaves, and restricted vegetative growth.",
+      "normal": "Available nitrogen is in the recommended range supporting balanced vegetative growth and biomass development.",
+      "high": "Available nitrogen is abundant. Excessive nitrogen can cause succulent vegetative growth, delayed maturity, and increased susceptibility to pests."
+    }
+  },
+  "phosphorus": {
+    "parameter": "Available Phosphorus (P)",
+    "name": "Phosphorus (P)",
+    "unit": "kg/ha",
+    "description": "Primary macronutrient for root establishment, energy transfer, and flowering",
+    "ranges": {
+      "low": { "min": 0.0, "max": 10.99, "status": "Low" },
+      "normal": { "min": 11.0, "max": 25.0, "status": "Medium / Adequate" },
+      "high": { "min": 25.01, "max": 2000.0, "status": "High" }
+    },
+    "interpretation": {
+      "low": "Available phosphorus is deficient. Can restrict early seedling root branching and delay flowering and fruit setting.",
+      "normal": "Available phosphorus is at an adequate level supporting strong root architecture and timely reproductive development.",
+      "high": "Phosphorus levels are ample. High soil phosphorus reduces the need for heavy phosphatic inputs but requires monitoring for zinc uptake."
+    }
+  },
+  "potassium": {
+    "parameter": "Available Potassium (K)",
+    "name": "Potassium (K)",
+    "unit": "kg/ha",
+    "description": "Primary macronutrient for water regulation, disease tolerance, and fruit quality",
+    "ranges": {
+      "low": { "min": 0.0, "max": 139.99, "status": "Low" },
+      "normal": { "min": 140.0, "max": 280.0, "status": "Medium / Adequate" },
+      "high": { "min": 280.01, "max": 5000.0, "status": "High" }
+    },
+    "interpretation": {
+      "low": "Available potassium is deficient. Plants may exhibit marginal leaf scorching, weak stems, and reduced drought tolerance.",
+      "normal": "Available potassium is in the recommended range, providing good stomatal control, enzyme activation, and stress resistance.",
+      "high": "Available potassium is abundant, providing robust physiological resilience and quality crop yield."
+    }
+  },
+  "organic_carbon": {
+    "parameter": "Organic Carbon (OC)",
+    "name": "Organic Carbon (OC)",
+    "unit": "%",
+    "description": "Key indicator of biological activity, microbial biomass, and moisture retention",
+    "ranges": {
+      "low": { "min": 0.0, "max": 0.49, "status": "Low" },
+      "normal": { "min": 0.50, "max": 0.75, "status": "Medium" },
+      "high": { "min": 0.751, "max": 100.0, "status": "High / Optimal" }
+    },
+    "interpretation": {
+      "low": "Soil organic carbon is depleted. Soil may have low cation exchange capacity, poor moisture retention, and restricted microbial activity.",
+      "normal": "Soil organic carbon is moderate. Supports standard biological activity; regular addition of compost or green manure will sustain fertility.",
+      "high": "Soil organic carbon is favorable, fostering high biological diversity, excellent moisture buffering, and soil aggregation."
+    }
+  },
+  "ec": {
+    "parameter": "Electrical Conductivity (EC)",
+    "name": "Electrical Conductivity (EC)",
+    "unit": "dS/m",
+    "description": "Indicator of soluble salt concentration and soil salinity hazards",
+    "ranges": {
+      "normal": { "min": 0.0, "max": 1.0, "status": "Normal / Non-saline" },
+      "medium": { "min": 1.01, "max": 2.0, "status": "Critical / Slightly Saline" },
+      "high": { "min": 2.01, "max": 50.0, "status": "High / Saline" }
+    },
+    "interpretation": {
+      "normal": "Salinity levels are safe. Soluble salts will not cause osmotic stress to standard field and vegetable crops.",
+      "medium": "Mild salinity detected. Salt-sensitive crops may experience slight germination or osmotic delays; adequate drainage is advised.",
+      "high": "Elevated soil salinity. Significant osmotic stress may occur, reducing water uptake and root expansion. Salt-tolerant crops and flushing required."
+    }
+  }
+}

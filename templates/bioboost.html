@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block title %}BioBoost - AgriAI{% endblock %}
+
+{% block content %}
+<!-- CONTENT HEADER -->
+<div class="content-header">
+    <div class="breadcrumb">
+        <span class="breadcrumb-item"><a href="/">Dashboard</a></span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-item active">BioBoost</span>
+    </div>
+    <h1>BioBoost</h1>
+    <p>Biological soil-health and organic nutrient-management decision support.</p>
+</div>
+
+<!-- MAIN CONTENT BODY -->
+<div class="content-body">
+
+    <!-- 1. PREREQUISITE GUARDS -->
+    {% if no_crop_selected %}
+    <div class="card" style="margin-bottom: 2.5rem; text-align: center; padding: 2.5rem 1.5rem; border: 1px dashed var(--color-border);">
+        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🌾</div>
+        <h3 style="margin: 0; color: var(--color-text-primary); font-size: 1.25rem;">Select a crop in Crop Advisor before using BioBoost.</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0.5rem auto 1.5rem auto; max-width: 500px;">
+            BioBoost tailors biological nutrient management and microbial practices specifically to your crop's physiology and growth stages.
+        </p>
+        <a href="/crop-advisor" class="btn btn-primary" style="display: inline-flex; justify-content: center; padding: 0.65rem 1.5rem;">
+            🌾 Go to Crop Advisor →
+        </a>
+    </div>
+    {% elif no_soil_data %}
+    <div class="card" style="margin-bottom: 2.5rem; text-align: center; padding: 2.5rem 1.5rem; border: 1px dashed var(--color-border);">
+        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🧪</div>
+        <h3 style="margin: 0; color: var(--color-text-primary); font-size: 1.25rem;">Complete the Soil Lab analysis before using BioBoost.</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0.5rem auto 1.5rem auto; max-width: 500px;">
+            BioBoost uses your soil parameters (Organic Carbon, pH, EC, and NPK) to identify biological priorities and soil-health opportunities.
+        </p>
+        <a href="/soil" class="btn btn-primary" style="display: inline-flex; justify-content: center; padding: 0.65rem 1.5rem;">
+            🧪 Go to Soil Lab →
+        </a>
+    </div>
+    {% else %}
+
+    <!-- 2. BIOBOOST ACTIVE HEADER & STAGE SELECTOR -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="card-title">
+                <span style="font-size: 1.75rem;">🌿</span>
+                <div>
+                    <h2 style="margin: 0; font-size: 1.35rem; color: var(--color-text-primary);">
+                        BIOBOOST: Biological Soil & Nutrient Management
+                    </h2>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; color: var(--color-text-secondary);">
+                        Tailored for <strong>{{ selected_crop }}</strong> at <strong>{{ location.village }}, {{ location.district }}</strong>
+                    </p>
+                </div>
+            </div>
+            <span class="badge badge-success" style="font-size: 0.8125rem;">
+                Decision Support Active
+            </span>
+        </div>
+
+        <!-- GROWTH STAGE SELECTOR FORM -->
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border-light);">
+            <form method="GET" action="/bioboost" style="display: flex; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label class="form-label" for="stageSelect" style="margin-bottom: 0.35rem; font-size: 0.8125rem;">
+                        Select Current Crop Growth Stage:
+                    </label>
+                    <select name="stage" id="stageSelect" class="form-select" onchange="this.form.submit()" style="font-weight: 500;">
+                        {% for stg in growth_stages %}
+                        <option value="{{ stg }}" {% if stg == selected_stage %}selected{% endif %}>
+                            {{ stg }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div style="display: flex; align-items: flex-end; gap: 0.75rem;">
+                    <a href="/crop-advisor" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.6rem 1rem;">
+                        Change Crop
+                    </a>
+                    <a href="/soil" class="btn btn-outline" style="font-size: 0.8125rem; padding: 0.6rem 1rem;">
+                        View Soil
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. BIOLOGICAL SOIL HEALTH SECTION -->
+    {% if bioboost %}
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🔬</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">BIOLOGICAL SOIL HEALTH</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Assessment based on soil organic carbon, reaction, and nutrient dynamics
+                    </p>
+                </div>
+            </div>
+            <div>
+                {% if bioboost.biological_health.status_code == 'optimal' %}
+                <span class="badge badge-success" style="font-size: 0.875rem; padding: 0.35rem 0.85rem; font-weight: 600;">
+                    ✓ {{ bioboost.biological_health.status }}
+                </span>
+                {% else %}
+                <span class="badge badge-warning" style="font-size: 0.875rem; padding: 0.35rem 0.85rem; font-weight: 600;">
+                    ⚠️ {{ bioboost.biological_health.status }}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- OBSERVATIONS LIST -->
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border-light);">
+            <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                {% for obs in bioboost.biological_health.observations %}
+                <li style="font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.5;">
+                    {{ obs }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. TOP PRIORITIES SECTION -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🎯</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">TOP PRIORITIES</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Actionable biological and organic management priorities for {{ selected_crop }} ({{ selected_stage }})
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+            {% for item in bioboost.priorities %}
+            <div style="padding: 1.25rem; background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); border-left: 4px solid {% if item.priority == 'HIGH' %}var(--color-danger){% elif item.priority == 'MEDIUM' %}var(--color-warning){% else %}var(--color-primary){% endif %};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <h4 style="margin: 0; font-size: 1rem; color: var(--color-text-primary);">
+                        {{ item.title }}
+                    </h4>
+                    <span class="badge {% if item.priority == 'HIGH' %}badge-danger{% elif item.priority == 'MEDIUM' %}badge-warning{% else %}badge-success{% endif %}" style="font-size: 0.75rem; font-weight: 700;">
+                        {{ item.priority }} PRIORITY
+                    </span>
+                </div>
+                
+                <p style="margin: 0.25rem 0 0.5rem 0; font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.45;">
+                    <strong>Agronomic Reason:</strong> {{ item.reason }}
+                </p>
+
+                <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-primary); font-weight: 500; line-height: 1.45;">
+                    <strong>Recommended General Action:</strong> {{ item.action }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 5. BIOLOGICAL PRACTICES CARDS -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">🌱</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">BIOLOGICAL PRACTICES</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Evidence-based organic, microbial, and soil-cover practices suited for {{ selected_crop }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-2" style="gap: 1.25rem; margin-top: 1rem;">
+            {% for pr in bioboost.practices %}
+            <div style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span class="badge badge-primary" style="font-size: 0.75rem;">
+                            {{ pr.category }}
+                        </span>
+                    </div>
+
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: var(--color-text-primary);">
+                        {{ pr.title }}
+                    </h4>
+
+                    <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.45;">
+                        {{ pr.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 6. WHAT TO MONITOR (FARMER CHECKLIST) -->
+    <div class="card" style="margin-bottom: 2.5rem; border: 1px solid var(--color-border);">
+        <div class="card-header">
+            <div class="card-title">
+                <span style="font-size: 1.5rem;">📋</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">WHAT TO MONITOR</h3>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        Field-level biological health checklist for {{ selected_crop }} during {{ selected_stage }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border-light);">
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                {% for item in bioboost.monitoring %}
+                <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; font-size: 0.875rem; color: var(--color-text-primary); line-height: 1.4;">
+                    <input type="checkbox" style="margin-top: 0.2rem; cursor: pointer;">
+                    <span>{{ item }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            <p style="margin: 1rem 0 0 0; font-size: 0.75rem; color: var(--color-text-light);">
+                Note: These observations track physical and biological progress and do not replace laboratory disease or pest diagnosis.
+            </p>
+        </div>
+    </div>
+
+    <!-- 7. DECISION SUPPORT DISCLAIMER -->
+    <div style="background-color: var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 1rem 1.25rem; border: 1px solid var(--color-border); font-size: 0.8125rem; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 2rem;">
+        <strong>⚠️ Decision Support Notice:</strong> {{ bioboost.disclaimer }}
+    </div>
+
+    {% endif %}
+    {% endif %}
+
+</div>
+{% endblock %}
